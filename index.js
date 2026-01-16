@@ -2,10 +2,10 @@ require('dotenv').config(); // Load environment variables from .env
 
 require("reflect-metadata");
 const express = require("express");
-const { DataSource, EntitySchema } = require("typeorm");
-const { Client } = require("pg");
-const fs = require("fs");
-const path = require("path");
+//const { DataSource, EntitySchema } = require("typeorm");
+//const { Client } = require("pg");
+//const fs = require("fs");
+//const path = require("path");
 
 const app = express();
 const port = process.env.PORT || 8080;
