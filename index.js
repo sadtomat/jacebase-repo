@@ -3,7 +3,7 @@ require('dotenv').config(); // Load environment variables from .env
 require("reflect-metadata");
 const express = require("express");
 //const { DataSource, EntitySchema } = require("typeorm");
-//const { Client } = require("pg");
+const { Client } = require("pg");
 //const fs = require("fs");
 //const path = require("path");
 
@@ -14,7 +14,9 @@ const port = process.env.PORT || 8080;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
+function testFunction() {
+    document.getElementById("para").style.textAlign = "center";
+}
 
 function renderPage(title, content) {
   return `
@@ -88,6 +90,9 @@ app.get("/", (req, res) => {
         document.getElementById("answer").innerHTML = "Incorrect username or password.";
     }
     });
+    function testFunction() {
+      document.getElementById("para").style.textAlign = "center";
+    }
     </script>
   </div>`;
   res.send(renderPage("Zachariah Friesen Test Website", content));
@@ -101,7 +106,32 @@ app.get("/home", (req, res) => {
 });
 
 
+async function ensureDatabaseExists() {
+  const targetDB = process.env.DB_NAME || "jacebase-db";
+  const dbConfig = {
+    host: process.env.DB_HOST || "localhost",
+    port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
+    ssl: (process.env.DB_HOST && process.env.DB_HOST != 'localhost') ? { ca: fs.readFileSync('global-bundle.pem').toString() } : false,
+    user: process.env.DB_USER || "postgres",
+    password: process.env.DB_PASS || "postgres",
+    database: "postgres" // Connect to the default database
+  };
 
-app.listen(port, () => {
-  console.log(`Server is running on http://0.0.0.0:${port}`);
-});
+  const client = new Client(dbConfig);
+  await client.connect();
+
+  const result = await client.query("SELECT 1 FROM pg_database WHERE datname = $1", [targetDB]);
+  if (result.rowCount === 0) {
+    await client.query(`CREATE DATABASE "${targetDB}"`);
+    console.log(`Database "${targetDB}" created.`);
+  } else {
+    console.log(`Database "${targetDB}" already exists.`);
+  }
+  await client.end();
+}
+
+ensureDatabaseExists().then(() => {
+  app.listen(port, () => {
+    console.log(`Server is running on http://0.0.0.0:${port}`);
+  });
+}).catch(error => console.log("Error connecting to the database:", error));
