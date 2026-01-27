@@ -4,7 +4,6 @@ require("reflect-metadata");
 const express = require("express");
 //const { DataSource, EntitySchema } = require("typeorm");
 const { Client } = require("pg");
-const mysql = require('mysql2/promise');
 const fs = require("fs");
 //const path = require("path");
 
