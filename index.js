@@ -340,6 +340,19 @@ app.get("/home", (req, res) => {
                     console.log(players);
                     winner = document.getElementById("winnerSelect").value;
                     console.log(winner);
+                    fetch('/home', {
+                        method: 'POST',
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            deck1: deck1,
+                            player1: player1,
+                            deck2: deck2,
+                            player2: player2,
+                            deck3: deck3,
+                            player3: player3,
+                            players: players,
+                            winner: winner
+                    })}))
                 }
             }
         });
@@ -348,6 +361,9 @@ app.get("/home", (req, res) => {
     res.send(renderPage("Home - Jacebase", content));
 });
 
+app.post("/home", (req, res) => {
+  console.log("Received data:", req.body);
+});
 
 async function ensureDatabaseExists() {
   const targetDB = process.env.DB_NAME || "jacebase-db";
