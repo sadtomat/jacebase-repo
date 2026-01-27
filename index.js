@@ -380,11 +380,11 @@ async function insertToDB(data) {
   try {
     gameID = Math.floor(Math.random() * 1000000);
     gameCreationQuery = `INSERT INTO public."gameTables" ("gameID","PlayerCount","Pentagram") VALUES (${gameID}, ${data.players}}, NULL);`
-    const result = await client.query(gameCreationQuery);
+    const result = await client.query(gameCreationQuery.body);
     console.log("Data inserted successfully");
     console.log(result.rows);
     const queryResult = await client.query(`SELECT * FROM public."gameTables";`);
-    console.log("Query result:", queryResult);
+    console.log("Query result:", queryResult.body);
   } finally {
     await client.end();
   }
