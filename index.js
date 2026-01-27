@@ -353,7 +353,7 @@ app.get("/home", (req, res) => {
                             players: players,
                             winner: winner
                     })
-                }
+                })
             }
         });
     </script>`;
