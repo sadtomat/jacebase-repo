@@ -24,7 +24,7 @@ const dbConfig = {
     ssl: (process.env.DB_HOST && process.env.DB_HOST != 'localhost') ? { ca: fs.readFileSync('global-bundle.pem').toString() } : false,
     user: process.env.DB_USER || "postgres",
     password: process.env.DB_PASS || "postgres",
-    database: "postgres" // Connect to the default database
+    database: "jacebase-db" // Connect to the default database
 };
 
 //const pool = mysql.createPool({
