@@ -226,7 +226,6 @@ app.get("/home", (req, res) => {
         <button id="submitButton">Submit</button>
     </div>
 
-    <script src="scripts.js"></script>
     <script>
 
         //$("#pnumber").bind('focusout', function() {
@@ -352,8 +351,8 @@ app.get("/home", (req, res) => {
                             player3: player3,
                             players: players,
                             winner: winner
-                    })
-                })
+                        })
+                    });
             }
         }
       });
