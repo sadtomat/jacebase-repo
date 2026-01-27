@@ -355,7 +355,8 @@ app.get("/home", (req, res) => {
                     })
                 })
             }
-        });
+        }
+      });
     </script>`;
     res.send(renderPage("Home - Jacebase", content));
 });
