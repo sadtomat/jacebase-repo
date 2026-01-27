@@ -101,6 +101,249 @@ app.get("/", (req, res) => {
 app.get("/home", (req, res) => {
     const content = `    <h1>Jacebase</h1>
     <p id="para">Welcome</p>
+    <h1>Jacebase</h1>
+    <p>Welcome</p>
+    <p>Select number of players</p>
+    <select name="Number of Players" id="pnumber">
+        <option value="p0">select</option>
+        <option value="p3">3</option>
+        <option value="p4">4</option>
+        <option value="p5">5</option>
+    </select>
+
+    <p id="tester">testvalue</p>
+
+    <div style="gap: 20px; display:none"  id="orderedBox">
+        <p>Ordered?:</p>
+        <select name="Ordered" id="orderedSelect">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        <div style="gap: 20px; display:none"  id="pentagramBox">
+            <p>Pentagram?:</p>
+            <select name="Pentagram" id="pentagramSelect">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+            <p>Are enemy positions known?:</p>
+            <select name="knownp" id="knownPentagram">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+    </div>
+
+    <div style="gap: 20px; display:none"  id="player1Input">
+        <div style="display:flex; gap: 10px">
+            <p>Deck 1:</p>
+            <input type="text" id="deck1"></input>
+        </div>
+        <div style="display:flex; gap: 10px">
+            <p>Player 1:</p>
+            <input type="text" id="player1"></input>
+        </div>
+        <div style="display:none; gap: 10px" id="player1Enemies">
+            <p>Enemy 1:</p>
+            <input type="text" id="deck1enemy1"></input>
+            <p>Enemy 2:</p>
+            <input type="text" id="deck1enemy2"></input>
+        </div>
+    </div>
+
+    <div style="gap: 20px; display:none" id="player2Input">
+        <div style="display:flex; gap: 10px">
+            <p>Deck 2:</p>
+            <input type="text" id="deck2"></input>
+        </div>
+        <div style="display:flex; gap: 10px">
+            <p>Player 2:</p>
+            <input type="text" id="player2"></input>
+        </div>
+        <div style="display:none; gap: 10px" id="player2Enemies">
+            <p>Enemy 1:</p>
+            <input type="text" id="deck2enemy1"></input>
+            <p>Enemy 2:</p>
+            <input type="text" id="deck2enemy2"></input>
+        </div>
+    </div>
+
+    <div style="gap: 20px; display:none" id="player3Input">
+        <div style="display:flex; gap: 10px">
+            <p>Deck 3:</p>
+            <input type="text" id="deck3"></input>
+        </div>
+        <div style="display:flex; gap: 10px">
+            <p>Player 3:</p>
+            <input type="text" id="player3"></input>
+        </div>
+        <div style="display:none; gap: 10px" id="player3Enemies">
+            <p>Enemy 1:</p>
+            <input type="text" id="deck3enemy1"></input>
+            <p>Enemy 2:</p>
+            <input type="text" id="deck3enemy2"></input>
+        </div>
+    </div>
+
+    <div style="gap: 20px; display:none" id="player4Input">
+        <div style="display:flex; gap: 10px">
+            <p>Deck 4:</p>
+            <input type="text" id="deck4"></input>
+        </div>
+        <div style="display:flex; gap: 10px">
+            <p>Player 4:</p>
+            <input type="text" id="player4"></input>
+        </div>
+        <div style="display:none; gap: 10px" id="player4Enemies">
+            <p>Enemy 1:</p>
+            <input type="text" id="deck4enemy1"></input>
+            <p>Enemy 2:</p>
+            <input type="text" id="deck4enemy2"></input>
+        </div>
+    </div>
+
+    <div style="gap: 20px; display:none" id="player5Input">
+        <div style="display:flex; gap: 10px">
+            <p>Deck 5:</p>
+            <input type="text" id="deck5"></input>
+        </div>
+        <div style="display:flex; gap: 10px">
+            <p>Player 5:</p>
+            <input type="text" id="player5"></input>
+        </div>
+        <div style="display:none; gap: 10px" id="player5Enemies">
+            <p>Enemy 1:</p>
+            <input type="text" id="deck5enemy1"></input>
+            <p>Enemy 2:</p>
+            <input type="text" id="deck5enemy2"></input>
+        </div>
+    </div>
+
+    <div style="gap: 20px; display:flex"  id="winnerBox">
+        <p>Winner:</p>
+        <select name="Winner" id="winnerSelect">
+            <option value="N/A">Select Player Count</option>
+        </select>
+        <button id="submitButton">Submit</button>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+
+        //$("#pnumber").bind('focusout', function() {
+        //    console.log("testing")
+        //    document.getElementById("tester").textContent = $(this).find('option:selected').text();
+        //}); 
+        document.addEventListener("DOMContentLoaded", function() {
+            playernumber = "";
+            winOptions = [];
+
+
+            document.getElementById("pnumber").addEventListener("change", function() {
+                document.getElementById("tester").textContent = this.value;
+                playernumber = this.value;
+                loadPlayerInputs();
+            });
+
+            document.getElementById("knownPentagram").addEventListener("change", function() {
+                if (this.value === "yes" && document.getElementById("orderedSelect").value === "no") {
+                    showPentagramBoxes();
+                }else{
+                    hidePentagramBoxes();
+                }
+            });
+
+            document.getElementById("orderedSelect").addEventListener("change", function() {
+                if (this.value === "yes"){
+                    hidePentagramBoxes();
+                }
+            });
+
+            function hidePentagramBoxes() {
+                document.getElementById("player1Enemies").style.display = "none";
+                document.getElementById("player2Enemies").style.display = "none";
+                document.getElementById("player3Enemies").style.display = "none";
+                document.getElementById("player4Enemies").style.display = "none";
+                document.getElementById("player5Enemies").style.display = "none";
+            }
+
+            function showPentagramBoxes() {
+                document.getElementById("player1Enemies").style.display = "flex";
+                document.getElementById("player2Enemies").style.display = "flex";
+                document.getElementById("player3Enemies").style.display = "flex";
+                document.getElementById("player4Enemies").style.display = "flex";
+                document.getElementById("player5Enemies").style.display = "flex";
+            }
+
+            function populateWinBox(winOptions){
+                var winBox = document.getElementById("winnerSelect");
+                winBox.options.length = 0;
+                for (let i = 0; i < winOptions.length; i++) {
+                    let option = document.createElement("option");
+                    option.value = winOptions[i].value;
+                    option.text = winOptions[i].text;
+                    winBox.add(option);
+                }
+            }
+
+            function loadPlayerInputs() {
+                if (playernumber === "p3") {
+                    document.getElementById("orderedBox").style.display = "flex";
+                    document.getElementById("pentagramBox").style.display = "none";
+                    document.getElementById("player1Input").style.display = "flex";
+                    document.getElementById("player2Input").style.display = "flex";
+                    document.getElementById("player3Input").style.display = "flex";
+                    document.getElementById("player4Input").style.display = "none";
+                    document.getElementById("player5Input").style.display = "none";
+                    hidePentagramBoxes();
+                    winOptions = [{value:'player1',text:"Player 1"}, {value:'player2',text:"Player 2"}, {value:'player3',text:"Player 3"}];
+                    populateWinBox(winOptions);
+                }else if (playernumber === "p4") {
+                    document.getElementById("orderedBox").style.display = "flex";
+                    document.getElementById("pentagramBox").style.display = "none";
+                    document.getElementById("player1Input").style.display = "flex";
+                    document.getElementById("player2Input").style.display = "flex";
+                    document.getElementById("player3Input").style.display = "flex";
+                    document.getElementById("player4Input").style.display = "flex";
+                    document.getElementById("player5Input").style.display = "none";
+                    hidePentagramBoxes();
+                    winOptions = [{value:'player1',text:"Player 1"}, {value:'player2',text:"Player 2"}, {value:'player3',text:"Player 3"}, {value:'player4',text:"Player 4"}];
+                    populateWinBox(winOptions);
+                }else if (playernumber === "p5") {
+                    document.getElementById("orderedBox").style.display = "flex";
+                    document.getElementById("pentagramBox").style.display = "flex";
+                    document.getElementById("player1Input").style.display = "flex";
+                    document.getElementById("player2Input").style.display = "flex";
+                    document.getElementById("player3Input").style.display = "flex";
+                    document.getElementById("player4Input").style.display = "flex";
+                    document.getElementById("player5Input").style.display = "flex";
+                    winOptions = [{value:'player1',text:"Player 1"}, {value:'player2',text:"Player 2"}, {value:'player3',text:"Player 3"}, {value:'player4',text:"Player 4"}, {value:'player5',text:"Player 5"}];
+                    populateWinBox(winOptions);
+                }
+            }
+
+            document.getElementById("submitButton").addEventListener("click", submitButtonClicked, false);
+            function submitButtonClicked(){
+                if (playernumber == "p3"){
+                    deck1 = document.getElementById("deck1").value;
+                    console.log(deck1);
+                    player1 = document.getElementById("player1").value;
+                    console.log(player1);
+                    deck2 = document.getElementById("deck2").value;
+                    console.log(deck2);
+                    player2 = document.getElementById("player2").value;
+                    console.log(player2);
+                    deck3 = document.getElementById("deck3").value;
+                    console.log(deck3);
+                    player3 = document.getElementById("player3").value;
+                    console.log(player3);
+                    players = 3;
+                    console.log(players);
+                    winner = document.getElementById("winnerSelect").value;
+                    console.log(winner);
+                }
+            }
+        });
+    </script>
     <script src="scripts.js"></script>`;
     res.send(renderPage("Home - Jacebase", content));
 });
