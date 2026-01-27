@@ -18,6 +18,15 @@ function testFunction() {
     document.getElementById("para").style.textAlign = "center";
 }
 
+const dbConfig = {
+    host: process.env.DB_HOST || "localhost",
+    port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
+    ssl: (process.env.DB_HOST && process.env.DB_HOST != 'localhost') ? { ca: fs.readFileSync('global-bundle.pem').toString() } : false,
+    user: process.env.DB_USER || "postgres",
+    password: process.env.DB_PASS || "postgres",
+    database: "postgres" // Connect to the default database
+};
+
 function renderPage(title, content) {
   return `
   <!DOCTYPE html>
@@ -362,18 +371,33 @@ app.get("/home", (req, res) => {
 
 app.post("/home", (req, res) => {
   console.log("Received data:", req.body);
+  (async () => {
+    try {
+      insertToDB(req.body);
+    } catch (error) {
+      console.error("Error inserting data:", error);
+    }
+  });
 });
+
+async function insertToDB(data) {
+  const client = new Client(dbConfig);
+  await client.connect();
+  try {
+    gameID = Math.floor(Math.random() * 1000000);
+    gameCreationQuery = `INSERT INTO public."gameTables" ("gameID","PlayerCount","Pentagram") VALUES (${gameID}, ${data.players}}, NULL);`
+    const result = await client.query(gameCreationQuery);
+    console.log("Data inserted successfully");
+    console.log(result.rows);
+    const queryResult = await client.query(`SELECT * FROM public."gameTables";`);
+    console.log("Query result:", queryResult);
+  } finally {
+    await client.end();
+  }
+}
 
 async function ensureDatabaseExists() {
   const targetDB = process.env.DB_NAME || "jacebase-db";
-  const dbConfig = {
-    host: process.env.DB_HOST || "localhost",
-    port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
-    ssl: (process.env.DB_HOST && process.env.DB_HOST != 'localhost') ? { ca: fs.readFileSync('global-bundle.pem').toString() } : false,
-    user: process.env.DB_USER || "postgres",
-    password: process.env.DB_PASS || "postgres",
-    database: "postgres" // Connect to the default database
-  };
 
   const client = new Client(dbConfig);
   await client.connect();
