@@ -28,16 +28,16 @@ const dbConfig = {
     database: "postgres" // Connect to the default database
 };
 
-const pool = mysql.createPool({
-    host: process.env.DB_HOST || "localhost",
-    port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
-    user: process.env.DB_USER || "postgres",
-    password: process.env.DB_PASS || "postgres",
-    database: "jacebase-db",
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
-});
+//const pool = mysql.createPool({
+//    host: process.env.DB_HOST || "localhost",
+//    port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
+//    user: process.env.DB_USER || "postgres",
+//    password: process.env.DB_PASS || "postgres",
+//    database: "jacebase-db",
+//    waitForConnections: true,
+//    connectionLimit: 10,
+//    queueLimit: 0
+//});
 function renderPage(title, content) {
   return `
   <!DOCTYPE html>
@@ -386,13 +386,16 @@ app.post("/home", (req, res) => {
 });
 
 async function insertToDB(data) {
+  const client = new Client(dbConfig);
+  await client.connect();
   try {
     gameID = Math.floor(Math.random() * 1000000);
-    gameCreationQuery = `INSERT INTO public."gameTables" ("gameID","PlayerCount","Pentagram") VALUES (?, ?, ?)`, [gameID, data.players, null];
-    const result = await pool.execute(gameCreationQuery);
+    gameCreationQueryText = `INSERT INTO public."gameTables" ("gameID","PlayerCount","Pentagram") VALUES (?, ?, ?)`;
+    gameCreationQueryValues = [gameID, data.players, null];
+    const result = await client.query(gameCreationQueryText, gameCreationQueryValues);
     console.log("Data inserted successfully");
-    console.log(result);
-    const queryResult = await pool.execute(`SELECT * FROM public."gameTables"`);
+    console.log(result.rows);
+    const queryResult = await client.query(`SELECT * FROM public."gameTables"`);
     console.log("Query result:", queryResult);
   } finally {
     await client.end();
