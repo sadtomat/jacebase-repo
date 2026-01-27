@@ -371,13 +371,7 @@ app.get("/home", (req, res) => {
 
 app.post("/home", (req, res) => {
   console.log("Received data:", req.body);
-  (async () => {
-    try {
-      insertToDB(req.body);
-    } catch (error) {
-      console.error("Error inserting data:", error);
-    }
-  });
+  insertToDB(req.body);
 });
 
 async function insertToDB(data) {
