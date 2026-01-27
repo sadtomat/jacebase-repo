@@ -352,12 +352,11 @@ app.get("/home", (req, res) => {
                             player3: player3,
                             players: players,
                             winner: winner
-                    })}))
+                    })
                 }
             }
         });
-    </script>
-    <script src="scripts.js"></script>`;
+    </script>`;
     res.send(renderPage("Home - Jacebase", content));
 });
 
