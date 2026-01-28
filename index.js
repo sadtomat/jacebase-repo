@@ -589,21 +589,23 @@ app.get("/home", (req, res) => {
 
 app.post("/home", (req, res) => {
   console.log("Received data:", req.body);
-  //insertToDB(req.body);
+  insertToDB(req.body);
 });
 
 async function insertToDB(data) {
   const client = new Client(dbConfig);
   await client.connect();
   try {
-    gameID = Math.floor(Math.random() * 1000000);
-    gameCreationQueryText = `INSERT INTO public."gameTables" ("gameID","PlayerCount","Pentagram") VALUES ($1, $2, $3)`;
-    gameCreationQueryValues = [gameID, data.players, null];
-    const result = await client.query(gameCreationQueryText, gameCreationQueryValues);
-    console.log("Data inserted successfully");
-    console.log(result.rows);
-    const queryResult = await client.query(`SELECT * FROM public."gameTables"`);
-    console.log("Query result:", queryResult);
+    
+    //gameCreationQueryText = `INSERT INTO public."gameTables" ("gameID","PlayerCount","Pentagram") VALUES ($1, $2, $3)`;
+    //gameCreationQueryValues = [data.ID, data.size, data.pentagramBool];
+    //const result = await client.query(gameCreationQueryText, gameCreationQueryValues);
+    //console.log("Data inserted successfully");
+    //console.log(result.rows);
+
+    console.log(Object.entries(data.players));
+    //const queryResult = await client.query(`SELECT * FROM public."gameTables"`);
+    //console.log("Query result:", queryResult);
   } finally {
     await client.end();
   }
