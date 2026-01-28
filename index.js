@@ -18,6 +18,8 @@ function testFunction() {
     document.getElementById("para").style.textAlign = "center";
 }
 
+
+
 const dbConfig = {
     host: process.env.DB_HOST || "localhost",
     port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
@@ -161,6 +163,30 @@ app.get("/home", (req, res) => {
             <p>Player 1:</p>
             <input type="text" id="player1"></input>
         </div>
+        <div style="display:flex; gap: 10px">
+            <p>Turn 1 Sol Ring:</p>
+            <select name="sol ring box 1" id="p1solring">
+                <option value="null">Unknown</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div style="display:flex; gap: 10px">
+            <p>Turbo'd/Out First:</p>
+            <select name="turbo box 1" id="p1turbo">
+                <option value="null">Unknown</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div style="display:flex; gap: 10px">
+            <p>Scoop:</p>
+            <select name="scoop box 1" id="p1scoop">
+                <option value="null">Unknown</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
         <div style="display:none; gap: 10px" id="player1Enemies">
             <p>Enemy 1:</p>
             <input type="text" id="deck1enemy1"></input>
@@ -178,6 +204,30 @@ app.get("/home", (req, res) => {
             <p>Player 2:</p>
             <input type="text" id="player2"></input>
         </div>
+        <div style="display:flex; gap: 10px">
+            <p>Turn 1 Sol Ring:</p>
+            <select name="sol ring box 2" id="p2solring">
+                <option value="null">Unknown</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div style="display:flex; gap: 10px">
+            <p>Turbo'd/Out First:</p>
+            <select name="turbo box 2" id="p2turbo">
+                <option value="null">Unknown</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div style="display:flex; gap: 10px">
+            <p>Scoop:</p>
+            <select name="scoop box 2" id="p2scoop">
+                <option value="null">Unknown</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
         <div style="display:none; gap: 10px" id="player2Enemies">
             <p>Enemy 1:</p>
             <input type="text" id="deck2enemy1"></input>
@@ -186,7 +236,7 @@ app.get("/home", (req, res) => {
         </div>
     </div>
 
-    <div style="gap: 20px; display:none" id="player3Input">
+      <div style="gap: 20px; display:none" id="player3Input">
         <div style="display:flex; gap: 10px">
             <p>Deck 3:</p>
             <input type="text" id="deck3"></input>
@@ -194,6 +244,30 @@ app.get("/home", (req, res) => {
         <div style="display:flex; gap: 10px">
             <p>Player 3:</p>
             <input type="text" id="player3"></input>
+        </div>
+        <div style="display:flex; gap: 10px">
+            <p>Turn 1 Sol Ring:</p>
+            <select name="sol ring box 3" id="p3solring">
+                <option value="null">Unknown</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div style="display:flex; gap: 10px">
+            <p>Turbo'd/Out First:</p>
+            <select name="turbo box 3" id="p3turbo">
+                <option value="null">Unknown</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div style="display:flex; gap: 10px">
+            <p>Scoop:</p>
+            <select name="scoop box 3" id="p3scoop">
+                <option value="null">Unknown</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
         </div>
         <div style="display:none; gap: 10px" id="player3Enemies">
             <p>Enemy 1:</p>
@@ -212,6 +286,30 @@ app.get("/home", (req, res) => {
             <p>Player 4:</p>
             <input type="text" id="player4"></input>
         </div>
+        <div style="display:flex; gap: 10px">
+            <p>Turn 1 Sol Ring:</p>
+            <select name="sol ring box 4" id="p4solring">
+                <option value="null">Unknown</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div style="display:flex; gap: 10px">
+            <p>Turbo'd/Out First:</p>
+            <select name="turbo box 4" id="p4turbo">
+                <option value="null">Unknown</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div style="display:flex; gap: 10px">
+            <p>Scoop:</p>
+            <select name="scoop box 4" id="p4scoop">
+                <option value="null">Unknown</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
         <div style="display:none; gap: 10px" id="player4Enemies">
             <p>Enemy 1:</p>
             <input type="text" id="deck4enemy1"></input>
@@ -228,6 +326,30 @@ app.get("/home", (req, res) => {
         <div style="display:flex; gap: 10px">
             <p>Player 5:</p>
             <input type="text" id="player5"></input>
+        </div>
+        <div style="display:flex; gap: 10px">
+            <p>Turn 1 Sol Ring:</p>
+            <select name="sol ring box 5" id="p5solring">
+                <option value="null">Unknown</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div style="display:flex; gap: 10px">
+            <p>Turbo'd/Out First:</p>
+            <select name="turbo box 5" id="p5turbo">
+                <option value="null">Unknown</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div style="display:flex; gap: 10px">
+            <p>Scoop:</p>
+            <select name="scoop box 5" id="p5scoop">
+                <option value="null">Unknown</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
         </div>
         <div style="display:none; gap: 10px" id="player5Enemies">
             <p>Enemy 1:</p>
@@ -338,40 +460,78 @@ app.get("/home", (req, res) => {
                     populateWinBox(winOptions);
                 }
             }
-
+            
+            function createPlayerObject(playerCount, gameID){
+                //create player objects based on inputs
+                deck = "deck"+playerCount;
+                player = "player"+playerCount;
+                solBox = "p"+playerCount+"solring";
+                winBool = null;
+                if (document.getElementById("winnerSelect").value === "player"+playerCount){
+                    winBool = true;
+                }else{
+                    winBool = false;   
+                }
+                if (document.getElementById(solBox).value === "yes"){
+                    turn1SolRing = true;
+                }else if (document.getElementById(solBox).value === "no"){
+                    turn1SolRing = false;
+                }else{
+                    turn1SolRing = null;
+                }
+                turboBox = "p"+playerCount+"turbo";
+                if (document.getElementById(turboBox).value === "yes"){
+                    turbo = true;
+                }else if (document.getElementById(turboBox).value === "no"){
+                    turbo = false;
+                }else{
+                    turbo = null;
+                }
+                scoopBox = "p"+playerCount+"scoop";
+                if (document.getElementById(scoopBox).value === "yes"){
+                    scoop = true;
+                }else if (document.getElementById(scoopBox).value === "no"){
+                    scoop = false;
+                }else{
+                    scoop = null;
+                }
+                enemyDeck1 = "deck"+playerCount+"enemy1";
+                enemyDeck2 = "deck"+playerCount+"enemy2";
+                playerObject = {
+                    instanceID: 1,
+                    gameID_gameTables: gameID,
+                    PlayerName: document.getElementById(player).value,
+                    DeckName: document.getElementById(deck).value,
+                    Win: winBool,
+                    T1Sol: turn1SolRing,
+                    TurnOrderPos: playerCount,
+                    Scoop: scoop,
+                    Turbod: turbo,
+                    EnemyDeck1: document.getElementById(enemyDeck1).value || null,
+                    EnemyDeck2: document.getElementById(enemyDeck2).value || null,
+                }
+                return playerObject;
+            }
+            
             document.getElementById("submitButton").addEventListener("click", submitButtonClicked, false);
             function submitButtonClicked(){
-                if (playernumber == "p3"){
-                    deck1 = document.getElementById("deck1").value;
-                    console.log(deck1);
-                    player1 = document.getElementById("player1").value;
-                    console.log(player1);
-                    deck2 = document.getElementById("deck2").value;
-                    console.log(deck2);
-                    player2 = document.getElementById("player2").value;
-                    console.log(player2);
-                    deck3 = document.getElementById("deck3").value;
-                    console.log(deck3);
-                    player3 = document.getElementById("player3").value;
-                    console.log(player3);
-                    players = 3;
-                    console.log(players);
-                    winner = document.getElementById("winnerSelect").value;
-                    console.log(winner);
-                    fetch('/home', {
-                        method: 'POST',
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                            deck1: deck1,
-                            player1: player1,
-                            deck2: deck2,
-                            player2: player2,
-                            deck3: deck3,
-                            player3: player3,
-                            players: players,
-                            winner: winner
-                        })
-                    })
+                
+                testObj = createPlayerObject(1, 3)
+                console.log(JSON.stringify(testObj));
+                //    fetch('/home', {
+                //        method: 'POST',
+                //        headers: { "Content-Type": "application/json" },
+                //        body: JSON.stringify({
+                //            deck1: deck1,
+                //            player1: player1,
+                //            deck2: deck2,
+                //            player2: player2,
+                //            deck3: deck3,
+                //            player3: player3,
+                //            players: players,
+                //            winner: winner
+                //        })
+                //    })
             }
         }
       });
