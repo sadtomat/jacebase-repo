@@ -497,8 +497,9 @@ app.get("/home", (req, res) => {
                 }
                 enemyDeck1 = "deck"+playerCount+"enemy1";
                 enemyDeck2 = "deck"+playerCount+"enemy2";
+                iID = Math.floor(Math.random() * 1000000)
                 playerObject = {
-                    instanceID: 1,
+                    instanceID: iID,
                     gameID_gameTables: gameID,
                     PlayerName: document.getElementById(player).value,
                     DeckName: document.getElementById(deck).value,
