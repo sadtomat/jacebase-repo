@@ -515,25 +515,73 @@ app.get("/home", (req, res) => {
             
             document.getElementById("submitButton").addEventListener("click", submitButtonClicked, false);
             function submitButtonClicked(){
-                
-                testObj = createPlayerObject(1, 3)
-                console.log(JSON.stringify(testObj));
-                //    fetch('/home', {
-                //        method: 'POST',
-                //        headers: { "Content-Type": "application/json" },
-                //        body: JSON.stringify({
-                //            deck1: deck1,
-                //            player1: player1,
-                //            deck2: deck2,
-                //            player2: player2,
-                //            deck3: deck3,
-                //            player3: player3,
-                //            players: players,
-                //            winner: winner
-                //        })
-                //    })
-            //}
-        }
+                gameID = Math.floor(Math.random() * 1000000);
+                if (playernumber != "p5") {
+                  pentagram = null;
+                }else{
+                    if (document.getElementById("pentagramSelect").value === "yes") {
+                        pentagram = true;
+                    }else{
+                        pentagram = false;
+                    }
+                }
+                if (playernumber === "p3") {
+                  deckObj1 = createPlayerObject(1, gameID);
+                  deckObj2 = createPlayerObject(2, gameID);
+                  deckObj3 = createPlayerObject(3, gameID);
+                  returnBody = {
+                    ID: gameID,
+                    size: 3,
+                    pentagramBool: pentagram,
+                    players: {
+                        player1: deckObj1,
+                        player2: deckObj2,
+                        player3: deckObj3
+                    }
+                  }
+                }else if (playernumber === "p4") {
+                  deckObj1 = createPlayerObject(1, gameID);
+                  deckObj2 = createPlayerObject(2, gameID);
+                  deckObj3 = createPlayerObject(3, gameID);
+                  deckObj4 = createPlayerObject(4, gameID);
+                  returnBody = {
+                    ID: gameID,
+                    size: 4,
+                    pentagramBool: pentagram,
+                    players: {
+                        player1: deckObj1,
+                        player2: deckObj2,
+                        player3: deckObj3,
+                        player4: deckObj4
+                    }
+                  }
+                }else if (playernumber === "p5") {
+                  deckObj1 = createPlayerObject(1, gameID);
+                  deckObj2 = createPlayerObject(2, gameID);
+                  deckObj3 = createPlayerObject(3, gameID);
+                  deckObj4 = createPlayerObject(4, gameID);
+                  deckObj5 = createPlayerObject(5, gameID);
+                  returnBody = {
+                    ID: gameID,
+                    size: 5,
+                    pentagramBool: pentagram,
+                    players: {
+                        player1: deckObj1,
+                        player2: deckObj2,
+                        player3: deckObj3,
+                        player4: deckObj4,
+                        player5: deckObj5
+                    }
+                  }
+                }
+                //testObj = createPlayerObject(1, 3)
+                //console.log(JSON.stringify(testObj));
+                fetch('/home', {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(returnBody)
+                })
+            }
       });
     </script>`;
     res.send(renderPage("Home - Jacebase", content));
@@ -541,7 +589,7 @@ app.get("/home", (req, res) => {
 
 app.post("/home", (req, res) => {
   console.log("Received data:", req.body);
-  insertToDB(req.body);
+  //insertToDB(req.body);
 });
 
 async function insertToDB(data) {
