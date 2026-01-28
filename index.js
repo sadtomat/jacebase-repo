@@ -597,13 +597,31 @@ async function insertToDB(data) {
   await client.connect();
   try {
     
-    //gameCreationQueryText = `INSERT INTO public."gameTables" ("gameID","PlayerCount","Pentagram") VALUES ($1, $2, $3)`;
-    //gameCreationQueryValues = [data.ID, data.size, data.pentagramBool];
-    //const result = await client.query(gameCreationQueryText, gameCreationQueryValues);
-    //console.log("Data inserted successfully");
+    gameCreationQueryText = `INSERT INTO public."gameTables" ("gameID","PlayerCount","Pentagram") VALUES ($1, $2, $3)`;
+    gameCreationQueryValues = [data.ID, data.size, data.pentagramBool];
+    const result = await client.query(gameCreationQueryText, gameCreationQueryValues);
+    console.log("Data inserted successfully");
     //console.log(result.rows);
 
     console.log(Object.values(data.players));
+    for (const playerInstance of Object.values(data.players)) {
+      playerCreationQueryText = `INSERT INTO public."playerInstance" ("instanceID", "gameID_gameTables", "PlayerName", "DeckName", "Win", "T1Sol", "TurnOrderPos", "Scoop", "Turbod", "EnemyDeck1", "EnemyDeck2") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`;
+      playerCreationQueryValues = [
+        playerInstance.instanceID,
+        playerInstance.gameID_gameTables,
+        playerInstance.PlayerName,
+        playerInstance.DeckName,
+        playerInstance.Win,
+        playerInstance.T1Sol,
+        playerInstance.TurnOrderPos,
+        playerInstance.Scoop,
+        playerInstance.Turbod,
+        playerInstance.EnemyDeck1,
+        playerInstance.EnemyDeck2
+      ];
+      const result = await client.query(playerCreationQueryText, playerCreationQueryValues);
+      console.log("Player data inserted successfully for", playerInstance.PlayerName);
+    }
     //const queryResult = await client.query(`SELECT * FROM public."gameTables"`);
     //console.log("Query result:", queryResult);
   } finally {
