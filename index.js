@@ -603,7 +603,7 @@ async function insertToDB(data) {
     //console.log("Data inserted successfully");
     //console.log(result.rows);
 
-    console.log(Object.entries(data.players));
+    console.log(Object.values(data.players));
     //const queryResult = await client.query(`SELECT * FROM public."gameTables"`);
     //console.log("Query result:", queryResult);
   } finally {
