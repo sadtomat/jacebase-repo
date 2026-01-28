@@ -532,7 +532,7 @@ app.get("/home", (req, res) => {
                 //            winner: winner
                 //        })
                 //    })
-            }
+            //}
         }
       });
     </script>`;
