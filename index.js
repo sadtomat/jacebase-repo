@@ -133,6 +133,9 @@ app.get("/charts", (req, res) => {
     });
 
     async function fetchData() {
+      const client = new Client(dbConfig);
+      await client.connect();
+      try {
         gameCreationQueryText = 'SELECT * FROM public.playerInstance';
         gameCreationQueryValues = [];
         const result = await client.query(gameCreationQueryText, gameCreationQueryValues);
@@ -150,6 +153,9 @@ app.get("/charts", (req, res) => {
             ],
             data: dataSet
         });
+      } catch (err) {
+    } finally {
+      await client.end();
     }
     </script>
   </div>`
