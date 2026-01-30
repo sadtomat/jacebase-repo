@@ -118,6 +118,24 @@ app.get("/", (req, res) => {
   res.send(renderPage("Zachariah Friesen Test Website", content));
 });
 
+app.get("/api/player-instances", async (req, res) => {
+  const client = new Client(dbConfig);
+  await client.connect();
+
+  try {
+    const query = `
+      SELECT * FROM public.playerInstance
+    `;
+    const result = await client.query(query);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Database error" });
+  } finally {
+    await client.end();
+  }
+});
+
 app.get("/charts", (req, res) => {
   const content = `<div>
     <h1>Visualizer Page</h1>
@@ -136,15 +154,14 @@ app.get("/charts", (req, res) => {
       const client = new Client(dbConfig);
       await client.connect();
       try {
-        gameCreationQueryText = 'SELECT * FROM public.playerInstance';
-        gameCreationQueryValues = [];
-        const result = await client.query(gameCreationQueryText, gameCreationQueryValues);
-        var dataSet = [
-            ['Demons', 'Zach', 'True'],
-            ['Angels', 'Mike', 'False'],
-            ['Dragons', 'Sarah', 'False'],
-            ['Wizards', 'Anna', 'False']
-        ];
+        const response = await fetch("/api/player-instances");
+        const rows = await response.json();
+
+        const dataSet = rows.map(row => [
+          row.DeckName,
+          row.PlayerName,
+          row.Win.toString()
+        ]);
         new DataTable('#testTable', {
             columns: [
                 { title: 'Deck Name'},
