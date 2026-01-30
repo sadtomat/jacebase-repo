@@ -124,7 +124,7 @@ app.get("/api/player-instances", async (req, res) => {
 
   try {
     const query = `
-      SELECT * FROM public.playerInstance
+      SELECT * FROM public."playerInstance"
     `;
     const result = await client.query(query);
     res.json(result.rows);
