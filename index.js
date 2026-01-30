@@ -141,7 +141,7 @@ app.get("/home", (req, res) => {
 
     <p id="tester">testvalue</p>
 
-    <button type="button" onclick="toVisualizer()">Visualizer</button>
+    <button type="button" id="visualizerButton">Visualizer</button>
 
     <div style="gap: 20px; display:none"  id="orderedBox">
         <p>Ordered?:</p>
@@ -407,9 +407,9 @@ app.get("/home", (req, res) => {
                 }
             });
 
-            function toVisualizer() {
+            document.getElementById("visualizerButton").addEventListener("click", function() {
                 window.location.href = "/charts";
-            }
+            });
 
             function hidePentagramBoxes() {
                 document.getElementById("player1Enemies").style.display = "none";
