@@ -129,6 +129,13 @@ app.get("/charts", (req, res) => {
     <script>
     //const DataTable = require('datatables.net-dt');
     document.addEventListener("DOMContentLoaded", function() {
+        fetchData();
+    });
+
+    async function fetchData() {
+        gameCreationQueryText = 'SELECT * FROM public.playerInstance';
+        gameCreationQueryValues = [];
+        const result = await client.query(gameCreationQueryText, gameCreationQueryValues);
         var dataSet = [
             ['Demons', 'Zach', 'True'],
             ['Angels', 'Mike', 'False'],
@@ -143,8 +150,7 @@ app.get("/charts", (req, res) => {
             ],
             data: dataSet
         });
-    //import DataTable from 'datatables.net-dt';
-    });
+    }
     </script>
   </div>`
   res.send(renderPage("Visualizer - Jacebase", content));
