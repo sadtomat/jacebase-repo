@@ -125,8 +125,8 @@ app.get("/charts", (req, res) => {
     <table id="testTable" class="display" width="100%"></table>
     <script type="module" src="https://cdn.datatables.net/1.13.7/js/dataTables.dataTables.min.js"></script>
     <script>
-    //import DataTable from 'datatables.net-dt';
-    document.addEventListener("DOMContentLoaded", function() {
+    require('datatables.net-dt')(
+      Document.addEventListener("DOMContentLoaded", function() {
         var dataSet = [
             ['Demons', 'Zach', 'True'],
             ['Angels', 'Mike', 'False'],
@@ -142,6 +142,8 @@ app.get("/charts", (req, res) => {
             data: dataSet
         });
     });
+    );
+    //import DataTable from 'datatables.net-dt';
     </script>
   </div>`
   res.send(renderPage("Visualizer - Jacebase", content));
