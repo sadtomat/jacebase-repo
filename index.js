@@ -1,5 +1,5 @@
 require('dotenv').config(); // Load environment variables from .env
-
+var DataTable = require( 'datatables.net' );
 require("reflect-metadata");
 const express = require("express");
 //const { DataSource, EntitySchema } = require("typeorm");
@@ -123,7 +123,6 @@ app.get("/charts", (req, res) => {
   const content = `<div>
     <h1>Visualizer Page</h1>
     <table id="testTable" class="display" width="100%"></table>
-    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.min.js"></script>
     <script>
     //const DataTable = require('datatables.net-dt');
       document.addEventListener("DOMContentLoaded", function() {
