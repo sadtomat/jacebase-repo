@@ -1,6 +1,4 @@
 require('dotenv').config(); // Load environment variables from .env
-var DataTable = require( 'datatables.net' );
-var jsdom = require("jsdom");
 require("reflect-metadata");
 const express = require("express");
 //const { DataSource, EntitySchema } = require("typeorm");
