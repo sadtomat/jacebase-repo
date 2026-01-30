@@ -168,8 +168,6 @@ app.get("/charts", (req, res) => {
             ],
             data: dataSet
         });
-      } finally {
-        await client.end();
       }
     }
     </script>
