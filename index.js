@@ -158,13 +158,21 @@ app.get("/charts", (req, res) => {
         const dataSet = rows.map(row => [
           row.DeckName,
           row.PlayerName,
-          row.Win.toString()
+          row.Win.toString(),
+          String(row.T1Sol),
+          String(row.TurnOrderPos),
+          String(row.Scoop),
+          String(row.Turbod)
         ]);
         new DataTable('#testTable', {
             columns: [
                 { title: 'Deck Name'},
                 { title: 'Player Name'},
-                { title: 'Win'}
+                { title: 'Win'},
+                { title: 'T1 Sol Ring' },
+                { title: 'Turn Order Position' },
+                { title: 'Scoop' },
+                { title: 'Turbod' } 
             ],
             data: dataSet
         });
