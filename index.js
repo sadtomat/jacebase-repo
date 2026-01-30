@@ -153,9 +153,9 @@ app.get("/charts", (req, res) => {
             ],
             data: dataSet
         });
-      } catch (err) {
-    } finally {
-      await client.end();
+      } finally {
+        await client.end();
+      }
     }
     </script>
   </div>`
