@@ -168,6 +168,8 @@ app.get("/charts", (req, res) => {
             ],
             data: dataSet
         });
+      } finally {
+        console.log("Data fetch attempt complete");
       }
     }
     </script>
