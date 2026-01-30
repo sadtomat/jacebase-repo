@@ -6,6 +6,7 @@ const express = require("express");
 const { Client } = require("pg");
 const fs = require("fs");
 //const path = require("path");
+import DataTable from 'datatables.net-dt';
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -122,6 +123,25 @@ app.get("/", (req, res) => {
 app.get("/charts", (req, res) => {
   const content = `<div>
     <h1>Visualizer Page</h1>
+    <table id="testTable" class="display" width="100%"></table>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var dataSet = [
+            ['Demons', 'Zach', 'True'],
+            ['Angels', 'Mike', 'False'],
+            ['Dragons', 'Sarah', 'False'],
+            ['Wizards', 'Anna', 'False']
+        ];
+        new DataTable('#testTable', {
+            columns: [
+                { title: 'Deck Name'},
+                { title: 'Player Name'},
+                { title: 'Win'}
+            ],
+            data: dataSet
+        });
+    }
+    </script>
   </div>`
   res.send(renderPage("Visualizer - Jacebase", content));
 });
