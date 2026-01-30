@@ -151,8 +151,6 @@ app.get("/charts", (req, res) => {
     });
 
     async function fetchData() {
-      const client = new Client(dbConfig);
-      await client.connect();
       try {
         const response = await fetch("/api/player-instances");
         const rows = await response.json();
