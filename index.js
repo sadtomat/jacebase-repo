@@ -125,7 +125,7 @@ app.get("/charts", (req, res) => {
     <table id="testTable" class="display" width="100%"></table>
     <script type="module" src="https://cdn.datatables.net/1.13.7/js/dataTables.dataTables.min.js"></script>
     <script>
-    require('datatables.net-dt');
+    const DataTable = require('datatables.net-dt');
       document.addEventListener("DOMContentLoaded", function() {
         var dataSet = [
             ['Demons', 'Zach', 'True'],
