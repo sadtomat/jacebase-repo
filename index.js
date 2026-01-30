@@ -6,7 +6,6 @@ const express = require("express");
 const { Client } = require("pg");
 const fs = require("fs");
 //const path = require("path");
-import DataTable from 'datatables.net-dt';
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -125,6 +124,7 @@ app.get("/charts", (req, res) => {
     <h1>Visualizer Page</h1>
     <table id="testTable" class="display" width="100%"></table>
     <script>
+    import DataTable from 'datatables.net-dt';
     document.addEventListener("DOMContentLoaded", function() {
         var dataSet = [
             ['Demons', 'Zach', 'True'],
