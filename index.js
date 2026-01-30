@@ -141,7 +141,7 @@ app.get("/charts", (req, res) => {
             ],
             data: dataSet
         });
-    }
+    });
     </script>
   </div>`
   res.send(renderPage("Visualizer - Jacebase", content));
