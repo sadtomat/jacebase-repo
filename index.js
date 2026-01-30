@@ -119,6 +119,13 @@ app.get("/", (req, res) => {
   res.send(renderPage("Zachariah Friesen Test Website", content));
 });
 
+app.get("/charts", (req, res) => {
+  const content = `<div>
+    <h1>Visualizer Page</h1>
+  </div>`
+  res.send(renderPage("Visualizer - Jacebase", content));
+});
+
 app.get("/home", (req, res) => {
     const content = `    <h1>Jacebase</h1>
     <p id="para">Welcome</p>
@@ -133,6 +140,8 @@ app.get("/home", (req, res) => {
     </select>
 
     <p id="tester">testvalue</p>
+
+    <button type="button" onclick="toVisualizer()">Visualizer</button>
 
     <div style="gap: 20px; display:none"  id="orderedBox">
         <p>Ordered?:</p>
@@ -397,6 +406,10 @@ app.get("/home", (req, res) => {
                     hidePentagramBoxes();
                 }
             });
+
+            function toVisualizer() {
+                window.location.href = "/charts";
+            }
 
             function hidePentagramBoxes() {
                 document.getElementById("player1Enemies").style.display = "none";
