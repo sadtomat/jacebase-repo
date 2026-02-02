@@ -211,6 +211,7 @@ app.get("/charts", (req, res) => {
         row.PlayerCount,
         String(row.Pentagram)
       ]);
+      console.log(dataSet);
       mainTable.setColumns([
         {title: "Game ID", field: "gameID"},
         {title: "Player Count", field: "PlayerCount"},
