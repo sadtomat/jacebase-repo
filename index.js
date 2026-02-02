@@ -206,16 +206,17 @@ app.get("/charts", (req, res) => {
     }
 
     function showRawPlayerInstances() {
-      var tabledata = [
-        {test: "value1", test2: "value2"},
-        {test: "value3", test2: "value4"},
-        {test: "value5", test2: "value6"},
-      ];
+      const dataSet = gameTable.map(row => [
+        row.gameID,
+        row.PlayerCount,
+        String(row.Pentagram)
+      ]);
       mainTable.setColumns([
-        {title: "test", field: "test"},
-        {title: "test2", field: "test2"},
+        {title: "Game ID", field: "gameID"},
+        {title: "Player Count", field: "PlayerCount"},
+        {title: "Pentagram", field: "Pentagram"},
       ])
-      mainTable.addData(tabledata);
+      mainTable.addData(dataset);
     }
 
     function showRawGameInstances() {
