@@ -171,9 +171,8 @@ app.get("/charts", (req, res) => {
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-    <link href="dist/css/tabulator.min.css" rel="stylesheet">
-    <script type="text/javascript" src="dist/js/tabulator.min.js"></script>
-    <script type="text/javascript" src="dist/js/jquery_wrapper.min.js"></script>n 
+    <link href="https://unpkg.com/tabulator-tables@6.3.1/dist/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@6.3.1/dist/js/tabulator.min.js"></script>
     <script>
     //const DataTable = require('datatables.net-dt');
 
