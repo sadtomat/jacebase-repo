@@ -136,6 +136,24 @@ app.get("/api/player-instances", async (req, res) => {
   }
 });
 
+app.get("/api/game-instances", async (req, res) => {
+  const client = new Client(dbConfig);
+  await client.connect();
+
+  try {
+    const query = `
+      SELECT * FROM public."gameTables"
+    `;
+    const result = await client.query(query);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Database error" });
+  } finally {
+    await client.end();
+  }
+});
+
 app.get("/charts", (req, res) => {
   const content = `<div>
     <h1>Visualizer Page</h1>
@@ -169,8 +187,10 @@ app.get("/charts", (req, res) => {
 
     async function fetchData() {
       try {
-        const response = await fetch("/api/player-instances");
-        playertable = await response.json();
+        const response1 = await fetch("/api/player-instances");
+        playertable = await response1.json();
+        const response2 = await fetch("/api/game-instances");
+        gametable = await response2.json();
       } finally {
         console.log("Data fetch attempt complete");
       }
@@ -178,23 +198,15 @@ app.get("/charts", (req, res) => {
 
     function showRawPlayerInstances() {
       const dataSet = playertable.map(row => [
-        row.DeckName,
-        row.PlayerName,
-        row.Win.toString(),
-        String(row.T1Sol),
-        String(row.TurnOrderPos),
-        String(row.Scoop),
-        String(row.Turbod)
+        row.gameID,
+        row.PlayerCount,
+        String(row.Pentagram)
       ]);
       new DataTable('#testTable', {
           columns: [
-              { title: 'Deck Name'},
-              { title: 'Player Name'},
-              { title: 'Win'},
-              { title: 'T1 Sol Ring' },
-              { title: 'Turn Order Position' },
-              { title: 'Scoop' },
-              { title: 'Turbod' } 
+              { title: 'Game ID'},
+              { title: 'Player Count'},
+              { title: 'Pentagram'},
           ],
           data: dataSet
       });
