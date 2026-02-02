@@ -171,6 +171,9 @@ app.get("/charts", (req, res) => {
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <link href="dist/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="dist/js/tabulator.min.js"></script>
+    <script type="text/javascript" src="dist/js/jquery_wrapper.min.js"></script>n 
     <script>
     //const DataTable = require('datatables.net-dt');
 
@@ -182,7 +185,6 @@ app.get("/charts", (req, res) => {
     });
 
     document.getElementById("loadDataButton").addEventListener("click", function() {
-      showRawPlayerInstances();
       boxValue = document.getElementById("tableSelect").value;
       if (boxValue === "rawPlayer") {
         showRawPlayerInstances();
@@ -203,27 +205,14 @@ app.get("/charts", (req, res) => {
     }
 
     function showRawPlayerInstances() {
-      getElementById("testTable").destroy();
-      const dataSet = playerTable.map(row => [
-        row.DeckName,
-        row.PlayerName,
-        row.Win.toString(),
-        String(row.T1Sol),
-        String(row.TurnOrderPos),
-        String(row.Scoop),
-        String(row.Turbod)
-      ]);
-      new DataTable('#testTable', {
-          columns: [
-              { title: 'Deck Name'},
-              { title: 'Player Name'},
-              { title: 'Win'},
-              { title: 'T1 Sol Ring' },
-              { title: 'Turn Order Position' },
-              { title: 'Scoop' },
-              { title: 'Turbod' } 
-          ],
-          data: dataSet
+      var tabledata = [
+        {test: "value1", test2: "value2"},
+        {test: "value3", test2: "value4"},
+        {test: "value5", test2: "value6"},
+      ];
+      var table = new Tabulator("#testTable", {
+        data: tabledata,
+        autoColumns: true,
       });
     }
 
