@@ -186,6 +186,7 @@ app.get("/charts", (req, res) => {
     });
 
     document.getElementById("loadDataButton").addEventListener("click", function() {
+      mainTable.clearData();
       boxValue = document.getElementById("tableSelect").value;
       if (boxValue === "rawPlayer") {
         showRawPlayerInstances();
@@ -218,20 +219,23 @@ app.get("/charts", (req, res) => {
     }
 
     function showRawGameInstances() {
-    getElementById("testTable").destroy();
-      const dataSet = gameTable.map(row => [
-        row.gameID,
-        row.PlayerCount,
-        String(row.Pentagram)
-      ]);
-      new DataTable('#testTable', {
-          columns: [
-              { title: 'Game ID'},
-              { title: 'Player Count'},
-              { title: 'Pentagram'},
-          ],
-          data: dataSet
-      });
+      mainTable.setColumns([
+        {title: "Instance ID", field: "instanceID"},
+        {title: "Game ID", field: "gameID_gameTables"},
+        {title: "Player Name", field: "PlayerName"},
+        {title: "Deck Name", field: "DeckName"},
+        {title: "Win", field: "Win"},
+        {title: "Turn 1 Sol Ring", field: "T1Sol"},
+        {title: "Turn Order Position", field: "TurnOrderPos"},
+        {title: "Scoop", field: "Scoop"},
+        {title: "Turbo'd/Out First", field: "Turbod"},
+        {title: "Enemy Deck 1", field: "EnemyDeck1"},
+        {title: "Enemy Deck 2", field: "EnemyDeck2"},
+      ])
+      for (player of playerTable) {
+        console.log(player);
+        mainTable.addData(player);
+      }
     }
     </script>
   </div>`
