@@ -203,6 +203,7 @@ app.get("/charts", (req, res) => {
     }
 
     function showRawPlayerInstances() {
+      getElementById("testTable").destroy();
       const dataSet = playerTable.map(row => [
         row.DeckName,
         row.PlayerName,
@@ -227,6 +228,7 @@ app.get("/charts", (req, res) => {
     }
 
     function showRawGameInstances() {
+    getElementById("testTable").destroy();
       const dataSet = gameTable.map(row => [
         row.gameID,
         row.PlayerCount,
