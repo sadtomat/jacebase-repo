@@ -203,7 +203,7 @@ app.get("/charts", (req, res) => {
     }
 
     function showRawPlayerInstances() {
-      const dataSet = playertable.map(row => [
+      const dataSet = playerTable.map(row => [
         row.DeckName,
         row.PlayerName,
         row.Win.toString(),
@@ -227,7 +227,7 @@ app.get("/charts", (req, res) => {
     }
 
     function showRawGameInstances() {
-      const dataSet = playertable.map(row => [
+      const dataSet = gameTable.map(row => [
         row.gameID,
         row.PlayerCount,
         String(row.Pentagram)
