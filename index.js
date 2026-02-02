@@ -140,12 +140,25 @@ app.get("/charts", (req, res) => {
   const content = `<div>
     <h1>Visualizer Page</h1>
     <div>
+      <div style="gap: 20px;"  id="controlsBox">
+        <p>Select Table:</p>
+        <select name="Table Select" id="tableSelect">
+          <option value="rawPlayer">Raw Player Instances</option>
+          <option value="rawGame">Raw Game Instances</option>
+        </select>
+        <button id="loadDataButton">Load Data</button>
+      </div>
+
       <table id="testTable" class="display" width="100%"></table>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script>
     //const DataTable = require('datatables.net-dt');
+
+    let playerTable;
+    let gameTable;
+
     document.addEventListener("DOMContentLoaded", function() {
         fetchData();
     });
@@ -153,9 +166,9 @@ app.get("/charts", (req, res) => {
     async function fetchData() {
       try {
         const response = await fetch("/api/player-instances");
-        const rows = await response.json();
+        playertable = await response.json();
 
-        const dataSet = rows.map(row => [
+        const dataSet = playertable.map(row => [
           row.DeckName,
           row.PlayerName,
           row.Win.toString(),
