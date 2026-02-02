@@ -179,6 +179,8 @@ app.get("/charts", (req, res) => {
     let playerTable;
     let gameTable;
 
+    var mainTable = new Tabulator("#testTable", {autoColumns:true});
+
     document.addEventListener("DOMContentLoaded", function() {
         fetchData();
     });
@@ -209,10 +211,7 @@ app.get("/charts", (req, res) => {
         {test: "value3", test2: "value4"},
         {test: "value5", test2: "value6"},
       ];
-      var table = new Tabulator("#testTable", {
-        data: tabledata,
-        autoColumns: true,
-      });
+      mainTable.addData(tabledata);
     }
 
     function showRawGameInstances() {
