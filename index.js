@@ -194,9 +194,9 @@ app.get("/charts", (req, res) => {
     async function fetchData() {
       try {
         const response1 = await fetch("/api/player-instances");
-        playerTable = await response.json();
-        const response2 = await fetch("/api/player-instances");
-        gameTable = await response.json();
+        playerTable = await response1.json();
+        const response2 = await fetch("/api/game-instances");
+        gameTable = await response2.json();
       } finally {
         console.log("Data fetch attempt complete");
       }
