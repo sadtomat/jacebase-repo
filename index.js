@@ -183,20 +183,50 @@ app.get("/charts", (req, res) => {
 
     document.getElementById("loadDataButton").addEventListener("click", function() {
       showRawPlayerInstances();
+      boxValue = document.getElementById("tableSelect").value;
+      if (boxValue === "rawPlayer") {
+        showRawPlayerInstances();
+      } else if (boxValue === "rawGame") {
+        showRawGameInstances();
+      }
     });
 
     async function fetchData() {
       try {
         const response1 = await fetch("/api/player-instances");
-        playertable = await response1.json();
-        const response2 = await fetch("/api/game-instances");
-        gametable = await response2.json();
+        playerTable = await response.json();
+        const response2 = await fetch("/api/player-instances");
+        gameTable = await response.json();
       } finally {
         console.log("Data fetch attempt complete");
       }
     }
 
     function showRawPlayerInstances() {
+      const dataSet = playertable.map(row => [
+        row.DeckName,
+        row.PlayerName,
+        row.Win.toString(),
+        String(row.T1Sol),
+        String(row.TurnOrderPos),
+        String(row.Scoop),
+        String(row.Turbod)
+      ]);
+      new DataTable('#testTable', {
+          columns: [
+              { title: 'Deck Name'},
+              { title: 'Player Name'},
+              { title: 'Win'},
+              { title: 'T1 Sol Ring' },
+              { title: 'Turn Order Position' },
+              { title: 'Scoop' },
+              { title: 'Turbod' } 
+          ],
+          data: dataSet
+      });
+    }
+
+    function showRawGameInstances() {
       const dataSet = playertable.map(row => [
         row.gameID,
         row.PlayerCount,
