@@ -211,6 +211,10 @@ app.get("/charts", (req, res) => {
         {test: "value3", test2: "value4"},
         {test: "value5", test2: "value6"},
       ];
+      mainTable.setColumns([
+        {title: "test", field: "test"},
+        {title: "test2", field: "test2"},
+      ])
       mainTable.addData(tabledata);
     }
 
