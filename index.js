@@ -216,7 +216,7 @@ app.get("/charts", (req, res) => {
         {title: "Player Count", field: "PlayerCount"},
         {title: "Pentagram", field: "Pentagram"},
       ])
-      mainTable.addData(dataset);
+      mainTable.addData(dataSet);
     }
 
     function showRawGameInstances() {
