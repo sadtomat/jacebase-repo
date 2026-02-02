@@ -163,35 +163,41 @@ app.get("/charts", (req, res) => {
         fetchData();
     });
 
+    document.getElementById("loadDataButton").addEventListener("click", function() {
+      showRawPlayerInstances();
+    });
+
     async function fetchData() {
       try {
         const response = await fetch("/api/player-instances");
         playertable = await response.json();
-
-        const dataSet = playertable.map(row => [
-          row.DeckName,
-          row.PlayerName,
-          row.Win.toString(),
-          String(row.T1Sol),
-          String(row.TurnOrderPos),
-          String(row.Scoop),
-          String(row.Turbod)
-        ]);
-        new DataTable('#testTable', {
-            columns: [
-                { title: 'Deck Name'},
-                { title: 'Player Name'},
-                { title: 'Win'},
-                { title: 'T1 Sol Ring' },
-                { title: 'Turn Order Position' },
-                { title: 'Scoop' },
-                { title: 'Turbod' } 
-            ],
-            data: dataSet
-        });
       } finally {
         console.log("Data fetch attempt complete");
       }
+    }
+
+    function showRawPlayerInstances() {
+      const dataSet = playertable.map(row => [
+        row.DeckName,
+        row.PlayerName,
+        row.Win.toString(),
+        String(row.T1Sol),
+        String(row.TurnOrderPos),
+        String(row.Scoop),
+        String(row.Turbod)
+      ]);
+      new DataTable('#testTable', {
+          columns: [
+              { title: 'Deck Name'},
+              { title: 'Player Name'},
+              { title: 'Win'},
+              { title: 'T1 Sol Ring' },
+              { title: 'Turn Order Position' },
+              { title: 'Scoop' },
+              { title: 'Turbod' } 
+          ],
+          data: dataSet
+      });
     }
     </script>
   </div>`
