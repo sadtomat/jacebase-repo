@@ -724,7 +724,7 @@ app.get("/home", (req, res) => {
             }
       });
     </script>`;
-    res.send(renderPage("Home - Jacebase", content));
+    res.send(renderPage("Misc Additions - Jacebase", content));
 });
 
 app.post("/home", (req, res) => {
@@ -770,6 +770,7 @@ app.get("/misc-additions", (req, res) => {
 
     </script>
     `
+    res.send(renderPage("Home - Jacebase", content));
 });
 
 app.post("/misc-additions/player", (req, res) => {
