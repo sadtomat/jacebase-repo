@@ -774,6 +774,16 @@ app.get("/misc-additions", (req, res) => {
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         let playerTable
+        let tagList =[
+          "Aggro",
+          "Control",
+          "Combo",
+          "Midrange",
+          "Chaos",
+          "Stax",
+          "Hug",
+          "Slug"
+        ];
         
         fetchData();
         async function fetchData() {
@@ -793,6 +803,7 @@ app.get("/misc-additions", (req, res) => {
           deckCreator = document.getElementById("deckCreator").value;
 
           playerExists = JSON.stringify(playerTable).includes(deckCreator);
+          tagExists = tagList.includes(tag1);
 
           console.log(deckName);
           console.log(tag1);
@@ -800,12 +811,28 @@ app.get("/misc-additions", (req, res) => {
           console.log(tag3);
           console.log(deckCreator);
           console.log(playerExists);
-
+          console.log(tagExists);
           console.log(playerTable);
 
-          if (playerExists) {
+
+
+          if (playerExists && tagExists) {
             player = playerTable.find(p => p.name === deckCreator);
             console.log(player);
+            deckID = Math.floor(Math.random() * 1000000);
+            returnBody = {
+              id: deckID,
+              deckName: deckName,
+              creatorID: player.id,
+              primaryTag: tag1,
+              secondaryTag1: tag2,
+              secondaryTag2: tag3
+            }
+            fetch('/misc-additions/deck', {
+              method: 'POST',
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(returnBody)
+            })
           }
           
         });
@@ -835,6 +862,24 @@ app.post("/misc-additions/player", (req, res) => {
   console.log("Received player data:", req.body);
   addPlayerToDB(req.body);
 });
+
+app.post("/misc-additions/deck", (req, res) => {
+  console.log("Received deck data:", req.body);
+  addDeckToDB(req.body);
+});
+
+async function addDeckToDB(data) {
+  const client = new Client(dbConfig);
+  await client.connect();
+
+  try {
+    playerAdditionQueryText = `INSERT INTO public."decktable" ("id","playerid","name","tag","subtag1","subtag2") VALUES ($1, $2, $3, $4, $5, $6)`;
+    const result = await client.query(playerAdditionQueryText, [data.id, data.creatorID, data.deckName, data.primaryTag, data.secondaryTag1, data.secondaryTag2]);
+    console.log("Deck data inserted successfully");
+  } finally {
+    await client.end();
+  }
+}
 
 async function addPlayerToDB(data) {
   const client = new Client(dbConfig);
