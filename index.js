@@ -803,6 +803,11 @@ app.get("/misc-additions", (req, res) => {
 
           console.log(playerTable);
 
+          if (playerExists) {
+            player = playerTable.find(p => p.name === deckCreator);
+            console.log(player);
+          }
+          
         });
 
         document.getElementById("playerSubmitButton").addEventListener("click", function() {
