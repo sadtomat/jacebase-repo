@@ -782,7 +782,7 @@ async function addPlayerToDB(data) {
   const client = new Client(dbConfig);
   await client.connect();
   try {
-    playerAdditionQueryText = `INSERT INTO public."playerTable" ("ID","Name") VALUES ($1, $2)`;
+    playerAdditionQueryText = `INSERT INTO public."playertable" ("ID","Name") VALUES ($1, $2)`;
     const result = await client.query(playerAdditionQueryText, [data.id, data.name]);
     console.log("Player data inserted successfully");
   } finally {
