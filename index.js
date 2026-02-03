@@ -792,7 +792,7 @@ app.get("/misc-additions", (req, res) => {
           tag3 = document.getElementById("secTagBox2").value;
           deckCreator = document.getElementById("deckCreator").value;
 
-          playerExists = Object.values(playerTable).includes(deckCreator);
+          playerExists = JSON.stringify(playerTable).includes(deckCreator);
 
           console.log(deckName);
           console.log(tag1);
