@@ -39,7 +39,7 @@ const dbConfig = {
 //    queueLimit: 0
 //});
 function renderPage(title, content) {
-  return `
+  return /*html*/`
   <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -85,7 +85,7 @@ function renderPage(title, content) {
 
 app.get("/", (req, res) => {
   console.log("poop butt");
-  const content = `<div>
+  const content = /*html*/`<div>
     <h1>Jacebase</h1>
     <p id="para">enter username and password</p>
     <form id="upformm">
@@ -155,7 +155,7 @@ app.get("/api/game-instances", async (req, res) => {
 });
 
 app.get("/charts", (req, res) => {
-  const content = `<div>
+  const content = /*html*/`<div>
     <h1>Visualizer Page</h1>
     <div>
       <div style="gap: 20px;"  id="controlsBox">
@@ -206,7 +206,7 @@ app.get("/charts", (req, res) => {
       }
     }
 
-    function showRawPlayerInstances() {
+    function showRawGameInstances() {
       mainTable.setColumns([
         {title: "Game ID", field: "gameID"},
         {title: "Player Count", field: "PlayerCount"},
@@ -218,7 +218,7 @@ app.get("/charts", (req, res) => {
       }
     }
 
-    function showRawGameInstances() {
+    function showRawPlayerInstances() {
       mainTable.setColumns([
         {title: "Instance ID", field: "instanceID"},
         {title: "Game ID", field: "gameID_gameTables"},
@@ -237,13 +237,18 @@ app.get("/charts", (req, res) => {
         mainTable.addData(player);
       }
     }
+
+    function shoePlayerWinrates() {
+
+    }
+
     </script>
   </div>`
   res.send(renderPage("Visualizer - Jacebase", content));
 });
 
 app.get("/home", (req, res) => {
-    const content = `    <h1>Jacebase</h1>
+    const content = /*html*/`    <h1>Jacebase</h1>
     <p id="para">Welcome</p>
     <h1>Jacebase</h1>
     <p>Welcome</p>
@@ -258,6 +263,7 @@ app.get("/home", (req, res) => {
     <p id="tester">testvalue</p>
 
     <button type="button" id="visualizerButton">Visualizer</button>
+    <button type="button" id="miscAddButton">Add Players or Decks</button>
 
     <div style="gap: 20px; display:none"  id="orderedBox">
         <p>Ordered?:</p>
@@ -527,6 +533,10 @@ app.get("/home", (req, res) => {
                 window.location.href = "/charts";
             });
 
+            document.getElementById("miscAddButton").addEventListener("click", function() {
+                window.location.href = "/misc-additions";
+            });
+
             function hidePentagramBoxes() {
                 document.getElementById("player1Enemies").style.display = "none";
                 document.getElementById("player2Enemies").style.display = "none";
@@ -721,6 +731,63 @@ app.post("/home", (req, res) => {
   console.log("Received data:", req.body);
   insertToDB(req.body);
 });
+
+app.get("/misc-additions", (req, res) => {
+    const content = /*html*/`
+    <h1>Jacebase</h1>
+    <p id="para">Player/Deck Addition Page</p>
+    <div style="gap: 20px; display:flex"  id="player1Input">
+      <p>Player Name:</p>
+      <input type="text" id="playerName"></input>
+      <button id="playerSubmitButton">Submit</button>
+    </div>
+    <div id="deckBox" style="display:flex; gap: 10px">
+      <p>Deck Name:</p>
+      <input type="text" id="deckName"></input>
+      <p>Primary Tag:</p>
+      <input type="text" id="tagBox"></input>
+      <p>Secondary Tags:</p>
+      <input type="text" id="secTagBox1"></input>
+      <input type="text" id="secTagBox2"></input>
+      <button id="deckSubmitButton">Submit</button>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("playerSubmitButton").addEventListener("click", function() {
+          playerName = document.getElementById("playerName").value;
+          playerID = Math.floor(Math.random() * 1000000);
+          returnBody = {
+            id: playerID,
+            name: playerName
+          }
+          fetch('/misc-additions/player', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(returnBody)
+          })
+        });
+      });
+
+    </script>
+    `
+});
+
+app.post("/misc-additions/player", (req, res) => {
+  console.log("Received player data:", req.body);
+  addPlayerToDB(req.body);
+});
+
+async function addPlayerToDB(data) {
+  const client = new Client(dbConfig);
+  await client.connect();
+  try {
+    playerAdditionQueryText = `INSERT INTO public."playerTable" ("ID","Name") VALUES ($1, $2)`;
+    const result = await client.query(playerAdditionQueryText, [data.id, data.name]);
+    console.log("Player data inserted successfully");
+  } finally {
+    await client.end();
+  }
+}
 
 async function insertToDB(data) {
   const client = new Client(dbConfig);
