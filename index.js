@@ -801,6 +801,8 @@ app.get("/misc-additions", (req, res) => {
           console.log(deckCreator);
           console.log(playerExists);
 
+          console.log(playerTable);
+
         });
 
         document.getElementById("playerSubmitButton").addEventListener("click", function() {
