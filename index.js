@@ -154,6 +154,24 @@ app.get("/api/game-instances", async (req, res) => {
   }
 });
 
+app.get("/api/player-table", async (req, res) => {
+  const client = new Client(dbConfig);
+  await client.connect();
+
+  try {
+    const query = `
+      SELECT * FROM public."playertable"
+    `;
+    const result = await client.query(query);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Database error" });
+  } finally {
+    await client.end();
+  }
+});
+
 app.get("/charts", (req, res) => {
   const content = /*html*/`<div>
     <h1>Visualizer Page</h1>
@@ -744,6 +762,8 @@ app.get("/misc-additions", (req, res) => {
     <div id="deckBox" style="display:flex; gap: 10px">
       <p>Deck Name:</p>
       <input type="text" id="deckName"></input>
+      <p>Deck Creator:</p>
+      <input type="text" id="deckCreator"></input>
       <p>Primary Tag:</p>
       <input type="text" id="tagBox"></input>
       <p>Secondary Tags:</p>
@@ -753,6 +773,36 @@ app.get("/misc-additions", (req, res) => {
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
+        let playerTable
+        
+        fetchData();
+        async function fetchData() {
+          try {
+            const response1 = await fetch("/api/player-table");
+            playerTable = await response1.json();
+          } finally {
+            console.log("Data fetch attempt complete");
+          }
+        }
+        
+        document.getElementById("deckSubmitButton").addEventListener("click", function() {
+          deckName = document.getElementById("deckName").value;
+          tag1 = document.getElementById("tagBox").value;
+          tag2 = document.getElementById("secTagBox1").value;
+          tag3 = document.getElementById("secTagBox2").value;
+          deckCreator = document.getElementById("deckCreator").value;
+
+          playerExists = Object.values(playerTable).includes(deckCreator);
+
+          console.log(deckName);
+          console.log(tag1);
+          console.log(tag2);
+          console.log(tag3);
+          console.log(deckCreator);
+          console.log(playerExists);
+
+        });
+
         document.getElementById("playerSubmitButton").addEventListener("click", function() {
           playerName = document.getElementById("playerName").value;
           playerID = Math.floor(Math.random() * 1000000);
@@ -767,6 +817,7 @@ app.get("/misc-additions", (req, res) => {
           })
         });
       });
+
 
     </script>
     `
