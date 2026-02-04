@@ -840,6 +840,7 @@ app.get("/home", (req, res) => {
                       ID: gameID,
                       size: 5,
                       pentagramBool: pentagram,
+                      dateText: document.getElementById("gameDate").value,
                       players: {
                           player1: deckObj1,
                           player2: deckObj2,
