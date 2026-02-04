@@ -667,11 +667,11 @@ app.get("/home", (req, res) => {
                 deckPlayerCorrect = true;
                 for (let i = 1; i < count+1; i++){
                   deckFinder = "deck"+i;
-                  deck = document.getElementById(deckFinder);
+                  deck = document.getElementById(deckFinder).value;
                   deckFound = JSON.stringify(deckTable).includes(deck);
                   console.log("found deck: "+deck+" - "+deckFound);
                   playerFinder = "player"+i;
-                  player = document.getElementById(playerFinder);
+                  player = document.getElementById(playerFinder).value;
                   playerFound = JSON.stringify(playerTable).includes(player);
                   console.log("found player: "+player+" - "+playerFound);
                   if (deckFound === false || playerFound === false){
