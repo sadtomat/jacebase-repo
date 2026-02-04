@@ -678,7 +678,11 @@ app.get("/home", (req, res) => {
                     deckPlayerCorrect = false;
                   }
                 }
-                return false;
+                if (dateCorrect === true && deckPlayerCorrect === true){
+                  return true;
+                }else{ 
+                  return false;
+                }
             }
 
             function createPlayerObject(playerCount, gameID){
@@ -802,6 +806,7 @@ app.get("/home", (req, res) => {
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(returnBody)
                 })
+                console.log(returnBody);
               }
             }
       });
@@ -886,6 +891,7 @@ app.get("/misc-additions", (req, res) => {
               body: JSON.stringify(returnBody)
             })
           }
+          console.log(returnBody);
           
         });
 
@@ -901,6 +907,7 @@ app.get("/misc-additions", (req, res) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(returnBody)
           })
+          console.log(returnBody);
         });
       });
 
