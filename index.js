@@ -547,7 +547,7 @@ app.get("/home", (req, res) => {
             winOptions = [];
             let playerTable;
             let deckTable;
-            fetchDate();
+            fetchData();
 
             async function fetchData() {
               try {
