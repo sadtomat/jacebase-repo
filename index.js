@@ -683,6 +683,7 @@ app.get("/home", (req, res) => {
                 console.log("deck/player correct: "+deckPlayerCorrect);
                 console.log("first slash code:"+dateInput.charCodeAt(4));
                 console.log("first slash code:"+dateInput.charCodeAt(7));
+                console.log(regex);
                 if (dateCorrect === true && deckPlayerCorrect === true){
                   return true;
                 }else{ 
