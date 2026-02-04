@@ -839,6 +839,8 @@ app.get("/home", (req, res) => {
                     body: JSON.stringify(returnBody)
                 })
                 console.log(returnBody);
+              }else {
+                console.log("Data verification failed");
               }
             }
       });
