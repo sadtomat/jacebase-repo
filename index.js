@@ -738,13 +738,13 @@ app.get("/home", (req, res) => {
                   }
                   console.log("enemyDeck1Finder: "+enemyDeck1Finder);
                   console.log("enemyDeck2Finder: "+enemyDeck2Finder);
-                  enemyDeck1 = getElementById(enemyDeck1Finder+"enemy1").value;
-                  enemyDeck2 = getElementById(enemyDeck2Finder+"enemy2").value;
+                  enemyDeck1 = document.getElementById(enemyDeck1Finder+"enemy1").value;
+                  enemyDeck2 = document.getElementById(enemyDeck2Finder+"enemy2").value;
                 }else{
                   enemyDeck1Finder = "deck"+playerCount+"enemy1";
                   enemyDeck2Finder = "deck"+playerCount+"enemy2";
-                  enemyDeck1 = getElementById(enemyDeck1Finder).value;
-                  enemyDeck2 = getElementById(enemyDeck2Finder).value;
+                  enemyDeck1 = document.getElementById(enemyDeck1Finder).value;
+                  enemyDeck2 = document.getElementById(enemyDeck2Finder).value;
                 }
                 iID = Math.floor(Math.random() * 1000000)
                 playerObject = {
