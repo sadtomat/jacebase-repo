@@ -172,6 +172,24 @@ app.get("/api/player-table", async (req, res) => {
   }
 });
 
+app.get("/api/deck-table", async (req, res) => {
+  const client = new Client(dbConfig);
+  await client.connect();
+
+  try {
+    const query = `
+      SELECT * FROM public."decktable"
+    `;
+    const result = await client.query(query);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Database error" });
+  } finally {
+    await client.end();
+  }
+});
+
 app.get("/charts", (req, res) => {
   const content = /*html*/`<div>
     <h1>Visualizer Page</h1>
@@ -284,6 +302,8 @@ app.get("/home", (req, res) => {
     <button type="button" id="miscAddButton">Add Players or Decks</button>
 
     <div style="gap: 20px; display:none"  id="orderedBox">
+        <p>Date(yyyy/mm/dd):</p>
+        <input type="text" id="gameDate"></input>
         <p>Ordered?:</p>
         <select name="Ordered" id="orderedSelect">
             <option value="yes">Yes</option>
@@ -525,7 +545,20 @@ app.get("/home", (req, res) => {
         document.addEventListener("DOMContentLoaded", function() {
             playernumber = "";
             winOptions = [];
+            let playerTable;
+            let deckTable;
+            fetchDate();
 
+            async function fetchData() {
+              try {
+                const response1 = await fetch("/api/player-table");
+                playerTable = await response1.json();
+                const response2 = await fetch("/api/deck-table");
+                deckTable = await response2.json();
+              } finally {
+                console.log("Data fetch attempt complete");
+              }
+            }
 
             document.getElementById("pnumber").addEventListener("change", function() {
                 document.getElementById("tester").textContent = this.value;
@@ -618,8 +651,29 @@ app.get("/home", (req, res) => {
                 }
             }
             
+            function verifyAuthenticity(count){
+                dateInput = document.getElementById("gameDate").value;
+                regex = /^d{4}\/\d{2}\/\d{2}$/;
+                dateCorrect = regex.test(dateInput);
+                deckPlayerCorrect = true;
+                for (let i = 1; i < count+1; count++){
+                  deckFinder = "deck"+i;
+                  deck = document.getElementById(deckFinder);
+                  deckFound = JSON.stringify(deckTable).includes(deck);
+                  console.log("found deck: "+deck+" - "+deckFound);
+                  playerFinder = "player"+i;
+                  player = document.getElementById(playerFinder);
+                  playerFound = JSON.stringify(playerTable).includes(player);
+                  console.log("found player: "+player+" - "+playerFound);
+                  if (deckFound === false || playerFound === false){
+                    deckPlayerCorrect = false;
+                  }
+                }
+                return false;
+            }
+
             function createPlayerObject(playerCount, gameID){
-                //create player objects based on inputs
+              if (verifyAuthenticity(count)){
                 deck = "deck"+playerCount;
                 player = "player"+playerCount;
                 solBox = "p"+playerCount+"solring";
@@ -669,6 +723,7 @@ app.get("/home", (req, res) => {
                     EnemyDeck2: document.getElementById(enemyDeck2).value || null,
                 }
                 return playerObject;
+              }
             }
             
             document.getElementById("submitButton").addEventListener("click", submitButtonClicked, false);
@@ -805,20 +860,8 @@ app.get("/misc-additions", (req, res) => {
           playerExists = JSON.stringify(playerTable).includes(deckCreator);
           tagExists = tagList.includes(tag1);
 
-          console.log(deckName);
-          console.log(tag1);
-          console.log(tag2);
-          console.log(tag3);
-          console.log(deckCreator);
-          console.log(playerExists);
-          console.log(tagExists);
-          console.log(playerTable);
-
-
-
           if (playerExists && tagExists) {
             player = playerTable.find(p => p.name === deckCreator);
-            console.log(player);
             deckID = Math.floor(Math.random() * 1000000);
             returnBody = {
               id: deckID,
