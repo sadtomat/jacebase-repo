@@ -661,7 +661,7 @@ app.get("/home", (req, res) => {
                 }else{
                   return false;
                 }
-                dateInput = document.getElementById("gameDate").value;
+                dateInput = String(document.getElementById("gameDate").value);
                 regex = new RegExp("^\\d{4}\\/\\d{2}\\/\\d{2}$");
                 dateCorrect = regex.test(String(dateInput).trim());
                 deckPlayerCorrect = true;
@@ -681,6 +681,8 @@ app.get("/home", (req, res) => {
                 console.log("date correct: "+dateCorrect);
                 console.log("date input: "+dateInput);
                 console.log("deck/player correct: "+deckPlayerCorrect);
+                console.log("first slash code:"+dateInput.charCodeAt(4));
+                console.log("first slash code:"+dateInput.charCodeAt(7));
                 if (dateCorrect === true && deckPlayerCorrect === true){
                   return true;
                 }else{ 
