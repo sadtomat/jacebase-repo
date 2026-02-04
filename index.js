@@ -678,11 +678,6 @@ app.get("/home", (req, res) => {
                     deckPlayerCorrect = false;
                   }
                 }
-                console.log("date correct: "+dateCorrect);
-                console.log("date input: "+dateInput);
-                console.log("deck/player correct: "+deckPlayerCorrect);
-                console.log("first slash code:"+dateInput.charCodeAt(4));
-                console.log("first slash code:"+dateInput.charCodeAt(7));
                 console.log(regex);
                 if (dateCorrect === true && deckPlayerCorrect === true){
                   return true;
@@ -834,7 +829,23 @@ app.get("/home", (req, res) => {
                       }
                     }
                   }else{
-
+                    deckObj1 = createPlayerObject(1, gameID, orderedBool, true);
+                    deckObj2 = createPlayerObject(2, gameID, orderedBool, true);
+                    deckObj3 = createPlayerObject(3, gameID, orderedBool, true);
+                    deckObj4 = createPlayerObject(4, gameID, orderedBool, true);
+                    deckObj5 = createPlayerObject(5, gameID, orderedBool, true);
+                    returnBody = {
+                      ID: gameID,
+                      size: 5,
+                      pentagramBool: pentagram,
+                      players: {
+                          player1: deckObj1,
+                          player2: deckObj2,
+                          player3: deckObj3,
+                          player4: deckObj4,
+                          player5: deckObj5
+                      }
+                    }
                   }
                 }
                 //testObj = createPlayerObject(1, 3)
