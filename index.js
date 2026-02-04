@@ -685,7 +685,7 @@ app.get("/home", (req, res) => {
                 }
             }
 
-            function createPlayerObject(playerCount, gameID){
+            function createPlayerObject(playerCount, gameID, ordered, pentagram){
                 deck = "deck"+playerCount;
                 player = "player"+playerCount;
                 solBox = "p"+playerCount+"solring";
@@ -718,8 +718,31 @@ app.get("/home", (req, res) => {
                 }else{
                     scoop = null;
                 }
-                enemyDeck1 = "deck"+playerCount+"enemy1";
-                enemyDeck2 = "deck"+playerCount+"enemy2";
+                if (ordered === true){
+                    playerNumber = playerCount;
+                }else{
+                    playerNumber = null;
+                }
+                if (pentagram === false){
+                  enemyDeck1 = null;
+                  enemyDeck2 = null;
+                }else if (ordered === true){
+                  enemyDeck1Finder = "deck"+((playerCount+2)%5);
+                  if (enemyDeck1Finder === "deck0"){
+                    enemyDeck1Finder = "deck5";
+                  }  
+                  enemyDeck2Finder = "deck"+((playerCount+3)%5);
+                  if (enemyDeck2Finder === "deck0"){
+                    enemyDeck2Finder = "deck5";
+                  }
+                  enemyDeck1 = getElementById(enemyDeck1Finder).value;
+                  enemyDeck2 = getElementById(enemyDeck2Finder).value;
+                }else{
+                  enemyDeck1Finder = "deck"+playerCount+"enemy1";
+                  enemyDeck2Finder = "deck"+playerCount+"enemy2";
+                  enemyDeck1 = getElementById(enemyDeck1Finder).value;
+                  enemyDeck2 = getElementById(enemyDeck2Finder).value;
+                }
                 iID = Math.floor(Math.random() * 1000000)
                 playerObject = {
                     instanceID: iID,
@@ -731,14 +754,19 @@ app.get("/home", (req, res) => {
                     TurnOrderPos: playerCount,
                     Scoop: scoop,
                     Turbod: turbo,
-                    EnemyDeck1: document.getElementById(enemyDeck1).value || null,
-                    EnemyDeck2: document.getElementById(enemyDeck2).value || null,
+                    EnemyDeck1: enemyDeck1,
+                    EnemyDeck2: enemyDeck2,
                 }
                 return playerObject;
             }
             
             document.getElementById("submitButton").addEventListener("click", submitButtonClicked, false);
             function submitButtonClicked(){
+              if (document.getElementById("orderedSelect").value === "yes"){
+                orderedBool = true;
+              }else{
+                orderedBool = false;
+              }
               if (verifyAuthenticity()){
                 gameID = Math.floor(Math.random() * 1000000);
                 if (playernumber != "p5") {
@@ -751,9 +779,9 @@ app.get("/home", (req, res) => {
                     }
                 }
                 if (playernumber === "p3") {
-                  deckObj1 = createPlayerObject(1, gameID);
-                  deckObj2 = createPlayerObject(2, gameID);
-                  deckObj3 = createPlayerObject(3, gameID);
+                  deckObj1 = createPlayerObject(1, gameID, orderedBool, false);
+                  deckObj2 = createPlayerObject(2, gameID, orderedBool, false);
+                  deckObj3 = createPlayerObject(3, gameID, orderedBool, false);
                   returnBody = {
                     ID: gameID,
                     size: 3,
@@ -765,10 +793,10 @@ app.get("/home", (req, res) => {
                     }
                   }
                 }else if (playernumber === "p4") {
-                  deckObj1 = createPlayerObject(1, gameID);
-                  deckObj2 = createPlayerObject(2, gameID);
-                  deckObj3 = createPlayerObject(3, gameID);
-                  deckObj4 = createPlayerObject(4, gameID);
+                  deckObj1 = createPlayerObject(1, gameID, orderedBool, false);
+                  deckObj2 = createPlayerObject(2, gameID, orderedBool, false);
+                  deckObj3 = createPlayerObject(3, gameID, orderedBool, false);
+                  deckObj4 = createPlayerObject(4, gameID, orderedBool, false);
                   returnBody = {
                     ID: gameID,
                     size: 4,
@@ -781,22 +809,26 @@ app.get("/home", (req, res) => {
                     }
                   }
                 }else if (playernumber === "p5") {
-                  deckObj1 = createPlayerObject(1, gameID);
-                  deckObj2 = createPlayerObject(2, gameID);
-                  deckObj3 = createPlayerObject(3, gameID);
-                  deckObj4 = createPlayerObject(4, gameID);
-                  deckObj5 = createPlayerObject(5, gameID);
-                  returnBody = {
-                    ID: gameID,
-                    size: 5,
-                    pentagramBool: pentagram,
-                    players: {
-                        player1: deckObj1,
-                        player2: deckObj2,
-                        player3: deckObj3,
-                        player4: deckObj4,
-                        player5: deckObj5
+                  if (pentagram === false) {
+                    deckObj1 = createPlayerObject(1, gameID, orderedBool, false);
+                    deckObj2 = createPlayerObject(2, gameID, orderedBool, false);
+                    deckObj3 = createPlayerObject(3, gameID, orderedBool, false);
+                    deckObj4 = createPlayerObject(4, gameID, orderedBool, false);
+                    deckObj5 = createPlayerObject(5, gameID, orderedBool, false);
+                    returnBody = {
+                      ID: gameID,
+                      size: 5,
+                      pentagramBool: pentagram,
+                      players: {
+                          player1: deckObj1,
+                          player2: deckObj2,
+                          player3: deckObj3,
+                          player4: deckObj4,
+                          player5: deckObj5
+                      }
                     }
+                  }else{
+
                   }
                 }
                 //testObj = createPlayerObject(1, 3)
@@ -816,7 +848,7 @@ app.get("/home", (req, res) => {
 
 app.post("/home", (req, res) => {
   console.log("Received data:", req.body);
-  insertToDB(req.body);
+  //insertToDB(req.body);
 });
 
 app.get("/misc-additions", (req, res) => {
