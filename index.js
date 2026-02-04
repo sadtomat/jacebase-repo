@@ -873,7 +873,7 @@ app.get("/home", (req, res) => {
 
 app.post("/home", (req, res) => {
   console.log("Received data:", req.body);
-  //insertToDB(req.body);
+  insertToDB(req.body);
 });
 
 app.get("/misc-additions", (req, res) => {
@@ -1014,8 +1014,8 @@ async function insertToDB(data) {
   await client.connect();
   try {
     
-    gameCreationQueryText = `INSERT INTO public."gameTables" ("gameID","PlayerCount","Pentagram") VALUES ($1, $2, $3)`;
-    gameCreationQueryValues = [data.ID, data.size, data.pentagramBool];
+    gameCreationQueryText = `INSERT INTO public."gameTables" ("gameID","PlayerCount","Pentagram","date") VALUES ($1, $2, $3, $4)`;
+    gameCreationQueryValues = [data.ID, data.size, data.pentagramBool, data.dateText];
     const result = await client.query(gameCreationQueryText, gameCreationQueryValues);
     console.log("Data inserted successfully");
     //console.log(result.rows);
