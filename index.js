@@ -736,6 +736,8 @@ app.get("/home", (req, res) => {
                   if (enemyDeck2Finder === "deck0"){
                     enemyDeck2Finder = "deck5";
                   }
+                  console.log("enemyDeck1Finder: "+enemyDeck1Finder);
+                  console.log("enemyDeck2Finder: "+enemyDeck2Finder);
                   enemyDeck1 = getElementById(enemyDeck1Finder+"enemy1").value;
                   enemyDeck2 = getElementById(enemyDeck2Finder+"enemy2").value;
                 }else{
