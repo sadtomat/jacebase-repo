@@ -651,7 +651,16 @@ app.get("/home", (req, res) => {
                 }
             }
             
-            function verifyAuthenticity(count){
+            function verifyAuthenticity(){
+                if (playernumber === "p3") {
+                  count = 3;
+                }else if (playernumber === "p4") {
+                  count = 4;
+                }else if (playernumber === "p5") {
+                  count = 5;
+                }else{
+                  return false;
+                }
                 dateInput = document.getElementById("gameDate").value;
                 regex = /^d{4}\/\d{2}\/\d{2}$/;
                 dateCorrect = regex.test(dateInput);
@@ -673,7 +682,6 @@ app.get("/home", (req, res) => {
             }
 
             function createPlayerObject(playerCount, gameID){
-              if (verifyAuthenticity(count)){
                 deck = "deck"+playerCount;
                 player = "player"+playerCount;
                 solBox = "p"+playerCount+"solring";
@@ -723,11 +731,11 @@ app.get("/home", (req, res) => {
                     EnemyDeck2: document.getElementById(enemyDeck2).value || null,
                 }
                 return playerObject;
-              }
             }
             
             document.getElementById("submitButton").addEventListener("click", submitButtonClicked, false);
             function submitButtonClicked(){
+              if (verifyAuthenticity()){
                 gameID = Math.floor(Math.random() * 1000000);
                 if (playernumber != "p5") {
                   pentagram = null;
@@ -794,6 +802,7 @@ app.get("/home", (req, res) => {
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(returnBody)
                 })
+              }
             }
       });
     </script>`;
