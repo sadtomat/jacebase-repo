@@ -678,6 +678,9 @@ app.get("/home", (req, res) => {
                     deckPlayerCorrect = false;
                   }
                 }
+                console.log("date correct: "+dateCorrect);
+                console.log("date input: "+dateInput);
+                console.log("deck/player correct: "+deckPlayerCorrect);
                 if (dateCorrect === true && deckPlayerCorrect === true){
                   return true;
                 }else{ 
