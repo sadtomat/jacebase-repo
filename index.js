@@ -662,7 +662,7 @@ app.get("/home", (req, res) => {
                   return false;
                 }
                 dateInput = document.getElementById("gameDate").value;
-                regex = /^d{4}\/\d{2}\/\d{2}$/;
+                regex = new RegExp("^\\d{4}\\/\\d{2}\\/\\d{2}$");
                 dateCorrect = regex.test(dateInput);
                 deckPlayerCorrect = true;
                 for (let i = 1; i < count+1; count++){
