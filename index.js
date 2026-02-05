@@ -296,7 +296,7 @@ app.get("/charts", (req, res) => {
       ])
       for (player of playerTable){
         console.log(player);
-        mainTable.addDate(player);
+        mainTable.addData(player);
       }
     }
 
@@ -311,7 +311,7 @@ app.get("/charts", (req, res) => {
       ])
       for (deck of deckTable){
         console.log(deck);
-        mainTable.addDate(deck);
+        mainTable.addData(deck);
       }
     }
 
