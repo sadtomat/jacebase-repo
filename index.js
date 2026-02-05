@@ -339,7 +339,7 @@ app.get("/charts", (req, res) => {
         turn1SolRings = 0;
         scoopCount = 0;
         turbodCount = 0;
-        for (instance of playingTable){
+        for (instance of playingInstances){
           if (instance.Win === true){
             winNumber++;
           }
