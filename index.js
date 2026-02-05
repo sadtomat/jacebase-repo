@@ -319,10 +319,6 @@ app.get("/charts", (req, res) => {
     }
 
     function showPlayerStats(){
-      for (player of playerTable){
-        playersDecks = deckTable.filter(obj => obj.playerid === player.id);
-        console.log(playersDecks);
-      }
       mainTable.setColumns([
         {title: "Name", field: "name"},
         {title: "Number of Games", field: "gameNumber"},
@@ -332,6 +328,42 @@ app.get("/charts", (req, res) => {
         {title: "Turn 1 Sol Rings", field: "t1Sol"},
         {title: "Turbo'd/Out First", field: "turbod"}
       ])
+      for (player of playerTable){
+        playersDecks = deckTable.filter(obj => obj.playerid === player.id);
+        console.log(playersDecks);
+        deckNumber = playersDecks.length;
+        playingInstances = instanceTable.filter(obj => obj.PlayerName === player.name);
+        gameNumber = playingInstances.length;
+        winNumber = 0;
+        turn1SolRings = 0;
+        scoopCount = 0;
+        turbodCount = 0;
+        for (instance of instanceTable){
+          if (instance.Win === true){
+            winNumber++;
+          }
+          if (instance.T1Sol === true){
+            turn1SolRings++;
+          }
+          if (instance.Scoop === true){
+            scoopCount++;
+          }
+          if (instance.Turbod === true){
+            turbodCount++;
+          }
+        }
+        winRate = winNumber / gameNumber;
+        mainTable.addData({
+          name: player.name,
+          gameNumber: gameNumber,
+          deckNumber: deckNumber,
+          winrate: winRate,
+          scoops: scoopCount,
+          t1Sol: turn1SolRings,
+          turbod: turbodCount
+        })
+      }
+      
     }
 
     </script>
