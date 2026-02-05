@@ -212,8 +212,10 @@ app.get("/charts", (req, res) => {
     <script>
     //const DataTable = require('datatables.net-dt');
 
-    let playerTable;
+    let instanceTable;
     let gameTable;
+    let playerTable;
+    let deckTable;
 
     var mainTable = new Tabulator("#testTable", {autoColumns:true});
 
@@ -234,9 +236,13 @@ app.get("/charts", (req, res) => {
     async function fetchData() {
       try {
         const response1 = await fetch("/api/player-instances");
-        playerTable = await response1.json();
+        instanceTable = await response1.json();
         const response2 = await fetch("/api/game-instances");
         gameTable = await response2.json();
+        const response3 = await fetch("/api/player-table");
+        playerTable = await response3.json();
+        const response4 = await fetch("/api/deck-table");
+        deckTable = await response4.json();
       } finally {
         console.log("Data fetch attempt complete");
       }
@@ -247,6 +253,7 @@ app.get("/charts", (req, res) => {
         {title: "Game ID", field: "gameID"},
         {title: "Player Count", field: "PlayerCount"},
         {title: "Pentagram", field: "Pentagram"},
+        {title: "Date", field: "date"},
       ])
       for (game of gameTable) {
         console.log(game);
@@ -268,14 +275,38 @@ app.get("/charts", (req, res) => {
         {title: "Enemy Deck 1", field: "EnemyDeck1"},
         {title: "Enemy Deck 2", field: "EnemyDeck2"},
       ])
-      for (player of playerTable) {
+      for (instance of instanceTable) {
+        console.log(instance);
+        mainTable.addData(instance);
+      }
+    }
+    //playerAdditionQueryText = INSERT INTO public."playertable" ("id","name") VALUES ($1, $2);
+    //playerAdditionQueryText = INSERT INTO public."decktable" ("id","playerid","name","tag","subtag1","subtag2") VALUES ($1, $2, $3, $4, $5, $6);
+
+    function showRawPlayerTable() {
+      mainTable.setColumns([
+        {title: "ID", field: "id"},
+        {title: "Name", field: "name"},
+      ])
+      for (player of playerTable){
         console.log(player);
-        mainTable.addData(player);
+        mainTable.addDate(player);
       }
     }
 
-    function shoePlayerWinrates() {
-
+    function showRawDeckTable() {
+      mainTable.setColumns([
+        {title: "ID", field: "id"},
+        {title: "Player ID", field: "playerid"},
+        {title: "Deck Name", field: "name"},
+        {title: "Main Tag", field: "tag"},
+        {title: "Secondary Tag 1", field: "subtag1"},
+        {title: "Secondary Tag 2", field: "subtag2"},
+      ])
+      for (deck of deckTable){
+        console.log(deck);
+        mainTable.addDate(deck);
+      }
     }
 
     </script>
