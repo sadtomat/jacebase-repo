@@ -201,6 +201,7 @@ app.get("/charts", (req, res) => {
           <option value="rawGame">Raw Game Instances</option>
           <option value="rawDeck">Raw Deck Instances</option>
           <option value="rawInstances">Raw Instances of Games</option>
+          <option value="playerStats">Player Stats</option>
         </select>
         <button id="loadDataButton">Load Data</button>
       </div>
@@ -236,6 +237,8 @@ app.get("/charts", (req, res) => {
         showRawDeckTable();
       } else if (boxValue === "rawInstances") {
         showRawPlayerInstances();
+      } else if (boxValue === "playerStats"){
+        showPlayerStats();
       }
     });
 
@@ -313,6 +316,22 @@ app.get("/charts", (req, res) => {
         console.log(deck);
         mainTable.addData(deck);
       }
+    }
+
+    function showPlayerStats(){
+      for (player of playerTable){
+        playersDecks = deckTable.filter(obj => obj.playerid === player.id);
+        console.log(playersDecks);
+      }
+      mainTable.setColumns([
+        {title: "Name", field: "name"},
+        {title: "Number of Games", field: "gameNumber"},
+        {title: "Number of Decks", field: "deckNumber"},
+        {title: "Win Rate", field: "winrate"},
+        {title: "Scoops", field: "scoops"},
+        {title: "Turn 1 Sol Rings", field: "t1Sol"},
+        {title: "Turbo'd/Out First", field: "turbod"}
+      ])
     }
 
     </script>
