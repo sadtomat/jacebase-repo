@@ -333,12 +333,13 @@ app.get("/charts", (req, res) => {
         console.log(playersDecks);
         deckNumber = playersDecks.length;
         playingInstances = instanceTable.filter(obj => obj.PlayerName === player.name);
+        console.log(playingInstances);
         gameNumber = playingInstances.length;
         winNumber = 0;
         turn1SolRings = 0;
         scoopCount = 0;
         turbodCount = 0;
-        for (instance of instanceTable){
+        for (instance of playingTable){
           if (instance.Win === true){
             winNumber++;
           }
