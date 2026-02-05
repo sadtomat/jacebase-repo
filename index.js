@@ -199,6 +199,8 @@ app.get("/charts", (req, res) => {
         <select name="Table Select" id="tableSelect">
           <option value="rawPlayer">Raw Player Instances</option>
           <option value="rawGame">Raw Game Instances</option>
+          <option value="rawDeck">Raw Deck Instances</option>
+          <option value="rawInstances">Raw Instances of Games</option>
         </select>
         <button id="loadDataButton">Load Data</button>
       </div>
@@ -227,9 +229,13 @@ app.get("/charts", (req, res) => {
       mainTable.clearData();
       boxValue = document.getElementById("tableSelect").value;
       if (boxValue === "rawPlayer") {
-        showRawPlayerInstances();
+        showRawPlayerTable();
       } else if (boxValue === "rawGame") {
         showRawGameInstances();
+      } else if (boxValue === "rawDeck") {
+        showRawDeckTable();
+      } else if (boxValue === "rawInstances") {
+        showRawPlayerInstances();
       }
     });
 
