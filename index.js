@@ -193,7 +193,10 @@ app.get("/api/deck-table", async (req, res) => {
 app.get("/api/:id/game-opponents", async (req, res) => {
   const client = new Client(dbConfig);
   await client.connect();
-
+  const id = req.params.id
+   // playerAdditionQueryText = `INSERT INTO public."decktable" ("id","playerid","name","tag","subtag1","subtag2") VALUES ($1, $2, $3, $4, $5, $6)`;
+   // const result = await client.query(playerAdditionQueryText, [data.id, data.creatorID, data.deckName, data.primaryTag, data.secondaryTag1, data.secondaryTag2]);
+   // console.log("Deck data inserted successfully");
   try {
     const query = `
     SELECT * FROM public."playerInstance"
@@ -202,7 +205,7 @@ app.get("/api/:id/game-opponents", async (req, res) => {
     )
     AND "playerInstance"."instanceID" != $1
     `;
-    const result = await client.query(query);
+    const result = await client.query(query, [id]);
     res.json(result.rows)
   } catch (err) {
     console.error(err);
