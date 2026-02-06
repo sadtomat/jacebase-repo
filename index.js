@@ -505,7 +505,7 @@ app.get("/charts", (req, res) => {
           for (opponents of gameOpponents) {
             eloFetch = rawDeckElo.find(obj => obj.name === opponents.DeckName);
             //console.log(opponents);
-            //console.log(eloFetch);
+            console.log(eloFetch.name);
             let eloVal = eloFetch.elo;
             eloGain = eloGain + eloVal;
           }
