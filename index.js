@@ -227,6 +227,7 @@ app.get("/charts", (req, res) => {
           <option value="rawDeck">Raw Deck Instances</option>
           <option value="rawInstances">Raw Instances of Games</option>
           <option value="playerStats">Player Stats</option>
+          <option value="DeckStats">Deck Stats</option>
         </select>
         <button id="loadDataButton">Load Data</button>
       </div>
@@ -349,6 +350,8 @@ app.get("/charts", (req, res) => {
         showRawPlayerInstances();
       } else if (boxValue === "playerStats"){
         showPlayerStats();
+      } else if (boxValue === "deckStats"){
+        showDeckStats();
       }
     });
 
