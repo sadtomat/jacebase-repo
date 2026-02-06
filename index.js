@@ -482,7 +482,6 @@ app.get("/charts", (req, res) => {
     async function pullGameOpponents(id){
       try {
         const response1 = await fetch("/api/"+id+"/game-opponents");
-        console.log(response1.json());
         return await response1.json();
       } catch (err) {
         console.error(err);
@@ -502,6 +501,7 @@ app.get("/charts", (req, res) => {
         for (instance of playingInstances) {
           gameOpponents = pullGameOpponents(instance.instanceID);
           eloGain = 10;
+          console.log(gameOpponents);
           for (opponents of gameOpponents) {
             eloFetch = rawDeckElo.find(obj => obj.name === opponents.DeckName);
             eloGain = eloGain + eloFetch.elo;
