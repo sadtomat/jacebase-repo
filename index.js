@@ -283,6 +283,7 @@ app.get("/charts", (req, res) => {
         {name: "Deathtouch", elo: 4.8},
         {name: "Wolves", elo: 5.6},
         {name: "Cat Girl", elo: 5.7},       //jesse
+        {name: "Energy", elo: 4.3},
         {name: "Three Dog", elo: 7.1},        //shayne
         {name: "Goblins", elo: 9.7},
         {name: "Angels", elo: 7.3},
