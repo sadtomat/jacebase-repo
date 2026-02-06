@@ -485,8 +485,8 @@ app.get("/charts", (req, res) => {
         deckElo = 0
         playingInstances = instanceTable.filter(obj => obj.DeckName === deck.name)
         for (instance of playingInstances) {
-          const response = await fetch("/api/"+instance.instanceID+"/game-opponents");
-          gameOpponents = await response.json();
+          const response = fetch("/api/"+instance.instanceID+"/game-opponents");
+          gameOpponents = response.json();
           eloGain = 10;
           for (opponents of gameOpponents) {
             eloFetch = rawDeckElo.find(obj => obj.name === opponents.DeckName);
