@@ -503,10 +503,10 @@ app.get("/charts", (req, res) => {
           gameOpponents = await pullGameOpponents(instance.instanceID);
           eloGain = 10;
           for (opponents of gameOpponents) {
-            eloFetch = JSON.parse(rawDeckElo.find(obj => obj.name === opponents.DeckName));
+            eloFetch = rawDeckElo.find(obj => obj.name === opponents.DeckName);
             console.log(opponents);
             console.log(eloFetch);
-            eloGain = eloGain + eloFetch.elo;
+            eloGain = eloGain + eloFetch[0].elo;
           }
           deckElo = deckElo + eloGain
         }
