@@ -483,7 +483,7 @@ app.get("/charts", (req, res) => {
       //temporary elo values. will be removed when database is big enough
       //or when all decks are eventually added
       
-      for (deck of decktable){
+      for (deck of deckTable){
         
         deckElo = 0
         playingInstances = instanceTable.filter(obj => obj.DeckName === deck.name)
