@@ -479,6 +479,17 @@ app.get("/charts", (req, res) => {
       }
     }
 
+    async function pullGameOpponents(id){
+      try {
+        const response1 = await fetch("/api/"+id+"/game-opponents");
+        return await response1.json();
+      } catch (err) {
+        console.error(err);
+      } finally {
+        console.log("Data fetch attempt complete");
+      }
+    }
+
     function showDeckStats() {
       //temporary elo values. will be removed when database is big enough
       //or when all decks are eventually added
@@ -488,8 +499,7 @@ app.get("/charts", (req, res) => {
         deckElo = 0
         playingInstances = instanceTable.filter(obj => obj.DeckName === deck.name)
         for (instance of playingInstances) {
-          const response = fetch("/api/"+instance.instanceID+"/game-opponents");
-          gameOpponents = response.json();
+          gameOpponents = pullGameOpponents(instance.instanceID);
           eloGain = 10;
           for (opponents of gameOpponents) {
             eloFetch = rawDeckElo.find(obj => obj.name === opponents.DeckName);
