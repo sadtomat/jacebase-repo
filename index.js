@@ -490,7 +490,7 @@ app.get("/charts", (req, res) => {
       }
     }
 
-    function showDeckStats() {
+    async function showDeckStats() {
       //temporary elo values. will be removed when database is big enough
       //or when all decks are eventually added
       
@@ -499,7 +499,7 @@ app.get("/charts", (req, res) => {
         deckElo = 0
         playingInstances = instanceTable.filter(obj => obj.DeckName === deck.name)
         for (instance of playingInstances) {
-          gameOpponents = pullGameOpponents(instance.instanceID);
+          gameOpponents = await pullGameOpponents(instance.instanceID);
           eloGain = 10;
           console.log(gameOpponents);
           for (opponents of gameOpponents) {
