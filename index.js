@@ -190,6 +190,28 @@ app.get("/api/deck-table", async (req, res) => {
   }
 });
 
+app.get("/api/:id/game-opponents", async (req, res) => {
+  const client = new Client(dbConfig);
+  await client.connect();
+
+  try {
+    const query = `
+    SELECT * FROM public."playerInstance"
+    WHERE "playerInstance"."gameID_gameTables" = (
+      SELECT "playerInstance"."gameID_gameTables" FROM public."playerInstance" WHERE "playerInstance"."instanceID" = $1
+    )
+    AND "playerInstance"."instanceID" != $1
+    `;
+    const result = await client.query(query);
+    res.json(result.rows)
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Database error" });
+  }finally {
+    await client.end();
+  }
+});
+
 app.get("/charts", (req, res) => {
   const content = /*html*/`<div>
     <h1>Visualizer Page</h1>
@@ -219,7 +241,92 @@ app.get("/charts", (req, res) => {
     let gameTable;
     let playerTable;
     let deckTable;
-
+    //temporary elo values. will be removed when database is big enough
+    //or when all decks are eventually added
+    const rawDeckElo = [
+        {name: "Dragons", elo: 7.6},      //gabe
+        {name: "Samurai", elo: 6.2},
+        {name: "RoboRacers", elo: 5.4},
+        {name: "Cats", elo: 5.8},
+        {name: "Dungeater", elo: 7},
+        {name: "Outlaws", elo: 4.6},
+        {name: "Alliance", elo: 5.8},
+        {name: "Jumpscare", elo: 5.3},
+        {name: "Titanic", elo: 6.1},
+        {name: "Ghouls", elo: 4.9},
+        {name: "Demons", elo: 7.4},       //zach
+        {name: "Bats", elo: 6.4},
+        {name: "Akuma", elo: 7.3},
+        {name: "Discard", elo: 2},
+        {name: "Cats/Dogs", elo: 4.3},
+        {name: "Bears", elo: 6},
+        {name: "JohnMarston", elo: 6.1},
+        {name: "Diddy", elo: 6.2},
+        {name: "Dune", elo: 5.5},         //simon
+        {name: "Coinflip", elo: 6.4},
+        {name: "Ice Queen", elo: 5.6},
+        {name: "Clue", elo: 5.1},
+        {name: "Eggman", elo: 4.8},
+        {name: "Squirells", elo: 6.8},
+        {name: "Swords", elo: 6.4},      //ian
+        {name: "Marchessa", elo: 6.7},
+        {name: "Guff", elo: 6.6},
+        {name: "Miku Slugger", elo: 4.2},
+        {name: "Merfolk", elo: 5.5},      //adam
+        {name: "Humans", elo: 5},
+        {name: "Black Wizards", elo: 4.2},
+        {name: "Vampires", elo: 6.4},
+        {name: "Deathtouch", elo: 4.8},
+        {name: "Wolves", elo: 5.6},
+        {name: "Cat Girl", elo: 5.7},       //jesse
+        {name: "Three Dog", elo: 7.1},        //shayne
+        {name: "Goblins", elo: 9.7},
+        {name: "Angels", elo: 7.3},
+        {name: "Pirates", elo: 6},
+        {name: "Monkeys", elo: 5.6},
+        {name: "Green Goblin", elo: 7.4},
+        {name: "Ninjas", elo: 6},
+        {name: "Treebeard", elo: 9},
+        {name: "Tyranids", elo: 7.2},
+        {name: "Attractions", elo: 6.9},
+        {name: "Wizards", elo: 9.6},
+        {name: "Mana Dorks", elo: 7.2},
+        {name: "Illusions", elo: 8},
+        {name: "Counters", elo: 4.8},        //david
+        {name: "Painbow", elo: 1.3},
+        {name: "Captain America", elo: 7.3},        //ethan
+        {name: "Toph", elo: 6},
+        {name: "Eldrazi", elo: 6.7},
+        {name: "Dragon Engine", elo: 7},
+        {name: "Slivers", elo: 6.5},
+        {name: "Lifegain", elo: 8.5},
+        {name: "Miku", elo: 6.1},
+        {name: "Venom", elo: 6.1},
+        {name: "Bombadill", elo: 5.8},
+        {name: "Assassins", elo: 5.9},
+        {name: "Defenders", elo: 5.7},
+        {name: "Rats", elo: 5.1},          //tennant
+        {name: "Chudbots", elo: 6.8},
+        {name: "Drawtodeath", elo: 6.2},
+        {name: "Necrons", elo: 5.9},
+        {name: "Evil Valgavoth", elo: 6.4},
+        {name: "Dungeons", elo: 8},
+        {name: "Mothman", elo: 6.4},
+        {name: "Tyranids", elo: 4.9},          //precons
+        {name: "Knights", elo: 5},
+        {name: "Lorehold", elo: 5.2},
+        {name: "Miracles", elo: 2},
+        {name: "Worldshaper", elo: 5.2},
+        {name: "Valgavoth", elo: 5.1},
+        {name: "CounterIntelligence", elo: 2.4},
+        {name: "20 Ways", elo: 3.2},
+        {name: "Caesar", elo: 5},
+        {name: "Tricky Terrain", elo: 6.3},
+        {name: "Timeywimey", elo: 3.1},
+        {name: "Eternal Might", elo: 2.1},
+        {name: "Riders of Rohan", elo: 4.1},
+        {name: "Breeders", elo: 4.6},
+    ]
     var mainTable = new Tabulator("#testTable", {autoColumns:true});
 
     document.addEventListener("DOMContentLoaded", function() {
@@ -364,7 +471,39 @@ app.get("/charts", (req, res) => {
           turbod: turbodCount
         })
       }
-      
+    }
+
+    function showDeckStats() {
+      //temporary elo values. will be removed when database is big enough
+      //or when all decks are eventually added
+
+      for (deck of decktable){
+        
+        deckElo = 0
+        playingInstances = instanceTable.filter(obj => obj.DeckName === deck.name)
+        for (instance of playingInstances) {
+          const response = await fetch("/api/"+instance.instanceID+"/game-opponents");
+          gameOpponents = await response.json();
+          eloGain = 10;
+          for (opponents of gameOpponents) {
+            eloFetch = rawDeckElo.find(obj => obj.name === opponents.DeckName);
+            eloGain = eloGain + eloFetch.elo;
+          }
+          deckElo = deckElo + eloGain
+        }
+        console.log("Deck: "+deck.DeckName+", Elo:"+deckElo)
+
+
+      }
+
+      mainTable.setColumns([
+        {title: "Name", field: "name"},
+        {title: "Games Played", field: "gameNumber"},
+        {title: "Creator", field: "deckCreator"},
+        {title: "Win rate", field: "winrate"},
+        {title: "Theoretical Elo", field: "rawElo"},
+        {title: "Elo Ranking", field: "elo"},
+      ])
     }
 
     </script>
