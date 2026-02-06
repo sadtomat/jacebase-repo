@@ -500,7 +500,7 @@ app.get("/charts", (req, res) => {
         deckElo = 0
         playingInstances = instanceTable.filter(obj => obj.DeckName === deck.name)
         for (instance of playingInstances) {
-          gameOpponents = await pullGameOpponents(instance.instanceID);
+          gameOpponents = pullGameOpponents(instance.instanceID);
           eloGain = 10;
           for (opponents of gameOpponents) {
             eloFetch = {name: "", elo: 4.3};
