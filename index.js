@@ -512,7 +512,7 @@ app.get("/charts", (req, res) => {
                 let eloVal = eloFetch.elo;
                 eloGain = eloGain + eloVal;
               }else{
-                console.log("Missing deck in ELO listing: "+gameOpponent.DeckName);
+                console.log("Missing deck in ELO listing: "+opponent.DeckName);
               }
             }
             deckElo = deckElo + eloGain
