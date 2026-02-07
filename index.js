@@ -530,7 +530,6 @@ app.get("/charts", (req, res) => {
             for (opponents of gameOpponents) {
               eloFetch = rawDeckElo.find(obj => obj.name === opponents.DeckName);
               if (eloFetch){
-                console.log(typeof eloFetch.elo);
                 let eloVal = eloFetch.elo;
                 eloGain = eloGain + eloVal;
               }else{
@@ -550,6 +549,7 @@ app.get("/charts", (req, res) => {
         rawElo = rawDeckElo.find(obj => obj.name === deck.name);
         if (!rawElo){
           rawElo = {name: "", elo: 4.3};
+          console.log("Missing deck in ELO listing: "+deck.name);
         }
 
         mainTable.addData({
