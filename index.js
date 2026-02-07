@@ -556,7 +556,7 @@ app.get("/charts", (req, res) => {
 
         mainTable.addData({
           name: deck.name,
-          gameNumber: playeringInstances.length,
+          gameNumber: playingInstances.length,
           deckCreator: creator.name,
           winrate: winRate,
           rawElo: rawElo,
