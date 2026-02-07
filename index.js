@@ -497,7 +497,7 @@ app.get("/charts", (req, res) => {
       
       for (deck of deckTable){
         
-        deckElo = 0
+        let deckElo = 0
         playingInstances = instanceTable.filter(obj => obj.DeckName === deck.name)
         for (instance of playingInstances) {
           const gameOpponents = await pullGameOpponents(instance.instanceID);
@@ -508,9 +508,7 @@ app.get("/charts", (req, res) => {
               console.log(typeof eloFetch.elo);
               let eloVal = eloFetch.elo;
               eloGain = eloGain + eloVal;
-              console.log("FOUND: "+eloFetch.name);
             }else{
-              console.warn("NOT FOUND");
             }
           }
           deckElo = deckElo + eloGain
