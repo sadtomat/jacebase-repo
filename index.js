@@ -517,10 +517,10 @@ app.get("/charts", (req, res) => {
         let turboCount = 0;
         playingInstances = instanceTable.filter(obj => obj.DeckName === deck.name)
         for (instance of playingInstances) {
-          if (t1Sol){
+          if (instance.T1Sol){
             solCount++;
           }
-          if (turbod){
+          if (instance.Turbod){
             turboCount++;
           }
           if (instance.Win){
