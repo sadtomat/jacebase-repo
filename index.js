@@ -546,7 +546,7 @@ app.get("/charts", (req, res) => {
         //public."decktable" ("id","playerid","name","tag","subtag1","subtag2");
         //public."playerInstance" ("instanceID", "gameID_gameTables", "PlayerName", "DeckName", "Win", "T1Sol", "TurnOrderPos", "Scoop", "Turbod", "EnemyDeck1", "EnemyDeck2");
         //public."gameTables" ("gameID","PlayerCount","Pentagram","date");
-        creator = playerTable.find(obj => obj.id === deck.name);
+        creator = playerTable.find(obj => obj.id === deck.playerid);
         console.log("creator name: "+creator.name);
         winRate = winCount / playingInstances.length;
         console.log("winrate: "+winrate);
