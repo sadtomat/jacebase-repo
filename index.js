@@ -500,17 +500,28 @@ app.get("/charts", (req, res) => {
         deckElo = 0
         playingInstances = instanceTable.filter(obj => obj.DeckName === deck.name)
         for (instance of playingInstances) {
-          gameOpponents = pullGameOpponents(instance.instanceID);
-          eloGain = 10;
-          for (opponents of gameOpponents) {
-            eloFetch = {name: "", elo: 4.3};
-            eloFetch = rawDeckElo.find(obj => obj.name === opponents.DeckName);
+          pullGameOpponents(instance.instanceID).then((opponents) => {
+            eloGain = 10;
+            for (opp of opponents) {
+              eloFetch = {name: "", elo: 4.3};
+              eloFetch = rawDeckElo.find(obj => obj.name === opp.DeckName);
+              //console.log(opponents);
+              console.log(typeof eloFetch.elo);
+              let eloVal = eloFetch.elo;
+              eloGain = eloGain + eloVal;
+            }
+            deckElo = deckElo + eloGain
+          });
+          //eloGain = 10;
+          //for (opponents of gameOpponents) {
+          //  eloFetch = {name: "", elo: 4.3};
+          //  eloFetch = rawDeckElo.find(obj => obj.name === opponents.DeckName);
             //console.log(opponents);
-            console.log(typeof eloFetch.elo);
-            let eloVal = eloFetch.elo;
-            eloGain = eloGain + eloVal;
-          }
-          deckElo = deckElo + eloGain
+          //  console.log(typeof eloFetch.elo);
+          //  let eloVal = eloFetch.elo;
+          //  eloGain = eloGain + eloVal;
+          //}
+          //deckElo = deckElo + eloGain
         }
         console.log("Deck: "+deck.DeckName+", Elo:"+deckElo)
 
