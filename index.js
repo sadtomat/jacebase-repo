@@ -549,7 +549,7 @@ app.get("/charts", (req, res) => {
         creator = playerTable.find(obj => obj.id === deck.playerid);
         console.log("creator name: "+creator.name);
         winRate = winCount / playingInstances.length;
-        console.log("winrate: "+winrate);
+        console.log("winrate: "+winRate);
         rawElo = rawDeckElo.find(obj => obj.name === deck.name);
         console.log("sol ring: "+solCount);
         console.log("turbod: "+turboCount);
