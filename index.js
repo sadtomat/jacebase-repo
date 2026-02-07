@@ -240,11 +240,6 @@ app.get("/charts", (req, res) => {
     <script type="text/javascript" src="https://unpkg.com/tabulator-tables@6.3.1/dist/js/tabulator.min.js"></script>
     <script>
     //const DataTable = require('datatables.net-dt');
-
-    let instanceTable;
-    let gameTable;
-    let playerTable;
-    let deckTable;
     //temporary elo values. will be removed when database is big enough
     //or when all decks are eventually added
     const rawDeckElo = [
@@ -266,6 +261,7 @@ app.get("/charts", (req, res) => {
         {name: "Bears", elo: 6},
         {name: "JohnMarston", elo: 6.1},
         {name: "Diddy", elo: 6.2},
+        {name: "Elementals", elo: 4.3},                         //default
         {name: "Dune", elo: 5.5},         //simon
         {name: "Coinflip", elo: 6.4},
         {name: "Ice Queen", elo: 5.6},
@@ -334,6 +330,12 @@ app.get("/charts", (req, res) => {
         {name: "Riders of Rohan", elo: 4.1},
         {name: "Breeders", elo: 4.6},
     ]
+
+    let instanceTable;
+    let gameTable;
+    let playerTable;
+    let deckTable;
+
     var mainTable = new Tabulator("#testTable", {autoColumns:true});
 
     document.addEventListener("DOMContentLoaded", function() {
@@ -496,13 +498,33 @@ app.get("/charts", (req, res) => {
     async function showDeckStats() {
       //temporary elo values. will be removed when database is big enough
       //or when all decks are eventually added
-      
+      mainTable.setColumns([
+        {title: "Name", field: "name"},
+        {title: "Games Played", field: "gameNumber"},
+        {title: "Deck Creator", field: "deckCreator"},
+        {title: "Win rate", field: "winrate"},
+        {title: "Raw Elo", field: "rawElo"},
+        {title: "Elo", field: "elo"},
+        {title: "Turn 1 Sol Rings", field: "sol"},
+        {title: "Turbo'd/Out First", field: "turbod"},
+      ])
+
       for (deck of deckTable){
         
-        let deckElo = 0
+        let deckElo = 0;
+        let winCount = 0;
+        let solCount = 0;
+        let turboCount = 0;
         playingInstances = instanceTable.filter(obj => obj.DeckName === deck.name)
         for (instance of playingInstances) {
+          if (T1Sol){
+            solCount++;
+          }
+          if (Turbod){
+            turboCount++;
+          }
           if (instance.Win){
+            winCount++;
             const gameOpponents = await pullGameOpponents(instance.instanceID);
             eloGain = 10;
             for (opponents of gameOpponents) {
@@ -519,19 +541,31 @@ app.get("/charts", (req, res) => {
           }
         }
         deckElo = deckElo/playingInstances.length;
-        console.log("Deck: "+deck.name+", Elo:"+deckElo)
+        console.log("Deck: "+deck.name+", Elo:"+deckElo);
+        //public."playertable" ("id","name");
+        //public."decktable" ("id","playerid","name","tag","subtag1","subtag2");
+        //public."playerInstance" ("instanceID", "gameID_gameTables", "PlayerName", "DeckName", "Win", "T1Sol", "TurnOrderPos", "Scoop", "Turbod", "EnemyDeck1", "EnemyDeck2");
+        //public."gameTables" ("gameID","PlayerCount","Pentagram","date");
+        creator = playerTable.find(obj => obj.id === deck.name);
+        console.log("creator name: "+creator.name);
+        winRate = winCount / playingInstances.length;
+        console.log("winrate: "+winrate);
+        rawElo = rawDeckElo.find(obj => obj.name === deck.name);
+        console.log("sol ring: "+solCount);
+        console.log("turbod: "+turboCount);
 
+        mainTable.addData({
+          name: deck.name,
+          gameNumber: playeringInstances.length,
+          deckCreator: creator.name,
+          winrate: winRate,
+          rawElo: rawElo,
+          elo: deckElo,
+          sol: solCount,
+          turbod: turboCount,
+        })
 
       }
-
-      mainTable.setColumns([
-        {title: "Name", field: "name"},
-        {title: "Games Played", field: "gameNumber"},
-        {title: "Creator", field: "deckCreator"},
-        {title: "Win rate", field: "winrate"},
-        {title: "Theoretical Elo", field: "rawElo"},
-        {title: "Elo Ranking", field: "elo"},
-      ])
     }
 
     </script>
