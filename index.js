@@ -502,19 +502,23 @@ app.get("/charts", (req, res) => {
         let deckElo = 0
         playingInstances = instanceTable.filter(obj => obj.DeckName === deck.name)
         for (instance of playingInstances) {
-          const gameOpponents = await pullGameOpponents(instance.instanceID);
-          eloGain = 10;
-          for (opponents of gameOpponents) {
-            eloFetch = rawDeckElo.find(obj => obj.name === opponents.DeckName);
-            if (eloFetch){
-              console.log(typeof eloFetch.elo);
-              let eloVal = eloFetch.elo;
-              eloGain = eloGain + eloVal;
-            }else{
+          if (playingInstance.Win){
+            const gameOpponents = await pullGameOpponents(instance.instanceID);
+            eloGain = 10;
+            for (opponents of gameOpponents) {
+              eloFetch = rawDeckElo.find(obj => obj.name === opponents.DeckName);
+              if (eloFetch){
+                console.log(typeof eloFetch.elo);
+                let eloVal = eloFetch.elo;
+                eloGain = eloGain + eloVal;
+              }else{
+                console.log("Missing deck in ELO listing: "+gameOpponent.DeckName);
+              }
             }
           }
           deckElo = deckElo + eloGain
         }
+        deckElo = deckElo/playingInstances.length;
         console.log("Deck: "+deck.DeckName+", Elo:"+deckElo)
 
 
