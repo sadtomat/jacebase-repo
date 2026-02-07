@@ -519,7 +519,7 @@ app.get("/charts", (req, res) => {
           }
         }
         deckElo = deckElo/playingInstances.length;
-        console.log("Deck: "+deck.DeckName+", Elo:"+deckElo)
+        console.log("Deck: "+deck.name+", Elo:"+deckElo)
 
 
       }
