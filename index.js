@@ -548,6 +548,9 @@ app.get("/charts", (req, res) => {
         creator = playerTable.find(obj => obj.id === deck.playerid);
         winRate = winCount / playingInstances.length;
         rawElo = rawDeckElo.find(obj => obj.name === deck.name);
+        if (!rawElo){
+          rawElo = {name: "", elo: 4.3};
+        }
 
         mainTable.addData({
           name: deck.name,
