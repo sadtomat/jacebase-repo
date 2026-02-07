@@ -541,25 +541,20 @@ app.get("/charts", (req, res) => {
           }
         }
         deckElo = deckElo/playingInstances.length;
-        console.log("Deck: "+deck.name+", Elo:"+deckElo);
         //public."playertable" ("id","name");
         //public."decktable" ("id","playerid","name","tag","subtag1","subtag2");
         //public."playerInstance" ("instanceID", "gameID_gameTables", "PlayerName", "DeckName", "Win", "T1Sol", "TurnOrderPos", "Scoop", "Turbod", "EnemyDeck1", "EnemyDeck2");
         //public."gameTables" ("gameID","PlayerCount","Pentagram","date");
         creator = playerTable.find(obj => obj.id === deck.playerid);
-        console.log("creator name: "+creator.name);
         winRate = winCount / playingInstances.length;
-        console.log("winrate: "+winRate);
         rawElo = rawDeckElo.find(obj => obj.name === deck.name);
-        console.log("sol ring: "+solCount);
-        console.log("turbod: "+turboCount);
 
         mainTable.addData({
           name: deck.name,
           gameNumber: playingInstances.length,
           deckCreator: creator.name,
           winrate: winRate,
-          rawElo: rawElo,
+          rawElo: rawElo.elo,
           elo: deckElo,
           sol: solCount,
           turbod: turboCount,
