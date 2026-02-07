@@ -272,6 +272,7 @@ app.get("/charts", (req, res) => {
         {name: "Clue", elo: 5.1},
         {name: "Eggman", elo: 4.8},
         {name: "Squirells", elo: 6.8},
+        {name: "Roku", elo: 4.3},                               //default
         {name: "Swords", elo: 6.4},      //ian
         {name: "Marchessa", elo: 6.7},
         {name: "Guff", elo: 6.6},
@@ -310,6 +311,7 @@ app.get("/charts", (req, res) => {
         {name: "Bombadill", elo: 5.8},
         {name: "Assassins", elo: 5.9},
         {name: "Defenders", elo: 5.7},
+        {name: "Giants", elo: 4.3},                             //default
         {name: "Rats", elo: 5.1},          //tennant
         {name: "Chudbots", elo: 6.8},
         {name: "Drawtodeath", elo: 6.2},
