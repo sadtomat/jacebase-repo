@@ -219,7 +219,7 @@ app.get("/charts", (req, res) => {
   const content = /*html*/`<div>
     <h1>Visualizer Page</h1>
     <div>
-      <div style="gap: 20px;"  id="controlsBox">
+      <div style="gap: 20px; display: flex"  id="controlsBox">
         <p>Select Table:</p>
         <select name="Table Select" id="tableSelect">
           <option value="rawPlayer">Raw Player Instances</option>
@@ -370,7 +370,12 @@ app.get("/charts", (req, res) => {
       } else if (boxValue === "posStats"){
         positionalWinrate();
       } else if (boxValue === "indvPlayerStats"){
-        console.log(document.getElementById("playerChoose").value);
+        playerValue = document.getElementById("playerChoose").value;
+        if (playerValue === "N/A"){
+          console.log("select player");
+        }else{
+          showIndividualPlayerStats(playerValue);
+        }
       }
     });
 
@@ -381,7 +386,7 @@ app.get("/charts", (req, res) => {
         playerBox.options.length = 0;
         for (player of playerTable) {
           let option = document.createElement("option");
-          option.value = player.id;
+          option.value = player.name;
           option.text = player.name;
           playerBox.add(option);
         }
@@ -569,10 +574,6 @@ app.get("/charts", (req, res) => {
           }
         }
         deckElo = deckElo/playingInstances.length;
-        //public."playertable" ("id","name");
-        //public."decktable" ("id","playerid","name","tag","subtag1","subtag2");
-        //public."playerInstance" ("instanceID", "gameID_gameTables", "PlayerName", "DeckName", "Win", "T1Sol", "TurnOrderPos", "Scoop", "Turbod", "EnemyDeck1", "EnemyDeck2");
-        //public."gameTables" ("gameID","PlayerCount","Pentagram","date");
         creator = playerTable.find(obj => obj.id === deck.playerid);
         winRate = (winCount / playingInstances.length) * 100;
         rawElo = rawDeckElo.find(obj => obj.name === deck.name);
@@ -705,7 +706,61 @@ app.get("/charts", (req, res) => {
           winrateSol: winrateSol,
         })
       }
-
+    }
+    //public."playertable" ("id","name");
+    //public."decktable" ("id","playerid","name","tag","subtag1","subtag2");
+    //public."playerInstance" ("instanceID", "gameID_gameTables", "PlayerName", "DeckName", "Win", "T1Sol", "TurnOrderPos", "Scoop", "Turbod", "EnemyDeck1", "EnemyDeck2");
+    //public."gameTables" ("gameID","PlayerCount","Pentagram","date");
+    async function showIndividualPlayerStats(playerName) {
+      mainTable.setColumns([
+        {title: "Opponent", field: "name"},
+        {title: "Number of Games Against", field: "games"},
+        {title: "Your Winrate", field: "yourWinrate"},
+        {title: "Their Winrate", field: "theirWinrate"},
+      ])
+      
+      let statsTracker;
+      for (player of playerTable){
+        object = {
+          name: player.name,
+          games: 0,
+          wins: 0,
+          theyWon: 0,
+        }
+        statsTracker.push(object)
+      }
+      playedInstances = instanceTable.find(obj => obj.PlayerName === playerName)
+      if (playedInstances === undefined){
+        console.log("name: "+playerName+" has no games logged");
+        return;
+      }
+      for (instance of playedInstances){
+        const gameOpponents = await pullGameOpponents(instance.instanceID);
+        iWon = false;
+        if (instance.Win){
+          iWon = true;
+        }
+        for (opponents of gameOpponents){
+          tracker = statsTracker.find(obj => obj.name === opponents.PlayerName);
+          tracker.games++;
+          if (opponents.Win){
+            tracker.theyWon++;
+          }
+          if (iWon){
+            tracker.wins++;
+          }
+        }
+      }
+      for (stats of statsTracker){
+        yWinrate = (stats.wins/stats.games)*100
+        tWinrate = (stats.theyWon/stats.games)*100
+        mainTable.addData({
+          name: stats.name,
+          games: stats.games,
+          yourWinrate: yWinrate,
+          theirWinrate: tWinrate,
+        })
+      }
     }
 
     </script>
