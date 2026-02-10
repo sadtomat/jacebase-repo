@@ -606,7 +606,7 @@ app.get("/charts", (req, res) => {
         tagListing.deckNum++;
       }
 
-      for (tag of taglist){
+      for (tag of tagList){
         winrate = (tag.winNum / tag.playNum) * 100
         playrate = (tag.playNum / instanceTable.length) * 100
         turborate = (tag.turbodNum / tag.playNum) * 100
