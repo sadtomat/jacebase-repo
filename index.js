@@ -719,7 +719,7 @@ app.get("/charts", (req, res) => {
         {title: "Their Winrate", field: "theirWinrate"},
       ])
       
-      let statsTracker;
+      let statsTracker = [];
       for (player of playerTable){
         object = {
           name: player.name,
