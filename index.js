@@ -589,11 +589,8 @@ app.get("/charts", (req, res) => {
           {name: "Hug", deckNum: 0, playNum: 0, winNum: 0, turbodNum: 0},
           {name: "Slug", deckNum: 0, playNum: 0, winNum: 0, turbodNum: 0},
       ];
-      console.log(instanceTable)
-      for (instance in instanceTable){
-        console.log(instance.DeckName)
+      for (instance of instanceTable){
         deckItem = deckTable.find(obj => obj.name === instance.DeckName);
-        console.log(deckItem)
         tagListing = tagList.find(obj => obj.name === deckItem.tag);
         tagListing.playNum++;
         if (instance.Win){
