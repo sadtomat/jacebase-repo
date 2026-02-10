@@ -232,9 +232,9 @@ app.get("/charts", (req, res) => {
           <option value="posStats">Positional Stats</option>
           <option value="indvPlayerStats">Individual Player Stats</option>
         </select>
-        <div style="display: none" id="playerChooseBox">
-          <select id="playerChoose">
-            <option value="N/A">Select Player</option>
+        <div style="display: none" id="secondaryChooseBox">
+          <select id="secondaryChoose">
+            <option value="N/A">Select</option>
           </select>
         </div>
         <button id="loadDataButton">Load Data</button>
@@ -370,11 +370,18 @@ app.get("/charts", (req, res) => {
       } else if (boxValue === "posStats"){
         positionalWinrate();
       } else if (boxValue === "indvPlayerStats"){
-        playerValue = document.getElementById("playerChoose").value;
+        playerValue = document.getElementById("secondaryChoose").value;
         if (playerValue === "N/A"){
           console.log("select player");
         }else{
           showIndividualPlayerStats(playerValue);
+        }
+      }else if (boxValue === "indvDeckStats"){
+        deckValue = document.getElementById("secondaryChoose").value;
+        if (deckValue === "N/A"){
+          console.log("select deck");
+        }else{
+          showIndividualDeckStats(deckValue);
         }
       }
     });
@@ -382,7 +389,7 @@ app.get("/charts", (req, res) => {
     document.getElementById("tableSelect").addEventListener("change", function() {
       boxValue = document.getElementById("tableSelect").value;
       if (boxValue === "indvPlayerStats"){
-        var playerBox = document.getElementById("playerChoose");
+        var playerBox = document.getElementById("secondaryChoose");
         playerBox.options.length = 0;
         for (player of playerTable) {
           let option = document.createElement("option");
@@ -390,9 +397,19 @@ app.get("/charts", (req, res) => {
           option.text = player.name;
           playerBox.add(option);
         }
-        document.getElementById("playerChooseBox").style.display = "flex";
+        document.getElementById("secondaryChooseBox").style.display = "flex";
+      }else if (boxValue === "indvDeckStats"){
+        var deckBox = document.getElementById("secondaryChoose");
+        deckBox.options.length = 0;
+        for (deck of deckTable){
+          let option = document.createElement("option");
+          option.value = deck.name;
+          option.text = deck.name;
+          deckBox.add(option);
+        }
+        document.getElementById("secondaryChooseBox").style.display = "flex";
       }else{
-        document.getElementById("playerChooseBox").style.display = "none";
+        document.getElementById("secondayChooseBox").style.display = "none";
       }
     });
 
@@ -772,6 +789,66 @@ app.get("/charts", (req, res) => {
         })
       }
     }
+
+    async function showIndividualDeckStats(deckName){
+      mainTable.setColumns([
+        {title: "Enemy Deck", field: "name"},
+        {title: "Number of Games Against", field: "games"},
+        {title: "Your Winrate", field: "yourWinrate"},
+        {title: "Their Winrate", field: "theirWinrate"},
+      ])
+      
+      let statsTracker = [];
+      for (deck of deckTable){
+        if (deck.name === deckName){
+          continue;
+        }
+        object = {
+          name: deck.name,
+          games: 0,
+          wins: 0,
+          theyWon: 0,
+        }
+        statsTracker.push(object)
+      }
+      playedInstances = instanceTable.filter(obj => obj.DeckName === deckName)
+      if (playedInstances === undefined){
+        console.log("name: "+deckGame+" has no games logged");
+        return;
+      }
+      for (instance of playedInstances){
+        const gameOpponents = await pullGameOpponents(instance.instanceID);
+        iWon = false;
+        if (instance.Win){
+          iWon = true;
+        }
+        for (opponents of gameOpponents){
+          tracker = statsTracker.find(obj => obj.name === opponents.DeckName);
+          tracker.games++;
+          if (opponents.Win){
+            tracker.theyWon++;
+          }
+          if (iWon){
+            tracker.wins++;
+          }
+        }
+      }
+      for (stats of statsTracker){
+        if (stats.games === 0){
+          yWinrate = 0;
+          tWinrate = 0;
+        }else {
+          yWinrate = (stats.wins/stats.games)*100
+          tWinrate = (stats.theyWon/stats.games)*100
+        }
+        mainTable.addData({
+          name: stats.name,
+          games: stats.games,
+          yourWinrate: yWinrate,
+          theirWinrate: tWinrate,
+        })
+      }
+    };
 
     </script>
   </div>`
