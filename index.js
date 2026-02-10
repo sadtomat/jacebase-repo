@@ -729,7 +729,7 @@ app.get("/charts", (req, res) => {
         }
         statsTracker.push(object)
       }
-      playedInstances = instanceTable.find(obj => obj.PlayerName === playerName)
+      playedInstances = instanceTable.filter(obj => obj.PlayerName === playerName)
       if (playedInstances === undefined){
         console.log("name: "+playerName+" has no games logged");
         return;
