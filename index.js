@@ -318,7 +318,7 @@ app.get("/charts", (req, res) => {
         {name: "Defenders", elo: 5.7},
         {name: "Giants", elo: 4.3},                             //default
         {name: "Rats", elo: 5.1},          //tennant
-        {name: "Chudbots", elo: 6.8},
+        {name: "Droids", elo: 6.8},
         {name: "Drawtodeath", elo: 6.2},
         {name: "Necrons", elo: 5.9},
         {name: "Evil Valgavoth", elo: 6.4},
