@@ -591,6 +591,7 @@ app.get("/charts", (req, res) => {
       ];
 
       for (instance in instanceTable){
+        console.log(instance)
         deckItem = deckTable.find(obj => obj.name === instance.DeckName);
         console.log(deckItem)
         tagListing = tagList.find(obj => obj.name === deckItem.tag);
