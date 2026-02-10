@@ -569,7 +569,7 @@ app.get("/charts", (req, res) => {
       }
     }
 
-    function showArcetypeStats {
+    function showArcetypeStats() {
       mainTable.setColumns([
         {title: "Archetype Name", field: "name"},
         {title: "Number of Decks", field: "deckNum"},
