@@ -667,7 +667,7 @@ app.get("/charts", (req, res) => {
       for (pos of posList){
         
         winrate = (pos.wins/pos.games) * 100
-        if (sol === 0){
+        if (pos.sol === 0){
           winrateSol = 0;
         }else {
           winrateSol = (pos.solWins/pos.sol) * 100
