@@ -385,6 +385,7 @@ app.get("/charts", (req, res) => {
           option.text = player.name;
           playerBox.add(option);
         }
+        document.getElementById("playerChooseBox").style.display = "flex";
       }
     });
 
