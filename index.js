@@ -231,6 +231,7 @@ app.get("/charts", (req, res) => {
           <option value="archStats">Archetype Stats</option>
           <option value="posStats">Positional Stats</option>
           <option value="indvPlayerStats">Individual Player Stats</option>
+          <option value="indvDeckStats">Individual Deck Stats</option>
         </select>
         <div style="display: none" id="secondaryChooseBox">
           <select id="secondaryChoose">
