@@ -618,8 +618,66 @@ app.get("/charts", (req, res) => {
           turbodPercent: turborate,
         })
       }
-      
-      
+    }
+
+    function positionalWinrate() {
+      mainTable.setColumns([
+        {title: "Position, by Game Size", field: "name"},
+        {title: "Number of Games", field: "games"},
+        {title: "Winrate", field: "winrate"},
+        {title: "Winrate with T1 Sol", field: "winrateSol"},
+      ])
+
+      let posList =[
+          {name: "1/3", wins: 0, games: 0, sol: 0, solWins: 0},
+          {name: "2/3", wins: 0, games: 0, sol: 0, solWins: 0},
+          {name: "3/3", wins: 0, games: 0, sol: 0, solWins: 0},
+          {name: "1/4", wins: 0, games: 0, sol: 0, solWins: 0},
+          {name: "2/4", wins: 0, games: 0, sol: 0, solWins: 0},
+          {name: "3/4", wins: 0, games: 0, sol: 0, solWins: 0},
+          {name: "4/4", wins: 0, games: 0, sol: 0, solWins: 0},
+          {name: "1/5", wins: 0, games: 0, sol: 0, solWins: 0},
+          {name: "2/5", wins: 0, games: 0, sol: 0, solWins: 0},
+          {name: "3/5", wins: 0, games: 0, sol: 0, solWins: 0},
+          {name: "4/5", wins: 0, games: 0, sol: 0, solWins: 0},
+          {name: "5/5", wins: 0, games: 0, sol: 0, solWins: 0},
+      ];
+
+      for (instance of instanceTable){
+        gameInstance = gameTable.find(obj => obj.gameID === instance.gameID_gameTables);
+        key = String(instance.TurnOrderPos)+"/"+String(gameInstance.PlayerCount);
+        posListing = posList.find(obj => obj.name === key)
+        posListing.games++;
+        if (posListing.T1Sol){
+          posListing.sol++;
+          if (posListing.Win){
+            posListing.solWins++;
+            posListing.wins++;
+          }
+        }else{
+          if (posListing.Win){
+            posListing.wins++;
+          }
+        }
+      }
+
+      for (pos of posList){
+        
+        winrate = (pos.wins/pos.games) * 100
+        if (sol === 0){
+          winrateSol = 0;
+        }else {
+          winrateSol = (pos.solWins/pos.sol) * 100
+        }
+
+        mainTable.addData({
+          name: pos.name,
+          games: pos.games,
+          winrate: winrate,
+          winrateSol: winrateSol,
+        })
+      }
+
     }
 
     </script>
