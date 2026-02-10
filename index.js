@@ -228,6 +228,7 @@ app.get("/charts", (req, res) => {
           <option value="rawInstances">Raw Instances of Games</option>
           <option value="playerStats">Player Stats</option>
           <option value="deckStats">Deck Stats</option>
+          <option value="archStats">Archetype Stats</option>
         </select>
         <button id="loadDataButton">Load Data</button>
       </div>
@@ -357,6 +358,8 @@ app.get("/charts", (req, res) => {
         showPlayerStats();
       } else if (boxValue === "deckStats"){
         showDeckStats();
+      } else if (boxValue === "archStats"){
+        showArcetypeStats();
       }
     });
 
@@ -564,6 +567,60 @@ app.get("/charts", (req, res) => {
         })
 
       }
+    }
+
+    function showArcetypeStats {
+      mainTable.setColumns([
+        {title: "Archetype Name", field: "name"},
+        {title: "Number of Decks", field: "deckNum"},
+        {title: "Play Rate", field: "playPercent"},
+        {title: "Win Rate", field: "winPercent"},
+        {title: "Turbo'd Rate", field: "turbodPercent"},
+
+      ])
+
+      let tagList =[
+          {name: "Aggro", deckNum: 0, playNum: 0, winNum: 0, turbodNum: 0},
+          {name: "Control", deckNum: 0, playNum: 0, winNum: 0, turbodNum: 0},
+          {name: "Combo", deckNum: 0, playNum: 0, winNum: 0, turbodNum: 0},
+          {name: "Midrange", deckNum: 0, playNum: 0, winNum: 0, turbodNum: 0},
+          {name: "Chaos", deckNum: 0, playNum: 0, winNum: 0, turbodNum: 0},
+          {name: "Stax", deckNum: 0, playNum: 0, winNum: 0, turbodNum: 0},
+          {name: "Hug", deckNum: 0, playNum: 0, winNum: 0, turbodNum: 0},
+          {name: "Slug", deckNum: 0, playNum: 0, winNum: 0, turbodNum: 0},
+      ];
+
+      for (instance in instanceTable){
+        deckItem = deckTable.find(obj => obj.name === instance.DeckName);
+        tagListing = tagList.find(obj => obj.name === deckItem.tag);
+        tagListing.playNum++;
+        if (instance.Win){
+          tagListing.winNum++;
+        }
+        if (instance.Turbod){
+          tagListing.turbodNum++;
+        }
+      }
+
+      for (deck in deckTable){
+        tagListing = tagList.find(obj => obj.name === deck.tag);
+        tagListing.deckNum++;
+      }
+
+      for (tag in taglist){
+        winrate = (tag.winNum / tag.playNum) * 100
+        playrate = (tag.playNum / instanceTable.length) * 100
+        turborate = (tag.turbodNum / tag.playNum) * 100
+        mainTable.addData({
+          name: tag.name,
+          deckNum: tag.deckNum,
+          playPercent: playrate,
+          winPercent: winrate,
+          turbodPercent: turborate,
+        })
+      }
+      
+      
     }
 
     </script>
