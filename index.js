@@ -649,7 +649,8 @@ app.get("/charts", (req, res) => {
       for (instance of instanceTable){
         gameInstance = gameTable.find(obj => obj.gameID === instance.gameID_gameTables);
         key = String(instance.TurnOrderPos)+"/"+String(gameInstance.PlayerCount);
-        posListing = posList.find(obj => obj.name === key)
+        posListing = posList.find(obj => obj.name === key);
+        console.log(posListing);
         posListing.games++;
         if (posListing.T1Sol){
           posListing.sol++;
