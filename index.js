@@ -601,12 +601,12 @@ app.get("/charts", (req, res) => {
         }
       }
 
-      for (deck in deckTable){
+      for (deck of deckTable){
         tagListing = tagList.find(obj => obj.name === deck.tag);
         tagListing.deckNum++;
       }
 
-      for (tag in taglist){
+      for (tag of taglist){
         winrate = (tag.winNum / tag.playNum) * 100
         playrate = (tag.playNum / instanceTable.length) * 100
         turborate = (tag.turbodNum / tag.playNum) * 100
