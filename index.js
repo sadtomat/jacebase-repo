@@ -721,6 +721,9 @@ app.get("/charts", (req, res) => {
       
       let statsTracker = [];
       for (player of playerTable){
+        if (player.name === playerName){
+          continue;
+        }
         object = {
           name: player.name,
           games: 0,
@@ -752,8 +755,13 @@ app.get("/charts", (req, res) => {
         }
       }
       for (stats of statsTracker){
-        yWinrate = (stats.wins/stats.games)*100
-        tWinrate = (stats.theyWon/stats.games)*100
+        if (stats.games === 0){
+          yWinrate = 0;
+          tWinrate = 0;
+        }else {
+          yWinrate = (stats.wins/stats.games)*100
+          tWinrate = (stats.theyWon/stats.games)*100
+        }
         mainTable.addData({
           name: stats.name,
           games: stats.games,
