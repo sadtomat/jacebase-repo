@@ -232,8 +232,8 @@ app.get("/charts", (req, res) => {
           <option value="posStats">Positional Stats</option>
           <option value="indvPlayerStats">Individual Player Stats</option>
         </select>
-        <div style="display: none" id="playerChoose">
-          <select>
+        <div style="display: none" id="playerChooseBox">
+          <select id="playerChoose">
             <option value="N/A">Select Player</option>
           </select>
         </div>
@@ -378,6 +378,7 @@ app.get("/charts", (req, res) => {
       boxValue = document.getElementById("tableSelect").value;
       if (boxValue === "indvPlayerStats"){
         var playerBox = document.getElementById("playerChoose");
+        playerBox.options.length = 0;
         for (player of playerTable) {
           let option = document.createElement("option");
           option.value = player.id;
