@@ -230,7 +230,13 @@ app.get("/charts", (req, res) => {
           <option value="deckStats">Deck Stats</option>
           <option value="archStats">Archetype Stats</option>
           <option value="posStats">Positional Stats</option>
+          <option value="indvPlayerStats">Individual Player Stats</option>
         </select>
+        <div style="display: none" id="playerChoose">
+          <select>
+            <option value="N/A">Select Player</option>
+          </select>
+        </div>
         <button id="loadDataButton">Load Data</button>
       </div>
 
@@ -363,6 +369,22 @@ app.get("/charts", (req, res) => {
         showArcetypeStats();
       } else if (boxValue === "posStats"){
         positionalWinrate();
+      } else if (boxValue === "indvPlayerStats"){
+        console.log(document.getElementById("playerChoose").value);
+      }
+    });
+
+    document.getElementById("tableSelect").addEventListener("change", function() {
+      boxValue = document.getElementById("tableSelect").value;
+      if (boxValue === "indvPlayerStats"){
+        var playerBox = document.getElementById("playerChoose");
+        playerBox.options.length = 0;
+        for (player of playerTable) {
+          let option = document.createElement("option");
+          option.value = player.id;
+          option.text = player.name;
+          playerBox.add(option);
+        }
       }
     });
 
@@ -477,7 +499,7 @@ app.get("/charts", (req, res) => {
             turbodCount++;
           }
         }
-        winRate = winNumber / gameNumber;
+        winRate = (winNumber / gameNumber) * 100;
         mainTable.addData({
           name: player.name,
           gameNumber: gameNumber,
@@ -551,7 +573,7 @@ app.get("/charts", (req, res) => {
         //public."playerInstance" ("instanceID", "gameID_gameTables", "PlayerName", "DeckName", "Win", "T1Sol", "TurnOrderPos", "Scoop", "Turbod", "EnemyDeck1", "EnemyDeck2");
         //public."gameTables" ("gameID","PlayerCount","Pentagram","date");
         creator = playerTable.find(obj => obj.id === deck.playerid);
-        winRate = winCount / playingInstances.length;
+        winRate = (winCount / playingInstances.length) * 100;
         rawElo = rawDeckElo.find(obj => obj.name === deck.name);
         if (!rawElo){
           rawElo = {name: "", elo: 4.3};
@@ -651,7 +673,6 @@ app.get("/charts", (req, res) => {
         gameInstance = gameTable.find(obj => obj.gameID === instance.gameID_gameTables);
         key = String(instance.TurnOrderPos)+"/"+String(gameInstance.PlayerCount);
         posListing = posList.find(obj => obj.name === key);
-        console.log(posListing);
         posListing.games++;
         if (instance.T1Sol){
           posListing.sol++;
