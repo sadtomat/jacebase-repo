@@ -229,6 +229,7 @@ app.get("/charts", (req, res) => {
           <option value="playerStats">Player Stats</option>
           <option value="deckStats">Deck Stats</option>
           <option value="archStats">Archetype Stats</option>
+          <option value="posStats">Positional Stats</option>
         </select>
         <button id="loadDataButton">Load Data</button>
       </div>
@@ -360,6 +361,8 @@ app.get("/charts", (req, res) => {
         showDeckStats();
       } else if (boxValue === "archStats"){
         showArcetypeStats();
+      } else if (boxValue === "posStats"){
+        positionalWinrate();
       }
     });
 
