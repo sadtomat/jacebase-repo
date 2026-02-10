@@ -652,14 +652,14 @@ app.get("/charts", (req, res) => {
         posListing = posList.find(obj => obj.name === key);
         console.log(posListing);
         posListing.games++;
-        if (posListing.T1Sol){
+        if (instance.T1Sol){
           posListing.sol++;
-          if (posListing.Win){
+          if (instance.Win){
             posListing.solWins++;
             posListing.wins++;
           }
         }else{
-          if (posListing.Win){
+          if (instance.Win){
             posListing.wins++;
           }
         }
