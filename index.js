@@ -378,7 +378,6 @@ app.get("/charts", (req, res) => {
       boxValue = document.getElementById("tableSelect").value;
       if (boxValue === "indvPlayerStats"){
         var playerBox = document.getElementById("playerChoose");
-        playerBox.options.length = 0;
         for (player of playerTable) {
           let option = document.createElement("option");
           option.value = player.id;
