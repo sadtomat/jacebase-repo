@@ -391,6 +391,8 @@ app.get("/charts", (req, res) => {
           playerBox.add(option);
         }
         document.getElementById("playerChooseBox").style.display = "flex";
+      }else{
+        document.getElementById("playerChooseBox").style.display = "none";
       }
     });
 
