@@ -628,6 +628,7 @@ app.get("/charts", (req, res) => {
         {title: "Position, by Game Size", field: "name"},
         {title: "Number of Games", field: "games"},
         {title: "Winrate", field: "winrate"},
+        {title: "Games with a T1 Sol", field: "t1solgames"},
         {title: "Winrate with T1 Sol", field: "winrateSol"},
       ])
 
@@ -678,6 +679,7 @@ app.get("/charts", (req, res) => {
           name: pos.name,
           games: pos.games,
           winrate: winrate,
+          t1solgames: pos.sol,
           winrateSol: winrateSol,
         })
       }
