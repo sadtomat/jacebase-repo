@@ -589,6 +589,7 @@ app.get("/charts", (req, res) => {
           {name: "Hug", deckNum: 0, playNum: 0, winNum: 0, turbodNum: 0},
           {name: "Slug", deckNum: 0, playNum: 0, winNum: 0, turbodNum: 0},
       ];
+      console.log(instanceTable)
       for (instance in instanceTable){
         console.log(instance.DeckName)
         deckItem = deckTable.find(obj => obj.name === instance.DeckName);
