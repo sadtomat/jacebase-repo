@@ -410,7 +410,7 @@ app.get("/charts", (req, res) => {
         }
         document.getElementById("secondaryChooseBox").style.display = "flex";
       }else{
-        document.getElementById("secondayChooseBox").style.display = "none";
+        document.getElementById("secondaryChooseBox").style.display = "none";
       }
     });
 
