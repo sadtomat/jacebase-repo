@@ -145,7 +145,7 @@ app.get("/", (req, res) => {
       event.preventDefault();
       username = document.getElementById("uname").value;
       password = document.getElementById("pword").value;
-      const response = await fetch('/api/set-login' {
+      const response = await fetch('/api/set-login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
