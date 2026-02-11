@@ -17,7 +17,7 @@ function testFunction() {
     document.getElementById("para").style.textAlign = "center";
 }
 
-
+let admin = false;
 
 const dbConfig = {
     host: process.env.DB_HOST || "localhost",
@@ -95,27 +95,62 @@ app.get("/", (req, res) => {
         <input type="text" id="pword" name="pword"><br><br>
         <button type="submit">Submit</button>
     </form>
-    <button type="button" onclick="testFunction()">function</button>
+    <button id="guest" type="submit">Login as Guest</button>
     <p id="answer"></p>
     <script>
-    document.getElementById("upformm").addEventListener("submit", function(event){
-    event.preventDefault();
-    username = document.getElementById("uname").value;
-    password = document.getElementById("pword").value;
-
-    if(username === "admin" && password === "admin"){
-        document.getElementById("answer").innerHTML = "Welcome, admin!";
-        setTimeout(function(){window.location.href = "/home"}, 2000);
-    }else{
-        document.getElementById("answer").innerHTML = "Incorrect username or password.";
-    }
+    let passwordTable;
+    document.addEventListener("DOMContentLoaded", function() {
+      await fetchData();
     });
-    function testFunction() {
-      document.getElementById("para").style.textAlign = "center";
+
+    async function fetchData(){
+      const response1 = await fetch("/api/login-info");
+      passwordTable = await response1.json();
     }
+
+    document.getElementById("upformm").addEventListener("submit", function(event){
+      event.preventDefault();
+      username = document.getElementById("uname").value;
+      password = document.getElementById("pword").value;
+
+      let code = passwordTable.find(obj => obj.id === 1)
+
+      if(username === code.username && password === code.password){
+          document.getElementById("answer").innerHTML = "Welcome, Admin!";
+          admin = true;
+          setTimeout(function(){window.location.href = "/home"}, 2000);
+      }else{
+          document.getElementById("answer").innerHTML = "Incorrect username or password.";
+      }
+    });
+
+    document.getElementById("guest").addEventListener("submit", function(event){
+      admin = false;
+      document.getElementById("answer").innerHTML = "Welcome, Guest!";
+      setTimeout(function(){window.location.href = "/charts"}, 2000);
+    });
+
     </script>
   </div>`;
   res.send(renderPage("Zachariah Friesen Test Website", content));
+});
+
+app.get("/api/login-info", async (req, res) => {
+  const client = new Client(dbConfig);
+  await client.connect();
+
+  try {
+    const query = `
+      SELECT * FROM public."logins"
+    `;
+    const result = await client.query(query);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Database error" });
+  } finally {
+    await client.end();
+  }
 });
 
 app.get("/api/player-instances", async (req, res) => {
@@ -219,6 +254,8 @@ app.get("/charts", (req, res) => {
   const content = /*html*/`<div>
     <h1>Visualizer Page</h1>
     <div>
+      <button id="toHome">Add Games to Database</button>
+      <button id="toMisc">Add Decks and Players to Database</button>
       <div style="gap: 20px; display: flex"  id="controlsBox">
         <p>Select Table:</p>
         <select name="Table Select" id="tableSelect">
@@ -349,6 +386,14 @@ app.get("/charts", (req, res) => {
 
     document.addEventListener("DOMContentLoaded", function() {
         fetchData();
+    });
+
+    document.getElementById("toHome").addEventListener("click", function() {
+      setTimeout(function(){window.location.href = "/home"}, 1000);
+    });
+
+    document.getElementById("toMisc").addEventListener("click", function() {
+      setTimeout(function(){window.location.href = "/misc-additions"}, 1000);
     });
 
     document.getElementById("loadDataButton").addEventListener("click", function() {
@@ -859,8 +904,6 @@ app.get("/charts", (req, res) => {
 app.get("/home", (req, res) => {
     const content = /*html*/`    <h1>Jacebase</h1>
     <p id="para">Welcome</p>
-    <h1>Jacebase</h1>
-    <p>Welcome</p>
     <p>Select number of players</p>
     <select name="Number of Players" id="pnumber">
         <option value="p0">select</option>
@@ -869,7 +912,7 @@ app.get("/home", (req, res) => {
         <option value="p5">5</option>
     </select>
 
-    <p id="tester">testvalue</p>
+    <p id="errorMessage"></p>
 
     <button type="button" id="visualizerButton">Visualizer</button>
     <button type="button" id="miscAddButton">Add Players or Decks</button>
@@ -1134,7 +1177,6 @@ app.get("/home", (req, res) => {
             }
 
             document.getElementById("pnumber").addEventListener("change", function() {
-                document.getElementById("tester").textContent = this.value;
                 playernumber = this.value;
                 loadPlayerInputs();
             });
@@ -1225,6 +1267,10 @@ app.get("/home", (req, res) => {
             }
             
             function verifyAuthenticity(){
+                if (admin === false){
+                  document.getElementById("errorMessage").innerHTML = "You are not logged in as admin. You cannot add to database";
+                  return false;
+                }
                 if (playernumber === "p3") {
                   count = 3;
                 }else if (playernumber === "p4") {
@@ -1232,6 +1278,7 @@ app.get("/home", (req, res) => {
                 }else if (playernumber === "p5") {
                   count = 5;
                 }else{
+                  document.getElementById("errorMessage").innerHTML = "Select player count";
                   return false;
                 }
                 dateInput = String(document.getElementById("gameDate").value);
@@ -1255,6 +1302,7 @@ app.get("/home", (req, res) => {
                 if (dateCorrect === true && deckPlayerCorrect === true){
                   return true;
                 }else{ 
+                  document.getElementById("errorMessage").innerHTML = "Date format is incorrect, or you entered a player/deck that is not in the database";
                   return false;
                 }
             }
@@ -1453,6 +1501,8 @@ app.get("/misc-additions", (req, res) => {
     const content = /*html*/`
     <h1>Jacebase</h1>
     <p id="para">Player/Deck Addition Page</p>
+    <button id="toHome">Add Games to Database</button>
+    <button id="toCharts">Add Decks and Players to Database</button>
     <div style="gap: 20px; display:flex"  id="player1Input">
       <p>Player Name:</p>
       <input type="text" id="playerName"></input>
@@ -1493,6 +1543,14 @@ app.get("/misc-additions", (req, res) => {
             console.log("Data fetch attempt complete");
           }
         }
+
+        document.getElementById("toHome").addEventListener("click", function() {
+          setTimeout(function(){window.location.href = "/home"}, 1000);
+        });
+
+        document.getElementById("toCharts").addEventListener("click", function() {
+          setTimeout(function(){window.location.href = "/charts"}, 1000);
+        });
         
         document.getElementById("deckSubmitButton").addEventListener("click", function() {
           deckName = document.getElementById("deckName").value;
