@@ -26,7 +26,8 @@ const dbConfig = {
 };
 
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  //secret: process.env.SESSION_SECRET,
+  secret: "12312312",
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false }
