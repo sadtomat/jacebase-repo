@@ -48,6 +48,7 @@ app.post('/api/set-login', async (req, res) => {
       if (isLogin.password === password){
         req.session.admin = true;
         res.json([{login: true}]);
+        return;
       }
     }
     res.json({login: false});
