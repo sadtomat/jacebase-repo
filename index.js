@@ -1,6 +1,7 @@
 require('dotenv').config(); // Load environment variables from .env
 require("reflect-metadata");
 const express = require("express");
+const session = require("express-session");
 //const { DataSource, EntitySchema } = require("typeorm");
 const { Client } = require("pg");
 const fs = require("fs");
@@ -13,10 +14,6 @@ const port = process.env.PORT || 8080;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-function testFunction() {
-    document.getElementById("para").style.textAlign = "center";
-}
-
 let admin = false;
 
 const dbConfig = {
@@ -28,16 +25,51 @@ const dbConfig = {
     database: "jacebase-db" // Connect to the default database
 };
 
-//const pool = mysql.createPool({
-//    host: process.env.DB_HOST || "localhost",
-//    port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
-//    user: process.env.DB_USER || "postgres",
-//    password: process.env.DB_PASS || "postgres",
-//    database: "jacebase-db",
-//    waitForConnections: true,
-//    connectionLimit: 10,
-//    queueLimit: 0
-//});
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
+
+app.get('/api/set-login', async (req, res) => {
+  const {username, password} = req.body;
+  const client = new Client(dbConfig);
+  await client.connect();
+
+  try {
+    const query = `
+      SELECT * FROM public."logins"
+    `;
+    const result = await client.query(query);
+    res.json({login: false});
+    isLogin = result.find(obj => obj.username === username)
+    if (isLogin){
+      if (isLogin.password === password){
+        req.session.admin = true;
+        res.json({login: true});
+      }
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Database error" });
+  } finally {
+    await client.end();
+  }
+});
+
+app.get('/api/is-login', (req, res) => {
+  if (!req.session.admin){
+    res.json({
+      admin: false
+    })
+  }else{
+    res.json({
+      admin: true
+    })
+  }
+})
+
 function renderPage(title, content) {
   return /*html*/`
   <!DOCTYPE html>
@@ -108,19 +140,27 @@ app.get("/", (req, res) => {
       passwordTable = await response1.json();
     }
 
-    document.getElementById("upformm").addEventListener("submit", function(event){
+    document.getElementById("upformm").addEventListener("submit", async function(event){
       event.preventDefault();
       username = document.getElementById("uname").value;
       password = document.getElementById("pword").value;
-
-      let code = passwordTable.find(obj => obj.id === 1)
-
-      if(username === code.username && password === code.password){
-          document.getElementById("answer").innerHTML = "Welcome, Admin!";
-          admin = true;
-          setTimeout(function(){window.location.href = "/home"}, 2000);
-      }else{
-          document.getElementById("answer").innerHTML = "Incorrect username or password.";
+      const response = await fetch('/api/set-login' {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          username: username,
+          password: password
+        })
+      });
+      const data = await response.json();
+      if (data.login){
+        document.getElementById("answer").innerHTML = "Welcome, Admin!";
+        setTimeout(function(){window.location.href = "/home"}, 2000);
+      }else {
+        document.getElementById("answer").innerHTML = "Incorrect username or password.";
       }
     });
 
