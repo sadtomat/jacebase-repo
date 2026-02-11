@@ -159,7 +159,7 @@ app.get("/", (req, res) => {
       });
       const data = await response.json();
       console.log(data)
-      if (data.login){
+      if (data[0].login){
         document.getElementById("answer").innerHTML = "Welcome, Admin!";
         setTimeout(function(){window.location.href = "/home"}, 2000);
       }else {
