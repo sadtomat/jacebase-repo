@@ -99,7 +99,7 @@ app.get("/", (req, res) => {
     <p id="answer"></p>
     <script>
     let passwordTable;
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", async function() {
       await fetchData();
     });
 
