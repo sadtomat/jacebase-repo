@@ -33,7 +33,7 @@ app.use(session({
   cookie: { secure: false }
 }));
 
-app.get('/api/set-login', async (req, res) => {
+app.post('/api/set-login', async (req, res) => {
   const {username, password} = req.body;
   const client = new Client(dbConfig);
   await client.connect();
