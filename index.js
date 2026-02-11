@@ -44,7 +44,7 @@ app.post('/api/set-login', async (req, res) => {
     `;
     const result = await client.query(query);
     res.json({login: false});
-    isLogin = result.find(obj => obj.username === username)
+    isLogin = (JSON.parse(result)).find(obj => obj.username === username)
     if (isLogin){
       if (isLogin.password === password){
         req.session.admin = true;
