@@ -43,8 +43,6 @@ app.post('/api/set-login', async (req, res) => {
       SELECT * FROM public."logins"
     `;
     const result = await client.query(query);
-    res.json({login: false});
-    console.log(result.rows)
     isLogin = (result.rows).find(obj => obj.username === username)
     if (isLogin){
       if (isLogin.password === password){
@@ -52,6 +50,7 @@ app.post('/api/set-login', async (req, res) => {
         res.json([{login: true}]);
       }
     }
+    res.json({login: false});
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Database error" });
