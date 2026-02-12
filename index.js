@@ -174,17 +174,19 @@ app.get("/", (req, res) => {
   console.log("poop butt");
   const content = /*html*/`<div>
     <h1 class="loginpage">Login Page</h1>
-    <img class="bigjace" id="bigjace" src=""></img>
-    <p id="para">enter username and password</p>
-    <form id="upformm">
-        <label for="fname">Username:</label>
-        <input type="text" id="uname" name="uname"><br><br>
-        <label for="pword">Password:</label>
-        <input type="text" id="pword" name="pword"><br><br>
-        <button type="submit">Submit</button>
-    </form>
-    <button id="guest" type="submit">Login as Guest</button>
-    <p id="answer"></p>
+    <div class="bigbox">
+      <img class="bigjace" id="bigjace" src=""></img>
+      <p id="para">enter username and password</p>
+      <form id="upformm">
+          <label for="fname">Username:</label>
+          <input type="text" id="uname" name="uname"><br><br>
+          <label for="pword">Password:</label>
+          <input type="text" id="pword" name="pword"><br><br>
+          <button type="submit">Submit</button>
+      </form>
+      <button id="guest" type="submit">Login as Guest</button>
+      <p id="answer"></p>
+    </div>
     <script>
     let passwordTable;
     document.addEventListener("DOMContentLoaded", function() {
@@ -233,6 +235,9 @@ app.get("/", (req, res) => {
       .bigjace {
         height: 700px;
         width: 500px;
+      }
+      .bigbox {
+        display: inline-flex;
       }
       .loginpage {
         font-weight: bold;
