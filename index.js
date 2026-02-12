@@ -6,6 +6,7 @@ const session = require("express-session");
 const { Client } = require("pg");
 const fs = require("fs");
 //const path = require("path");
+const { S3Client } = require("@aws-sdk/client-s3");
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -85,6 +86,7 @@ function renderPage(title, content) {
     </head>
     <body>
       <div class="topnav">
+        <img src="" id="logo" alt="Dynamically loaded image"></img>
         <button id="toLogin">Login</button>
         <button id="toHome">Add Games</button>
         <button id="toMisc">Add Decks/Players</button>
@@ -98,7 +100,11 @@ function renderPage(title, content) {
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
       <script>
+        
         document.addEventListener("DOMContentLoaded", function() {
+          const jacebaseLogoUrl = "https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/Jacebase-logo.jpg";
+          const imageElement = document.getElementalById(document.getElementById("logo"));
+          imageElement.src = jacebaseLogoUrl;
           document.getElementById("toLogin").addEventListener("click", function(){
             setTimeout(function(){window.location.href = "/"}, 1000);
           });
@@ -111,6 +117,10 @@ function renderPage(title, content) {
           document.getElementById("toCharts").addEventListener("click", function(){
             setTimeout(function(){window.location.href = "/charts"}, 1000);
           });
+
+          
+
+
         });
       </script>
       <style>
@@ -163,7 +173,6 @@ app.get("/", (req, res) => {
     document.addEventListener("DOMContentLoaded", function() {
       fetchData();
     });
-
     async function fetchData(){
       const response1 = await fetch("/api/login-info");
       passwordTable = await response1.json();
