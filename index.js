@@ -173,7 +173,7 @@ function renderPage(title, content) {
 app.get("/", (req, res) => {
   console.log("poop butt");
   const content = /*html*/`<div>
-    <h1>Jacebase</h1>
+    <h1 class="loginpage">Login Page</h1>
     <img class="bigjace" id="bigjace" src=""></img>
     <p id="para">enter username and password</p>
     <form id="upformm">
@@ -234,6 +234,16 @@ app.get("/", (req, res) => {
         height: 700px;
         width: 500px;
       }
+      .loginpage {
+        font-weight: bold;
+        color: black;
+        font-size: 500%;
+        text-shadow: 0px 0px 0px white;
+        outline: 10px white;
+        width: 1000px;
+        text-align;
+      }
+
     </style>
   </div>`;
   res.send(renderPage("Zachariah Friesen Test Website", content));
@@ -356,7 +366,7 @@ app.get("/api/:id/game-opponents", async (req, res) => {
 
 app.get("/charts", (req, res) => {
   const content = /*html*/`<div>
-    <h1>Visualizer Page</h1>
+    <h1>Visualizer</h1>
     <div>
       <button id="toHome">Add Games to Database</button>
       <button id="toMisc">Add Decks and Players to Database</button>
@@ -1006,8 +1016,7 @@ app.get("/charts", (req, res) => {
 });
 
 app.get("/home", (req, res) => {
-    const content = /*html*/`    <h1>Jacebase</h1>
-    <p id="para">Welcome</p>
+    const content = /*html*/`    <h1>Misc Additions</h1>
     <p>Select number of players</p>
     <select name="Number of Players" id="pnumber">
         <option value="p0">select</option>
