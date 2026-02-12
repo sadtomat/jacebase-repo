@@ -1310,7 +1310,8 @@ app.get("/home", (req, res) => {
             }
             
             function verifyAuthenticity(){
-                const isLogin = fetch("/api/is-login")
+                const isLogin = fetch("/api/is-login");
+                console.log(isLogin);
                 if (isLogin[0].admin === false){
                   document.getElementById("errorMessage").innerHTML = "You are not logged in as admin. You cannot add to database";
                   return false;
