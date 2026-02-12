@@ -1216,7 +1216,7 @@ app.get("/home", (req, res) => {
                 const response2 = await fetch("/api/deck-table");
                 deckTable = await response2.json();
                 const response3 = await fetch("/api/is-login");
-                isLong = await response3.json();
+                isLogin = await response3.json();
               } finally {
                 console.log("Data fetch attempt complete");
               }
