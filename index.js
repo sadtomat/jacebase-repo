@@ -177,7 +177,7 @@ app.get("/", (req, res) => {
     <div class="bigbox">
       <img class="bigjace" id="bigjace" src=""></img>
       <div class="smallbox">
-        <p id="para">enter username and password</p>
+        <p class="entertext">Enter username and password</p>
         <form id="upformm">
           <label for="fname">Username:</label>
           <input type="text" id="uname" name="uname"><br><br>
@@ -248,10 +248,15 @@ app.get("/", (req, res) => {
         font-weight: bold;
         color: black;
         font-size: 400%;
-        text-shadow: -1px -1px 0 #3399ff, -1px 1px 0 #3399ff, 1px -1px 0 #3399ff, 1px 1px 0 #3399ff;
+        text-shadow: -2px -2px 0 #3399ff, -2px 2px 0 #3399ff, 2px -2px 0 #3399ff, 2px 2px 0 #3399ff;
         outline: 10px white;
         width: 1000px;
         text-align;
+      }
+      .entertext {
+        font-size: 100%;
+        font-weight: bold;
+        text-shadow: -1px -1px 0 #3399ff, -1px 1px 0 #3399ff, 1px -1px 0 #3399ff, 1px 1px 0 #3399ff;
       }
 
     </style>
