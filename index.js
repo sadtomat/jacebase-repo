@@ -91,6 +91,7 @@ function renderPage(title, content) {
         <button id="toHome">Add Games</button>
         <button id="toMisc">Add Decks/Players</button>
         <button id="toCharts">Visualizer</button>
+        <h1>Jacebase</h1>
       </div>
 
       <div class="container">
@@ -151,6 +152,13 @@ function renderPage(title, content) {
         .topnav img{
           height: 60px;
           width: 60px;
+        }
+        .topnav h1{
+          font-family: Times;
+          font-weight: bold;
+          color: #99ccff;
+          text-align: center;
+          
         }
       </style>
     </body>
@@ -220,7 +228,7 @@ app.get("/", (req, res) => {
     <style>
       .bigjace {
         height: 700px;
-        width: 400px;
+        width: 500px;
       }
     </style>
   </div>`;
