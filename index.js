@@ -160,7 +160,9 @@ function renderPage(title, content) {
           font-size: xx-large;
           text-shadow: 5px 5px 10px black;
           outline: 2px white;
-          
+          height: 80px;
+          width: 300px;
+
 
         }
       </style>
