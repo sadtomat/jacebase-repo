@@ -274,7 +274,7 @@ app.get("/", (req, res) => {
         text-decoration: none;
         font-size: 17px;
         background-color: #000099;
-        margin: 30px;
+        margin-right: 30px;
       }
       .exitbutton:hover{
         background-color: #0066ff;
