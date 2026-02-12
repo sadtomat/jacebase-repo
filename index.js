@@ -405,7 +405,7 @@ app.get("/charts", (req, res) => {
   const content = /*html*/`<div>
     <h1 class="visualizerpage">Visualizer</h1>
     <div>
-      <div style="gap: 20px; display: flex"  id="controlsBox">
+      <div class="tablebox" id="controlsBox">
         <p class="tableselecttext">Select Table:</p>
         <select class="tableselect" name="Table Select" id="tableSelect">
           <option value="rawPlayer">Raw Player Instances</option>
@@ -431,6 +431,10 @@ app.get("/charts", (req, res) => {
     </div>
 
     <style>
+      .tablebox {
+        gap: 20px;
+        display: inline-flex;
+      }
       .tableselecttext{
         align-self: center;
         font-size: 150%;
