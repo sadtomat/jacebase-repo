@@ -182,7 +182,7 @@ app.get("/", (req, res) => {
           <label class="username" for="fname">Username:</label>
           <input type="text" id="uname" name="uname"><br><br>
           <label class="password" for="pword">Password:</label>
-          <input type="text" id="pword" name="pword"><br><br>
+          <input class="inputpassword" type="password" id="pword" name="pword"><br><br>
           <button type="submit">Submit</button>
         </form>
         <button id="guest" type="submit">Login as Guest</button>
@@ -259,6 +259,10 @@ app.get("/", (req, res) => {
         text-shadow: -1px -1px 0 #3399ff, -1px 1px 0 #3399ff, 1px -1px 0 #3399ff, 1px 1px 0 #3399ff;
       }
       .username {
+        font-size: 150%;
+        font-weight: bold;
+      }
+      .password {
         font-size: 150%;
         font-weight: bold;
       }
