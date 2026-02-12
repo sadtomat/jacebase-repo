@@ -273,7 +273,12 @@ app.get("/", (req, res) => {
         padding: 14px 16px;
         text-decoration: none;
         font-size: 17px;
-        background-color: #000099
+        background-color: #000099;
+        margin: 30px;
+      }
+      .exitbutton:hover{
+        background-color: #0066ff;
+        color:white;
       }
 
     </style>
