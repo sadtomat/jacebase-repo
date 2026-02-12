@@ -117,6 +117,7 @@ function renderPage(title, content) {
         .topnav {
           overflow: hidden;
           background-color: #333;
+          padding: 20px;
         }
         .topnav button{
           float: left;
@@ -125,6 +126,7 @@ function renderPage(title, content) {
           padding: 14px 16px;
           text-decoration: none;
           font-size: 17px;
+          background-color: #000099
         }
         .topnav button:hover{
           background-color:#ddd;
