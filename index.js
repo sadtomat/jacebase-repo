@@ -403,12 +403,10 @@ app.get("/api/:id/game-opponents", async (req, res) => {
 
 app.get("/charts", (req, res) => {
   const content = /*html*/`<div>
-    <h1>Visualizer</h1>
+    <h1 class="visualizerpage">Visualizer</h1>
     <div>
-      <button id="toHome">Add Games to Database</button>
-      <button id="toMisc">Add Decks and Players to Database</button>
       <div style="gap: 20px; display: flex"  id="controlsBox">
-        <p>Select Table:</p>
+        <p class="tableselecttext">Select Table:</p>
         <select name="Table Select" id="tableSelect">
           <option value="rawPlayer">Raw Player Instances</option>
           <option value="rawGame">Raw Game Instances</option>
@@ -431,6 +429,24 @@ app.get("/charts", (req, res) => {
 
       <table id="testTable" class="display" width="100%"></table>
     </div>
+
+    <style>
+      .tableselecttext{
+        align-self: center;
+        font-size: 150%;
+        font-weight: bold;
+      }
+      .visualizerpage {
+        font-weight: bold;
+        color: black;
+        font-size: 400%;
+        text-shadow: -2px -2px 0 #3399ff, -2px 2px 0 #3399ff, 2px -2px 0 #3399ff, 2px 2px 0 #3399ff;
+        outline: 10px white;
+        width: 1000px;
+        text-align;
+      }
+    </style>
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <link href="https://unpkg.com/tabulator-tables@6.3.1/dist/css/tabulator.min.css" rel="stylesheet">
@@ -537,14 +553,6 @@ app.get("/charts", (req, res) => {
 
     document.addEventListener("DOMContentLoaded", function() {
         fetchData();
-    });
-
-    document.getElementById("toHome").addEventListener("click", function() {
-      setTimeout(function(){window.location.href = "/home"}, 1000);
-    });
-
-    document.getElementById("toMisc").addEventListener("click", function() {
-      setTimeout(function(){window.location.href = "/misc-additions"}, 1000);
     });
 
     document.getElementById("loadDataButton").addEventListener("click", function() {
@@ -1053,7 +1061,7 @@ app.get("/charts", (req, res) => {
 });
 
 app.get("/home", (req, res) => {
-    const content = /*html*/`    <h1>Misc Additions</h1>
+    const content = /*html*/`    <h1>Add Games Additions</h1>
     <p>Select number of players</p>
     <select name="Number of Players" id="pnumber">
         <option value="p0">select</option>
@@ -1653,7 +1661,7 @@ app.post("/home", (req, res) => {
 
 app.get("/misc-additions", (req, res) => {
     const content = /*html*/`
-    <h1>Jacebase</h1>
+    <h1>Misc Additions</h1>
     <p id="para">Player/Deck Addition Page</p>
     <button id="toHome">Add Games to Database</button>
     <button id="toCharts">Go to Data Visualizer</button>
