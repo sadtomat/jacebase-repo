@@ -407,7 +407,7 @@ app.get("/charts", (req, res) => {
     <div>
       <div style="gap: 20px; display: flex"  id="controlsBox">
         <p class="tableselecttext">Select Table:</p>
-        <select name="Table Select" id="tableSelect">
+        <select class="tableselect" name="Table Select" id="tableSelect">
           <option value="rawPlayer">Raw Player Instances</option>
           <option value="rawGame">Raw Game Instances</option>
           <option value="rawDeck">Raw Deck Instances</option>
@@ -435,6 +435,9 @@ app.get("/charts", (req, res) => {
         align-self: center;
         font-size: 150%;
         font-weight: bold;
+      }
+      .tableselect {
+        align-self: center;
       }
       .visualizerpage {
         font-weight: bold;
