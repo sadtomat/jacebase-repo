@@ -176,7 +176,7 @@ app.get("/", (req, res) => {
     <h1 class="loginpage">Login Page</h1>
     <div class="bigbox">
       <img class="bigjace" id="bigjace" src=""></img>
-      <div>
+      <div class="smallbox">
         <p id="para">enter username and password</p>
         <form id="upformm">
           <label for="fname">Username:</label>
@@ -240,6 +240,9 @@ app.get("/", (req, res) => {
       }
       .bigbox {
         display: inline-flex;
+      }
+      .smallbox {
+        padding-left: 35px;
       }
       .loginpage {
         font-weight: bold;
