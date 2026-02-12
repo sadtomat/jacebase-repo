@@ -1207,6 +1207,7 @@ app.get("/home", (req, res) => {
             let playerTable;
             let deckTable;
             fetchData();
+            let isLogin
 
             async function fetchData() {
               try {
@@ -1214,6 +1215,8 @@ app.get("/home", (req, res) => {
                 playerTable = await response1.json();
                 const response2 = await fetch("/api/deck-table");
                 deckTable = await response2.json();
+                const response3 = await fetch("/api/is-login");
+                isLong = await response3.json();
               } finally {
                 console.log("Data fetch attempt complete");
               }
@@ -1310,8 +1313,6 @@ app.get("/home", (req, res) => {
             }
             
             function verifyAuthenticity(){
-                const isLogin = fetch("/api/is-login");
-                console.log(isLogin);
                 if (isLogin[0].admin === false){
                   document.getElementById("errorMessage").innerHTML = "You are not logged in as admin. You cannot add to database";
                   return false;
