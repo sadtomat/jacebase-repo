@@ -176,16 +176,18 @@ app.get("/", (req, res) => {
     <h1 class="loginpage">Login Page</h1>
     <div class="bigbox">
       <img class="bigjace" id="bigjace" src=""></img>
-      <p id="para">enter username and password</p>
-      <form id="upformm">
+      <div>
+        <p id="para">enter username and password</p>
+        <form id="upformm">
           <label for="fname">Username:</label>
           <input type="text" id="uname" name="uname"><br><br>
           <label for="pword">Password:</label>
           <input type="text" id="pword" name="pword"><br><br>
           <button type="submit">Submit</button>
-      </form>
-      <button id="guest" type="submit">Login as Guest</button>
-      <p id="answer"></p>
+        </form>
+        <button id="guest" type="submit">Login as Guest</button>
+        <p id="answer"></p>
+      </div>
     </div>
     <script>
     let passwordTable;
