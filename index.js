@@ -219,8 +219,8 @@ app.get("/", (req, res) => {
     </script>
     <style>
       .bigjace {
-        height: 1000px;
-        width: 700px;
+        height: 7000px;
+        width: 400px;
       }
     </style>
   </div>`;
