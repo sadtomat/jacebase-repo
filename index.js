@@ -1313,6 +1313,7 @@ app.get("/home", (req, res) => {
             }
             
             function verifyAuthenticity(){
+                console.log(isLogin);
                 if (isLogin[0].admin === false){
                   document.getElementById("errorMessage").innerHTML = "You are not logged in as admin. You cannot add to database";
                   return false;
