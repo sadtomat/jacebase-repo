@@ -238,7 +238,7 @@ app.get("/", (req, res) => {
         font-weight: bold;
         color: black;
         font-size: 400%;
-        text-shadow: 0px 0px 0px #3399ff;
+        text-shadow: -1px -1px 0 #3399ff, -1px 1px 0 #3399ff, 1px -1px 0 #3399ff, 1px 1px 0 #3399ff;
         outline: 10px white;
         width: 1000px;
         text-align;
