@@ -121,11 +121,42 @@ function renderPage(title, content) {
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
       <script>
         document.addEventListener("DOMContentLoaded", function() {
+          document.getElementById("toLogin").addEventListener("click", function(){
+            setTimeout(function(){window.location.href = "/"}, 1000);
+          });
           document.getElementById("toHome").addEventListener("click", function(){
             setTimeout(function(){window.location.href = "/home"}, 1000);
           });
+          document.getElementById("toMisc").addEventListener("click", function(){
+            setTimeout(function(){window.location.href = "/misc-additions"}, 1000);
+          });
+          document.getElementById("toCharts").addEventListener("click", function(){
+            setTimeout(function(){window.location.href = "/charts"}, 1000);
+          });
         });
       </script>
+      <style>
+        .topnav {
+          overflow: hidden;
+          background-color: #333;
+        }
+        .topnav button{
+          float: left;
+          color: #f2f2f2;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          font-size: 17px;
+        }
+        .topnav button:hover{
+          background-color:#ddd;
+          color:white;
+        }
+        .topnav button.active{
+          background-color:#04AA6D;
+          color:white;
+        }
+      </style>
     </body>
   </html>
   `;
