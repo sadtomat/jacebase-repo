@@ -103,7 +103,7 @@ function renderPage(title, content) {
         
         document.addEventListener("DOMContentLoaded", function() {
           const jacebaseLogoUrl = "https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/Jacebase-logo.jpg";
-          const imageElement = document.getElementById("logo"));
+          const imageElement = document.getElementById("logo");
           imageElement.src = jacebaseLogoUrl;
           document.getElementById("toLogin").addEventListener("click", function(){
             setTimeout(function(){window.location.href = "/"}, 1000);
