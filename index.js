@@ -148,6 +148,10 @@ function renderPage(title, content) {
           background-color: #006666;
           color:white;
         }
+        .topnav img{
+          height: 60px;
+          width: 60px;
+        }
       </style>
     </body>
   </html>
