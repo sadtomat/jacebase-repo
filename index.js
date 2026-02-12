@@ -131,11 +131,11 @@ function renderPage(title, content) {
           background-color: #000099
         }
         .topnav button:hover{
-          background-color:#ddd;
+          background-color: #0066ff;
           color:white;
         }
         .topnav button.active{
-          background-color: #0066ff;
+          background-color: #006666;
           color:white;
         }
       </style>
