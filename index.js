@@ -82,28 +82,6 @@ function renderPage(title, content) {
       <title>${title}</title>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-      <style>
-        body { padding-top: 50px; }
-        .container { max-width: 800px; }
-        /* Fireworks animation styles */
-        .fireworks-container {
-          position: absolute;
-          pointer-events: none;
-        }
-        .firework {
-          position: absolute;
-          width: 8px;
-          height: 8px;
-          background: gold;
-          border-radius: 50%;
-          opacity: 1;
-          animation: firework-animation 0.8s ease-out forwards;
-        }
-        @keyframes firework-animation {
-          0% { transform: translate(0, 0); opacity: 1; }
-          100% { transform: translate(var(--dx), var(--dy)); opacity: 0; }
-        }
-      </style>
     </head>
     <body>
       <div class="topnav">
