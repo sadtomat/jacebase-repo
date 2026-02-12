@@ -119,6 +119,7 @@ function renderPage(title, content) {
           background-color: #333;
           padding: 20px;
           gap: 10px;
+          display: flex;
         }
         .topnav button{
           float: left;
