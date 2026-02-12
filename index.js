@@ -419,7 +419,7 @@ app.get("/charts", (req, res) => {
           <option value="indvPlayerStats">Individual Player Stats</option>
           <option value="indvDeckStats">Individual Deck Stats</option>
         </select>
-        <div style="display: none" id="secondaryChooseBox">
+        <div class="tableselect" style="display: none" id="secondaryChooseBox">
           <select id="secondaryChoose">
             <option value="N/A">Select</option>
           </select>
@@ -438,6 +438,7 @@ app.get("/charts", (req, res) => {
       }
       .tableselect {
         align-self: center;
+        font-size: 150%;
       }
       .visualizerpage {
         font-weight: bold;
