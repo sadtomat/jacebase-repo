@@ -62,13 +62,13 @@ app.post('/api/set-login', async (req, res) => {
 
 app.get('/api/is-login', (req, res) => {
   if (!req.session.admin){
-    res.json({
+    res.json([{
       admin: false
-    })
+    }])
   }else{
-    res.json({
+    res.json([{
       admin: true
-    })
+    }])
   }
 })
 
@@ -1310,7 +1310,8 @@ app.get("/home", (req, res) => {
             }
             
             function verifyAuthenticity(){
-                if (admin === false){
+                const isLogin = fetch("/api/is-login")
+                if (isLogin[0].admin === false){
                   document.getElementById("errorMessage").innerHTML = "You are not logged in as admin. You cannot add to database";
                   return false;
                 }
