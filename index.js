@@ -179,9 +179,9 @@ app.get("/", (req, res) => {
       <div class="smallbox">
         <p class="entertext">Enter username and password</p>
         <form id="upformm">
-          <label for="fname">Username:</label>
+          <label class="username" for="fname">Username:</label>
           <input type="text" id="uname" name="uname"><br><br>
-          <label for="pword">Password:</label>
+          <label class="password" for="pword">Password:</label>
           <input type="text" id="pword" name="pword"><br><br>
           <button type="submit">Submit</button>
         </form>
@@ -254,9 +254,13 @@ app.get("/", (req, res) => {
         text-align;
       }
       .entertext {
-        font-size: 100%;
+        font-size: 200%;
         font-weight: bold;
         text-shadow: -1px -1px 0 #3399ff, -1px 1px 0 #3399ff, 1px -1px 0 #3399ff, 1px 1px 0 #3399ff;
+      }
+      .username {
+        font-size: 150%;
+        font-weight: bold;
       }
 
     </style>
