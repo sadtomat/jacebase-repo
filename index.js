@@ -91,7 +91,7 @@ function renderPage(title, content) {
         <button id="toHome">Add Games</button>
         <button id="toMisc">Add Decks/Players</button>
         <button id="toCharts">Visualizer</button>
-        <h1>Jacebase</h1>
+        <h1>J a c e b a s e</h1>
       </div>
 
       <div class="container">
@@ -159,7 +159,7 @@ function renderPage(title, content) {
           color: #99ccff;
           font-size: 300%;
           text-shadow: 5px 5px 10px black;
-          outline: 2px white;
+          outline: 10px white;
           width: 350px;
           padding-left: 50px;
 
