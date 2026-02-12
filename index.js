@@ -183,9 +183,9 @@ app.get("/", (req, res) => {
           <input type="text" id="uname" name="uname"><br><br>
           <label class="password" for="pword">Password:</label>
           <input class="inputpassword" type="password" id="pword" name="pword"><br><br>
-          <button type="submit">Submit</button>
+          <button class="exitbutton" type="submit">Submit</button>
         </form>
-        <button id="guest" type="submit">Login as Guest</button>
+        <button class="exitbutton" id="guest" type="submit">Login as Guest</button>
         <p id="answer"></p>
       </div>
     </div>
@@ -265,6 +265,15 @@ app.get("/", (req, res) => {
       .password {
         font-size: 150%;
         font-weight: bold;
+      }
+      .exitbutton {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        background-color: #000099
       }
 
     </style>
