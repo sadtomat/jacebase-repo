@@ -168,7 +168,6 @@ app.get("/", (req, res) => {
     });
 
     document.getElementById("guest").addEventListener("submit", function(event){
-      admin = false;
       document.getElementById("answer").innerHTML = "Welcome, Guest!";
       setTimeout(function(){window.location.href = "/charts"}, 2000);
     });
@@ -1549,7 +1548,8 @@ app.get("/misc-additions", (req, res) => {
     <h1>Jacebase</h1>
     <p id="para">Player/Deck Addition Page</p>
     <button id="toHome">Add Games to Database</button>
-    <button id="toCharts">Add Decks and Players to Database</button>
+    <button id="toCharts">Go to Data Visualizer</button>
+    <p id="errorMessage"></p>
     <div style="gap: 20px; display:flex"  id="player1Input">
       <p>Player Name:</p>
       <input type="text" id="playerName"></input>
@@ -1570,6 +1570,7 @@ app.get("/misc-additions", (req, res) => {
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         let playerTable
+        let isLogin
         let tagList =[
           "Aggro",
           "Control",
@@ -1586,6 +1587,8 @@ app.get("/misc-additions", (req, res) => {
           try {
             const response1 = await fetch("/api/player-table");
             playerTable = await response1.json();
+            const response3 = await fetch("/api/is-login");
+            isLogin = await response3.json();
           } finally {
             console.log("Data fetch attempt complete");
           }
@@ -1609,6 +1612,11 @@ app.get("/misc-additions", (req, res) => {
           playerExists = JSON.stringify(playerTable).includes(deckCreator);
           tagExists = tagList.includes(tag1);
 
+          if (isLogin[0].admin === false){
+            document.getElementById("errorMessage").innerHTML = "You are not logged in as admin. You cannot add to database";
+            return;
+          }
+
           if (playerExists && tagExists) {
             player = playerTable.find(p => p.name === deckCreator);
             deckID = Math.floor(Math.random() * 1000000);
@@ -1625,12 +1633,18 @@ app.get("/misc-additions", (req, res) => {
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(returnBody)
             })
+          }else {
+            document.getElementById("errorMessage").innerHTML = "Either a player you are entering doesn't exist, or a tag you are entering doesnt exist";
           }
           console.log(returnBody);
           
         });
 
         document.getElementById("playerSubmitButton").addEventListener("click", function() {
+          if (isLogin[0].admin === false){
+            document.getElementById("errorMessage").innerHTML = "You are not logged in as admin. You cannot add to database";
+            return;
+          }
           playerName = document.getElementById("playerName").value;
           playerID = Math.floor(Math.random() * 1000000);
           returnBody = {
