@@ -219,7 +219,7 @@ app.get("/", (req, res) => {
     </script>
     <style>
       .bigjace {
-        height: 7000px;
+        height: 700px;
         width: 400px;
       }
     </style>
