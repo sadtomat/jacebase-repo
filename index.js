@@ -157,8 +157,11 @@ function renderPage(title, content) {
           font-family: Times;
           font-weight: bold;
           color: #99ccff;
-          text-align: center;
+          font-size: xx-large;
+          text-shadow: 5px 5px 10px black;
+          outline: 2px white;
           
+
         }
       </style>
     </body>
