@@ -162,6 +162,7 @@ app.get("/", (req, res) => {
   console.log("poop butt");
   const content = /*html*/`<div>
     <h1>Jacebase</h1>
+    <img id="bigjace" src=""></img>
     <p id="para">enter username and password</p>
     <form id="upformm">
         <label for="fname">Username:</label>
@@ -175,6 +176,9 @@ app.get("/", (req, res) => {
     <script>
     let passwordTable;
     document.addEventListener("DOMContentLoaded", function() {
+      const jacebaseLogoUrl = "https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/Jacebase-login.jpg";
+      const imageElement = document.getElementById("bigjace");
+      imageElement.src = jacebaseLogoUrl;
       fetchData();
     });
     async function fetchData(){
