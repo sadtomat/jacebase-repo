@@ -118,6 +118,7 @@ function renderPage(title, content) {
           overflow: hidden;
           background-color: #333;
           padding: 20px;
+          gap: 10px;
         }
         .topnav button{
           float: left;
@@ -133,7 +134,7 @@ function renderPage(title, content) {
           color:white;
         }
         .topnav button.active{
-          background-color:#04AA6D;
+          background-color: #0066ff;
           color:white;
         }
       </style>
