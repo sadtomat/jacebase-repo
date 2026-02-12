@@ -160,8 +160,8 @@ function renderPage(title, content) {
           font-size: 300%;
           text-shadow: 5px 5px 10px black;
           outline: 2px white;
-          width: 300px;
-
+          width: 350px;
+          padding-left: 50px;
 
         }
       </style>
