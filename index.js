@@ -1252,9 +1252,11 @@ app.get("/home", (req, res) => {
                 <option value="no">No</option>
             </select>
         </div>
-        <div class ="enemybox" id="player1Enemies">
+        <div class ="enemybox" id="player1Enemy1">
             <p class="textboxes">Enemy 1:</p>
             <input type="text" id="deck1enemy1"></input>
+        </div>
+        <div class ="enemybox" id="player1Enemy2">
             <p class="textboxes">Enemy 2:</p>
             <input type="text" id="deck1enemy2"></input>
         </div>
@@ -1487,7 +1489,8 @@ app.get("/home", (req, res) => {
             });
 
             function hidePentagramBoxes() {
-                document.getElementById("player1Enemies").style.display = "none";
+                document.getElementById("player1Enemy1").style.display = "none";
+                document.getElementById("player1Enemy2").style.display = "none";
                 document.getElementById("player2Enemies").style.display = "none";
                 document.getElementById("player3Enemies").style.display = "none";
                 document.getElementById("player4Enemies").style.display = "none";
@@ -1495,7 +1498,8 @@ app.get("/home", (req, res) => {
             }
 
             function showPentagramBoxes() {
-                document.getElementById("player1Enemies").style.display = "grid";
+                document.getElementById("player1Enemy1").style.display = "grid";
+                document.getElementById("player1Enemy2").style.display = "grid";
                 document.getElementById("player2Enemies").style.display = "grid";
                 document.getElementById("player3Enemies").style.display = "grid";
                 document.getElementById("player4Enemies").style.display = "grid";
