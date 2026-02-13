@@ -1098,6 +1098,7 @@ app.get("/home", (req, res) => {
         height: 40px;
         margin-top: 5px;
         border: 4px outset;
+        width: 100px;
       }
       .playerbox select {
         border: 4px inset;
