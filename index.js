@@ -1072,7 +1072,7 @@ app.get("/home", (req, res) => {
     const content = /*html*/`    
     <style>
       .playerbox{
-        display: inline-flex;
+        display: none;
         gap: 20px;
       }
       .date-mixbox{
