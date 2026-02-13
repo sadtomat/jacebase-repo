@@ -1539,11 +1539,11 @@ app.get("/home", (req, res) => {
                 }else if (playernumber === "p5") {
                     document.getElementById("orderedBox").style.display = "flex";
                     document.getElementById("pentagramBox").style.display = "flex";
-                    document.getElementById("player1Input").style.display = "table";
-                    document.getElementById("player2Input").style.display = "table";
-                    document.getElementById("player3Input").style.display = "table";
-                    document.getElementById("player4Input").style.display = "table";
-                    document.getElementById("player5Input").style.display = "table";
+                    document.getElementById("player1Input").style.display = "inline-grid";
+                    document.getElementById("player2Input").style.display = "inline-grid";
+                    document.getElementById("player3Input").style.display = "inline-grid";
+                    document.getElementById("player4Input").style.display = "inline-grid";
+                    document.getElementById("player5Input").style.display = "inline-grid";
                     winOptions = [{value:'player1',text:"Player 1"}, {value:'player2',text:"Player 2"}, {value:'player3',text:"Player 3"}, {value:'player4',text:"Player 4"}, {value:'player5',text:"Player 5"}];
                     populateWinBox(winOptions);
                 }
