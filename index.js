@@ -1128,6 +1128,8 @@ app.get("/home", (req, res) => {
       }
       .orderedbox {
         border: 4px inset;
+        height: 40px;
+        margin-top: 5px;
       }
       .playerbox{
         display: none;
