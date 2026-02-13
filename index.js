@@ -106,9 +106,6 @@ function renderPage(title, content) {
           const jacebaseLogoUrl = "https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/Jacebase-logo.jpg";
           const imageElement1 = document.getElementById("logo");
           imageElement1.src = jacebaseLogoUrl;
-          const jacebaseBackgroundUrl = "https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/background2.jpg";
-          const imageElement2 = document.getElementById("container");
-          imageElement2.src = jacebaseBackgroundUrl;
           document.getElementById("toLogin").addEventListener("click", function(){
             setTimeout(function(){window.location.href = "/"}, 1000);
           });
@@ -130,6 +127,9 @@ function renderPage(title, content) {
       <style>
         body {
           background-image: url('https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/background1.jpeg')
+        }
+        .container {
+          background-image: url('https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/background2.jpg')
         }
         .topnav {
           overflow: hidden;
