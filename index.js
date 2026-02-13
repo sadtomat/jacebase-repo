@@ -1088,7 +1088,7 @@ app.get("/home", (req, res) => {
         text-align;
       }
       .entertext {
-        margin-top: 5px;
+        margin-top: 25px;
         font-size: 150%;
         font-weight: bold;
       }
