@@ -1111,9 +1111,9 @@ app.get("/home", (req, res) => {
         display: none;
       }
       .datetext {
-        width: 100px;
+        width: 170px;
         font-weight: bold;
-        margin-top: 10px;
+        margin-top: 12px;
       }
       .datebox {
         height: 40px;
