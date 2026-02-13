@@ -1102,6 +1102,9 @@ app.get("/home", (req, res) => {
         display: inline;
         gap: 20px;
       }
+      .deck {
+        width: 60px;
+      }
     </style>
     
     <h1>Add Games</h1>
@@ -1139,7 +1142,7 @@ app.get("/home", (req, res) => {
 
     <div class="playerbox" id="player1Input">
         <div>
-            <p>Deck 1:</p>
+            <p class="deck">Deck 1:</p>
             <input type="text" id="deck1"></input>
         </div>
         <div>
