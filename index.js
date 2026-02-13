@@ -1111,7 +1111,7 @@ app.get("/home", (req, res) => {
         width: 65px;
       }
       .scooptext {
-        width: 60px;
+        width: 55px;
       }
     </style>
     
