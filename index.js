@@ -1094,12 +1094,13 @@ app.get("/home", (req, res) => {
       }
       .playernumbox {
         display: inline-flex;
-        gap: 50px
+        gap: 40px
       }
       .pnumber {
         font-size: 100%;
         font-weight: bold;
         height: 40px;
+        margin-top: 20px;
       }
       .errortext{
         font-size: 150%;
