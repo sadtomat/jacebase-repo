@@ -1107,7 +1107,7 @@ app.get("/home", (req, res) => {
       .deck {
         width: 65px;
       }
-      .scoop {
+      .scooptext {
         width: 60px;
       }
     </style>
@@ -1171,8 +1171,8 @@ app.get("/home", (req, res) => {
             </select>
         </div>
         <div>
-            <p class="scoop">Scoop:</p>
-            <select name="scoop box 1" id="p1scoop">
+            <p class="scooptext">Scoop:</p>
+            <select class="scoop" name="scoop box 1" id="p1scoop">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
