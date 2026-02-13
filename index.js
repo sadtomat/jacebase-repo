@@ -1495,11 +1495,11 @@ app.get("/home", (req, res) => {
             }
 
             function showPentagramBoxes() {
-                document.getElementById("player1Enemies").style.display = "table";
-                document.getElementById("player2Enemies").style.display = "table";
-                document.getElementById("player3Enemies").style.display = "table";
-                document.getElementById("player4Enemies").style.display = "table";
-                document.getElementById("player5Enemies").style.display = "table";
+                document.getElementById("player1Enemies").style.display = "grid";
+                document.getElementById("player2Enemies").style.display = "grid";
+                document.getElementById("player3Enemies").style.display = "grid";
+                document.getElementById("player4Enemies").style.display = "grid";
+                document.getElementById("player5Enemies").style.display = "grid";
             }
 
             function populateWinBox(winOptions){
