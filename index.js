@@ -1144,6 +1144,8 @@ app.get("/home", (req, res) => {
         width: 70px;
       }
       .playerbox {
+        padding-top: 7px;
+        background: #ccffff;
         border: 4px groove;
       }
       .playerbox div{
