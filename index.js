@@ -1111,7 +1111,12 @@ app.get("/home", (req, res) => {
         display: none;
       }
       .datetext {
-        width: 170px;
+        width: 150px;
+        font-weight: bold;
+        margin-top: 12px;
+      }
+      .orderedtext {
+        width: 70px;
         font-weight: bold;
         margin-top: 12px;
       }
@@ -1188,7 +1193,7 @@ app.get("/home", (req, res) => {
     <div class="date-miscbox" style="gap: 20px; display:none"  id="orderedBox">
         <p class="datetext">Date(yyyy/mm/dd):</p>
         <input type="text" id="gameDate" class="datebox"></input>
-        <p class="deck">Ordered?:</p>
+        <p class="orderedtext">Ordered?:</p>
         <select name="Ordered" id="orderedSelect" class="orderedbox">
             <option value="yes">Yes</option>
             <option value="no">No</option>
