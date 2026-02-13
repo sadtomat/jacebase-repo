@@ -1106,6 +1106,19 @@ app.get("/home", (req, res) => {
         font-size: 150%;
         font-weight: bold;
       }
+      .date-miscbox {
+        gap: 20px;
+        display: none;
+      }
+      .datebox {
+        height: 40px;
+        margin-top: 5px;
+        border: 4px outset;
+        width: 200px;
+      }
+      .orderedbox {
+        border: 4px inset;
+      }
       .playerbox{
         display: none;
         gap: 20px;
@@ -1117,6 +1130,9 @@ app.get("/home", (req, res) => {
       }
       .textboxes{
         width: 70px;
+      }
+      .playerbox {
+        border: 4px groove;
       }
       .playerbox div{
         display: flex;
@@ -1165,21 +1181,21 @@ app.get("/home", (req, res) => {
     <p id="errorMessage" class="errortext"></p>
 
     <div class="date-miscbox" style="gap: 20px; display:none"  id="orderedBox">
-        <p>Date(yyyy/mm/dd):</p>
-        <input type="text" id="gameDate"></input>
-        <p>Ordered?:</p>
-        <select name="Ordered" id="orderedSelect">
+        <p class="deck">Date(yyyy/mm/dd):</p>
+        <input type="text" id="gameDate" class="datebox"></input>
+        <p class="deck">Ordered?:</p>
+        <select name="Ordered" id="orderedSelect" class="orderedbox">
             <option value="yes">Yes</option>
             <option value="no">No</option>
         </select>
         <div style="gap: 20px; display:none"  id="pentagramBox">
             <p>Pentagram?:</p>
-            <select name="Pentagram" id="pentagramSelect">
+            <select name="Pentagram" id="pentagramSelect" class="orderedbox">
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
             <p>Are enemy positions known?:</p>
-            <select name="knownp" id="knownPentagram">
+            <select name="knownp" id="knownPentagram" class="orderedbox">
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
