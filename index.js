@@ -84,7 +84,7 @@ function renderPage(title, content) {
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
-    <body>
+    <body id="body">
       <div class="topnav">
         <img src="" id="logo" alt="Dynamically loaded image"></img>
         <button id="toLogin">Login</button>
@@ -104,8 +104,11 @@ function renderPage(title, content) {
         
         document.addEventListener("DOMContentLoaded", function() {
           const jacebaseLogoUrl = "https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/Jacebase-logo.jpg";
-          const imageElement = document.getElementById("logo");
-          imageElement.src = jacebaseLogoUrl;
+          const imageElement1 = document.getElementById("logo");
+          imageElement1.src = jacebaseLogoUrl;
+          const jacebaseBackgroundUrl = "https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/background1.jpg";
+          const imageElement2 = document.getElementById("body");
+          imageElement2.src = jacebaseLogoUrl;
           document.getElementById("toLogin").addEventListener("click", function(){
             setTimeout(function(){window.location.href = "/"}, 1000);
           });
@@ -125,6 +128,9 @@ function renderPage(title, content) {
         });
       </script>
       <style>
+        body {
+          background-image: ""
+        }
         .topnav {
           overflow: hidden;
           background-color: #333;
