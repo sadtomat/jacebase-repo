@@ -1077,9 +1077,11 @@ app.get("/home", (req, res) => {
         align-items: center;
       }
       .playerbox p{
-        width: 70px;
         font-weight: bold;
         margin-top: 10px;
+      }
+      .textboxes{
+        width: 70px;
       }
       .playerbox div{
         display: flex;
@@ -1146,11 +1148,11 @@ app.get("/home", (req, res) => {
             <input type="text" id="deck1"></input>
         </div>
         <div>
-            <p>Player 1:</p>
+            <p class="textboxes">Player 1:</p>
             <input type="text" id="player1"></input>
         </div>
         <div>
-            <p>Turn 1 Sol Ring:</p>
+            <p class="textboxes">Turn 1 Sol Ring:</p>
             <select class="solturbo" name="sol ring box 1" id="p1solring">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
@@ -1158,7 +1160,7 @@ app.get("/home", (req, res) => {
             </select>
         </div>
         <div>
-            <p>Turbo'd / Out First:</p>
+            <p class="textboxes">Turbo'd / Out First:</p>
             <select class="solturbo" name="turbo box 1" id="p1turbo">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
@@ -1166,7 +1168,7 @@ app.get("/home", (req, res) => {
             </select>
         </div>
         <div>
-            <p>Scoop:</p>
+            <p class="textboxes">Scoop:</p>
             <select class="scoop" name="scoop box 1" id="p1scoop">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
@@ -1174,9 +1176,9 @@ app.get("/home", (req, res) => {
             </select>
         </div>
         <div id="player1Enemies">
-            <p>Enemy 1:</p>
+            <p class="textboxes">Enemy 1:</p>
             <input type="text" id="deck1enemy1"></input>
-            <p>Enemy 2:</p>
+            <p class="textboxes">Enemy 2:</p>
             <input type="text" id="deck1enemy2"></input>
         </div>
     </div>
