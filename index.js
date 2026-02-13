@@ -1079,8 +1079,7 @@ app.get("/home", (req, res) => {
       .playerbox p{
         width: 70px;
         font-weight: bold;
-        align-items: center;
-        top: 115px;
+        margin-top: 5px;
       }
       .playerbox div{
         display: flex;
