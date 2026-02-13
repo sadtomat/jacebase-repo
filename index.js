@@ -1110,6 +1110,11 @@ app.get("/home", (req, res) => {
         gap: 20px;
         display: none;
       }
+      .datetext {
+        width: 100px;
+        font-weight: bold;
+        margin-top: 10px;
+      }
       .datebox {
         height: 40px;
         margin-top: 5px;
@@ -1181,7 +1186,7 @@ app.get("/home", (req, res) => {
     <p id="errorMessage" class="errortext"></p>
 
     <div class="date-miscbox" style="gap: 20px; display:none"  id="orderedBox">
-        <p class="deck">Date(yyyy/mm/dd):</p>
+        <p class="datetext">Date(yyyy/mm/dd):</p>
         <input type="text" id="gameDate" class="datebox"></input>
         <p class="deck">Ordered?:</p>
         <select name="Ordered" id="orderedSelect" class="orderedbox">
