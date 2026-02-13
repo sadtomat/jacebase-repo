@@ -1081,6 +1081,10 @@ app.get("/home", (req, res) => {
         font-weight: bold;
         align-items: center;
       }
+      .playerbox div{
+        display: flex;
+        gap: 10px;
+      }
       .date-mixbox{
         display: inline-flex;
         gap: 20px;
@@ -1121,15 +1125,15 @@ app.get("/home", (req, res) => {
     </div>
 
     <div class="playerbox" id="player1Input">
-        <div style="display:flex; gap: 10px">
+        <div>
             <p>Deck 1:</p>
             <input type="text" id="deck1"></input>
         </div>
-        <div style="display:flex; gap: 10px">
+        <div>
             <p>Player 1:</p>
             <input type="text" id="player1"></input>
         </div>
-        <div style="display:flex; gap: 10px">
+        <div>
             <p>Turn 1 Sol Ring:</p>
             <select name="sol ring box 1" id="p1solring">
                 <option value="null">Unknown</option>
@@ -1137,7 +1141,7 @@ app.get("/home", (req, res) => {
                 <option value="no">No</option>
             </select>
         </div>
-        <div style="display:flex; gap: 10px">
+        <div>
             <p>Turbo'd / Out First:</p>
             <select name="turbo box 1" id="p1turbo">
                 <option value="null">Unknown</option>
@@ -1145,7 +1149,7 @@ app.get("/home", (req, res) => {
                 <option value="no">No</option>
             </select>
         </div>
-        <div style="display:flex; gap: 10px">
+        <div>
             <p>Scoop:</p>
             <select name="scoop box 1" id="p1scoop">
                 <option value="null">Unknown</option>
@@ -1153,7 +1157,7 @@ app.get("/home", (req, res) => {
                 <option value="no">No</option>
             </select>
         </div>
-        <div style="display:none; gap: 10px" id="player1Enemies">
+        <div id="player1Enemies">
             <p>Enemy 1:</p>
             <input type="text" id="deck1enemy1"></input>
             <p>Enemy 2:</p>
