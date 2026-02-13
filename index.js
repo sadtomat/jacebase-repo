@@ -1179,6 +1179,9 @@ app.get("/home", (req, res) => {
       .scooptext {
         width: 55px;
       }
+      .enemybox {
+        display: none
+      }
     </style>
     
     <h1 class="addtext">Add Games</h1>
@@ -1249,7 +1252,7 @@ app.get("/home", (req, res) => {
                 <option value="no">No</option>
             </select>
         </div>
-        <div id="player1Enemies">
+        <div class ="enemybox" id="player1Enemies">
             <p class="textboxes">Enemy 1:</p>
             <input type="text" id="deck1enemy1"></input>
             <p class="textboxes">Enemy 2:</p>
@@ -1290,7 +1293,7 @@ app.get("/home", (req, res) => {
                 <option value="no">No</option>
             </select>
         </div>
-        <div id="player2Enemies">
+        <div class="enemybox" id="player2Enemies">
             <p class="textboxes">Enemy 1:</p>
             <input type="text" id="deck2enemy1"></input>
             <p class="textboxes">Enemy 2:</p>
@@ -1492,11 +1495,11 @@ app.get("/home", (req, res) => {
             }
 
             function showPentagramBoxes() {
-                document.getElementById("player1Enemies").style.display = "flex";
-                document.getElementById("player2Enemies").style.display = "flex";
-                document.getElementById("player3Enemies").style.display = "flex";
-                document.getElementById("player4Enemies").style.display = "flex";
-                document.getElementById("player5Enemies").style.display = "flex";
+                document.getElementById("player1Enemies").style.display = "table";
+                document.getElementById("player2Enemies").style.display = "table";
+                document.getElementById("player3Enemies").style.display = "table";
+                document.getElementById("player4Enemies").style.display = "table";
+                document.getElementById("player5Enemies").style.display = "table";
             }
 
             function populateWinBox(winOptions){
@@ -1535,7 +1538,7 @@ app.get("/home", (req, res) => {
                     populateWinBox(winOptions);
                 }else if (playernumber === "p5") {
                     document.getElementById("orderedBox").style.display = "flex";
-                    document.getElementById("pentagramBox").style.display = "table";
+                    document.getElementById("pentagramBox").style.display = "flex";
                     document.getElementById("player1Input").style.display = "table";
                     document.getElementById("player2Input").style.display = "table";
                     document.getElementById("player3Input").style.display = "table";
