@@ -1086,7 +1086,7 @@ app.get("/home", (req, res) => {
         gap: 10px;
       }
       .playerbox input{
-        height: 50px;
+        height: 40px;
       }
       .scoop {
         height: 40px;
