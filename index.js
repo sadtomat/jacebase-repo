@@ -1105,7 +1105,7 @@ app.get("/home", (req, res) => {
         gap: 20px;
       }
       .deck {
-        width: 55px;
+        width: 65px;
       }
     </style>
     
