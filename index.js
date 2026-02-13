@@ -1088,15 +1088,18 @@ app.get("/home", (req, res) => {
         text-align;
       }
       .entertext {
+        margin-top: 5px;
         font-size: 150%;
         font-weight: bold;
       }
       .playernumbox {
         display: inline-flex;
+        gap: 50px
       }
       .pnumber {
         font-size: 100%;
         font-weight: bold;
+        height: 40px;
       }
       .errortext{
         font-size: 150%;
