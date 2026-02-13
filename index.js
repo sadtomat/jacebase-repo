@@ -1514,7 +1514,7 @@ app.get("/home", (req, res) => {
                 if (playernumber === "p3") {
                     document.getElementById("orderedBox").style.display = "flex";
                     document.getElementById("pentagramBox").style.display = "none";
-                    document.getElementById("player1Input").style.display = "table";
+                    document.getElementById("player1Input").style.display = "flex";
                     document.getElementById("player2Input").style.display = "flex";
                     document.getElementById("player3Input").style.display = "flex";
                     document.getElementById("player4Input").style.display = "none";
@@ -1535,7 +1535,7 @@ app.get("/home", (req, res) => {
                     populateWinBox(winOptions);
                 }else if (playernumber === "p5") {
                     document.getElementById("orderedBox").style.display = "flex";
-                    document.getElementById("pentagramBox").style.display = "flex";
+                    document.getElementById("pentagramBox").style.display = "table";
                     document.getElementById("player1Input").style.display = "table";
                     document.getElementById("player2Input").style.display = "table";
                     document.getElementById("player3Input").style.display = "table";
