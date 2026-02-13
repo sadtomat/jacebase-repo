@@ -94,7 +94,7 @@ function renderPage(title, content) {
         <h1>J a c e b a s e</h1>
       </div>
 
-      <div class="container" src="">
+      <div class="container" src="" id="container">
         ${content}
       </div>
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
