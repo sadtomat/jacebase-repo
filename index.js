@@ -1256,43 +1256,43 @@ app.get("/home", (req, res) => {
         </div>
     </div>
 
-    <div style="gap: 20px; display:none" id="player2Input">
-        <div style="display:flex; gap: 10px">
-            <p>Deck 2:</p>
+    <div class="playerbox" id="player2Input">
+        <div>
+            <p class="deck">Deck 2:</p>
             <input type="text" id="deck2"></input>
         </div>
-        <div style="display:flex; gap: 10px">
-            <p>Player 2:</p>
+        <div>
+            <p class="textboxes">Player 2:</p>
             <input type="text" id="player2"></input>
         </div>
-        <div style="display:flex; gap: 10px">
-            <p>Turn 1 Sol Ring:</p>
-            <select name="sol ring box 2" id="p2solring">
+        <div>
+            <p class="textboxes">Turn 1 Sol Ring:</p>
+            <select class="solturbo" name="sol ring box 2" id="p2solring">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
-        <div style="display:flex; gap: 10px">
-            <p>Turbo'd/Out First:</p>
-            <select name="turbo box 2" id="p2turbo">
+        <div>
+            <p class="textboxes">Turbo'd/Out First:</p>
+            <select class="solturbo" name="turbo box 2" id="p2turbo">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
-        <div style="display:flex; gap: 10px">
-            <p>Scoop:</p>
-            <select name="scoop box 2" id="p2scoop">
+        <div>
+            <p class="scooptext">Scoop:</p>
+            <select class="scoop" name="scoop box 2" id="p2scoop">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
-        <div style="display:none; gap: 10px" id="player2Enemies">
-            <p>Enemy 1:</p>
+        <div id="player2Enemies">
+            <p class="textboxes">Enemy 1:</p>
             <input type="text" id="deck2enemy1"></input>
-            <p>Enemy 2:</p>
+            <p class="textboxes">Enemy 2:</p>
             <input type="text" id="deck2enemy2"></input>
         </div>
     </div>
