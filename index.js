@@ -1091,7 +1091,7 @@ app.get("/home", (req, res) => {
       }
       .solturbo {
         height: 40px;
-        margin-top: 18px;
+        margin-top: 17px;
       }
       .date-mixbox{
         display: inline;
