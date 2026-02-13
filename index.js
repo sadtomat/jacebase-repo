@@ -129,7 +129,7 @@ function renderPage(title, content) {
           background-image: url('https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/background1.jpeg')
         }
         .container {
-          display: inline-grid;
+          padding: 40px;
           background-image: url('https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/background2.jpg')
         }
         .topnav {
