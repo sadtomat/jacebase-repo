@@ -1172,7 +1172,7 @@ app.get("/home", (req, res) => {
         </div>
         <div>
             <p class="scoop">Scoop:</p>
-            <select class="scoop" name="scoop box 1" id="p1scoop">
+            <select name="scoop box 1" id="p1scoop">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
