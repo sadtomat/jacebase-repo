@@ -1136,7 +1136,7 @@ app.get("/home", (req, res) => {
         gap: 10px;
         align-items: center;
         margin-top: 7px;
-        margin-bottom: 15px;
+        margin-bottom: 7px;
         background: #f6fefe;
         border: 4px groove;
         padding-left: 13px;
