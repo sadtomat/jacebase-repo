@@ -106,7 +106,7 @@ function renderPage(title, content) {
           const jacebaseLogoUrl = "https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/Jacebase-logo.jpg";
           const imageElement1 = document.getElementById("logo");
           imageElement1.src = jacebaseLogoUrl;
-          const jacebaseBackgroundUrl = "https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/background1.jpg";
+          const jacebaseBackgroundUrl = "https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/background1.jpeg";
           const imageElement2 = document.getElementById("body");
           imageElement2.src = jacebaseLogoUrl;
           document.getElementById("toLogin").addEventListener("click", function(){
