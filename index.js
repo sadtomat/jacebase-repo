@@ -1133,7 +1133,7 @@ app.get("/home", (req, res) => {
       }
       .playerbox{
         display: none;
-        gap: 20px;
+        gap: 10px;
         align-items: center;
       }
       .playerbox p{
