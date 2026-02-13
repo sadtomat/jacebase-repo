@@ -1280,7 +1280,7 @@ app.get("/home", (req, res) => {
             </select>
         </div>
         <div>
-            <p class="textboxes">Turbo'd/Out First:</p>
+            <p class="textboxes">Turbo'd / Out First:</p>
             <select class="solturbo" name="turbo box 2" id="p2turbo">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
@@ -1295,133 +1295,141 @@ app.get("/home", (req, res) => {
                 <option value="no">No</option>
             </select>
         </div>
-        <div class="enemybox" id="player2Enemies">
+        <div class ="enemybox" id="player2Enemy1">
             <p class="textboxes">Enemy 1:</p>
             <input type="text" id="deck2enemy1"></input>
+        </div>
+        <div class ="enemybox" id="player2Enemy2">
             <p class="textboxes">Enemy 2:</p>
             <input type="text" id="deck2enemy2"></input>
         </div>
     </div>
 
-      <div style="gap: 20px; display:none" id="player3Input">
-        <div style="display:flex; gap: 10px">
-            <p>Deck 3:</p>
+    <div class="playerbox" id="player3Input">
+        <div>
+            <p class="deck">Deck 3:</p>
             <input type="text" id="deck3"></input>
         </div>
-        <div style="display:flex; gap: 10px">
-            <p>Player 3:</p>
+        <div>
+            <p class="textboxes">Player 3:</p>
             <input type="text" id="player3"></input>
         </div>
-        <div style="display:flex; gap: 10px">
-            <p>Turn 1 Sol Ring:</p>
-            <select name="sol ring box 3" id="p3solring">
+        <div>
+            <p class="textboxes">Turn 1 Sol Ring:</p>
+            <select class="solturbo" name="sol ring box 3" id="p3solring">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
-        <div style="display:flex; gap: 10px">
-            <p>Turbo'd/Out First:</p>
-            <select name="turbo box 3" id="p3turbo">
+        <div>
+            <p class="textboxes">Turbo'd / Out First:</p>
+            <select class="solturbo" name="turbo box 3" id="p3turbo">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
-        <div style="display:flex; gap: 10px">
-            <p>Scoop:</p>
-            <select name="scoop box 3" id="p3scoop">
+        <div>
+            <p class="scooptext">Scoop:</p>
+            <select class="scoop" name="scoop box 3" id="p3scoop">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
-        <div style="display:none; gap: 10px" id="player3Enemies">
-            <p>Enemy 1:</p>
+        <div class ="enemybox" id="player3Enemy1">
+            <p class="textboxes">Enemy 1:</p>
             <input type="text" id="deck3enemy1"></input>
-            <p>Enemy 2:</p>
+        </div>
+        <div class ="enemybox" id="player3Enemy2">
+            <p class="textboxes">Enemy 2:</p>
             <input type="text" id="deck3enemy2"></input>
         </div>
     </div>
 
-    <div style="gap: 20px; display:none" id="player4Input">
-        <div style="display:flex; gap: 10px">
-            <p>Deck 4:</p>
+    <div class="playerbox" id="player4Input">
+        <div>
+            <p class="deck">Deck 4:</p>
             <input type="text" id="deck4"></input>
         </div>
-        <div style="display:flex; gap: 10px">
-            <p>Player 4:</p>
+        <div>
+            <p class="textboxes">Player 4:</p>
             <input type="text" id="player4"></input>
         </div>
-        <div style="display:flex; gap: 10px">
-            <p>Turn 1 Sol Ring:</p>
-            <select name="sol ring box 4" id="p4solring">
+        <div>
+            <p class="textboxes">Turn 1 Sol Ring:</p>
+            <select class="solturbo" name="sol ring box 4" id="p4solring">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
-        <div style="display:flex; gap: 10px">
-            <p>Turbo'd/Out First:</p>
-            <select name="turbo box 4" id="p4turbo">
+        <div>
+            <p class="textboxes">Turbo'd / Out First:</p>
+            <select class="solturbo" name="turbo box 4" id="p4turbo">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
-        <div style="display:flex; gap: 10px">
-            <p>Scoop:</p>
-            <select name="scoop box 4" id="p4scoop">
+        <div>
+            <p class="scooptext">Scoop:</p>
+            <select class="scoop" name="scoop box 4" id="p4scoop">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
-        <div style="display:none; gap: 10px" id="player4Enemies">
-            <p>Enemy 1:</p>
+        <div class ="enemybox" id="player4Enemy1">
+            <p class="textboxes">Enemy 1:</p>
             <input type="text" id="deck4enemy1"></input>
-            <p>Enemy 2:</p>
+        </div>
+        <div class ="enemybox" id="player4Enemy2">
+            <p class="textboxes">Enemy 2:</p>
             <input type="text" id="deck4enemy2"></input>
         </div>
     </div>
 
-    <div style="gap: 20px; display:none" id="player5Input">
-        <div style="display:flex; gap: 10px">
-            <p>Deck 5:</p>
+    <div class="playerbox" id="player5Input">
+        <div>
+            <p class="deck">Deck 5:</p>
             <input type="text" id="deck5"></input>
         </div>
-        <div style="display:flex; gap: 10px">
-            <p>Player 5:</p>
+        <div>
+            <p class="textboxes">Player 5:</p>
             <input type="text" id="player5"></input>
         </div>
-        <div style="display:flex; gap: 10px">
-            <p>Turn 1 Sol Ring:</p>
-            <select name="sol ring box 5" id="p5solring">
+        <div>
+            <p class="textboxes">Turn 1 Sol Ring:</p>
+            <select class="solturbo" name="sol ring box 5" id="p5solring">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
-        <div style="display:flex; gap: 10px">
-            <p>Turbo'd/Out First:</p>
-            <select name="turbo box 5" id="p5turbo">
+        <div>
+            <p class="textboxes">Turbo'd / Out First:</p>
+            <select class="solturbo" name="turbo box 5" id="p5turbo">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
-        <div style="display:flex; gap: 10px">
-            <p>Scoop:</p>
-            <select name="scoop box 5" id="p5scoop">
+        <div>
+            <p class="scooptext">Scoop:</p>
+            <select class="scoop" name="scoop box 5" id="p5scoop">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
         </div>
-        <div style="display:none; gap: 10px" id="player5Enemies">
-            <p>Enemy 1:</p>
+        <div class ="enemybox" id="player5Enemy1">
+            <p class="textboxes">Enemy 1:</p>
             <input type="text" id="deck5enemy1"></input>
-            <p>Enemy 2:</p>
+        </div>
+        <div class ="enemybox" id="player5Enemy2">
+            <p class="textboxes">Enemy 2:</p>
             <input type="text" id="deck5enemy2"></input>
         </div>
     </div>
@@ -1491,19 +1499,27 @@ app.get("/home", (req, res) => {
             function hidePentagramBoxes() {
                 document.getElementById("player1Enemy1").style.display = "none";
                 document.getElementById("player1Enemy2").style.display = "none";
-                document.getElementById("player2Enemies").style.display = "none";
-                document.getElementById("player3Enemies").style.display = "none";
-                document.getElementById("player4Enemies").style.display = "none";
-                document.getElementById("player5Enemies").style.display = "none";
+                document.getElementById("player2Enemy1").style.display = "none";
+                document.getElementById("player2Enemy2").style.display = "none";
+                document.getElementById("player3Enemy1").style.display = "none";
+                document.getElementById("player3Enemy2").style.display = "none";
+                document.getElementById("player4Enemy1").style.display = "none";
+                document.getElementById("player4Enemy2").style.display = "none";
+                document.getElementById("player5Enemy1").style.display = "none";
+                document.getElementById("player5Enemy2").style.display = "none";
             }
 
             function showPentagramBoxes() {
                 document.getElementById("player1Enemy1").style.display = "grid";
                 document.getElementById("player1Enemy2").style.display = "grid";
-                document.getElementById("player2Enemies").style.display = "grid";
-                document.getElementById("player3Enemies").style.display = "grid";
-                document.getElementById("player4Enemies").style.display = "grid";
-                document.getElementById("player5Enemies").style.display = "grid";
+                document.getElementById("player2Enemy1").style.display = "grid";
+                document.getElementById("player2Enemy2").style.display = "grid";
+                document.getElementById("player3Enemy1").style.display = "grid";
+                document.getElementById("player3Enemy2").style.display = "grid";
+                document.getElementById("player4Enemy1").style.display = "grid";
+                document.getElementById("player4Enemy2").style.display = "grid";
+                document.getElementById("player5Enemy1").style.display = "grid";
+                document.getElementById("player5Enemy2").style.display = "grid";
             }
 
             function populateWinBox(winOptions){
