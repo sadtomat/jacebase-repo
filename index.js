@@ -1088,9 +1088,11 @@ app.get("/home", (req, res) => {
         text-align;
       }
       .entertext {
-        font-size: 200%;
+        font-size: 150%;
         font-weight: bold;
-        text-shadow: -1px -1px 0 #3399ff, -1px 1px 0 #3399ff, 1px -1px 0 #3399ff, 1px 1px 0 #3399ff;
+      }
+      .playernumbox {
+        display: inline-flex;
       }
       .pnumber {
         font-size: 100%;
@@ -1146,13 +1148,15 @@ app.get("/home", (req, res) => {
     </style>
     
     <h1 class="addtext">Add Games</h1>
-    <p class="entertext">Select number of players</p>
-    <select name="Number of Players" id="pnumber" class="pnumber">
-        <option value="p0">select</option>
-        <option value="p3">3</option>
-        <option value="p4">4</option>
-        <option value="p5">5</option>
-    </select>
+    <div class="playernumbox">
+      <p class="entertext">Select number of players</p>
+      <select name="Number of Players" id="pnumber" class="pnumber">
+          <option value="p0">select</option>
+          <option value="p3">3</option>
+          <option value="p4">4</option>
+          <option value="p5">5</option>
+      </select>
+    </div>
 
     <p id="errorMessage" class="errortext"></p>
 
