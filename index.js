@@ -1085,6 +1085,9 @@ app.get("/home", (req, res) => {
         display: flex;
         gap: 10px;
       }
+      .playerbox select{
+        height: 40px;
+      }
       .date-mixbox{
         display: inline;
         gap: 20px;
