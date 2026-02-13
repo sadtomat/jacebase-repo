@@ -1069,7 +1069,19 @@ app.get("/charts", (req, res) => {
 });
 
 app.get("/home", (req, res) => {
-    const content = /*html*/`    <h1>Add Games Additions</h1>
+    const content = /*html*/`    
+    <style>
+      .playerbox{
+        display: inline-flex;
+        gap: 20px;
+      }
+      .date-mixbox{
+        display: inline-flex;
+        gap: 20px;
+      }
+    </style>
+    
+    <h1>Add Games</h1>
     <p>Select number of players</p>
     <select name="Number of Players" id="pnumber">
         <option value="p0">select</option>
@@ -1080,10 +1092,7 @@ app.get("/home", (req, res) => {
 
     <p id="errorMessage"></p>
 
-    <button type="button" id="visualizerButton">Visualizer</button>
-    <button type="button" id="miscAddButton">Add Players or Decks</button>
-
-    <div style="gap: 20px; display:none"  id="orderedBox">
+    <div class="date-miscbox" style="gap: 20px; display:none"  id="orderedBox">
         <p>Date(yyyy/mm/dd):</p>
         <input type="text" id="gameDate"></input>
         <p>Ordered?:</p>
@@ -1105,7 +1114,7 @@ app.get("/home", (req, res) => {
         </div>
     </div>
 
-    <div style="gap: 20px; display:none"  id="player1Input">
+    <div class="playerbox" id="player1Input">
         <div style="display:flex; gap: 10px">
             <p>Deck 1:</p>
             <input type="text" id="deck1"></input>
