@@ -1078,6 +1078,28 @@ app.get("/charts", (req, res) => {
 app.get("/home", (req, res) => {
     const content = /*html*/`    
     <style>
+      .addtext {
+        font-weight: bold;
+        color: black;
+        font-size: 400%;
+        text-shadow: -2px -2px 0 #3399ff, -2px 2px 0 #3399ff, 2px -2px 0 #3399ff, 2px 2px 0 #3399ff;
+        outline: 10px white;
+        width: 1000px;
+        text-align;
+      }
+      .entertext {
+        font-size: 200%;
+        font-weight: bold;
+        text-shadow: -1px -1px 0 #3399ff, -1px 1px 0 #3399ff, 1px -1px 0 #3399ff, 1px 1px 0 #3399ff;
+      }
+      .pnumber {
+        font-size: 100%;
+        font-weight: bold;
+      }
+      .errortext{
+        font-size: 150%;
+        font-weight: bold;
+      }
       .playerbox{
         display: none;
         gap: 20px;
@@ -1123,16 +1145,16 @@ app.get("/home", (req, res) => {
       }
     </style>
     
-    <h1>Add Games</h1>
-    <p>Select number of players</p>
-    <select name="Number of Players" id="pnumber">
+    <h1 class="addtext">Add Games</h1>
+    <p class="entertext">Select number of players</p>
+    <select name="Number of Players" id="pnumber" class="pnumber">
         <option value="p0">select</option>
         <option value="p3">3</option>
         <option value="p4">4</option>
         <option value="p5">5</option>
     </select>
 
-    <p id="errorMessage"></p>
+    <p id="errorMessage" class="errortext"></p>
 
     <div class="date-miscbox" style="gap: 20px; display:none"  id="orderedBox">
         <p>Date(yyyy/mm/dd):</p>
