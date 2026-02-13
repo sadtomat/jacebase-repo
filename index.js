@@ -1075,6 +1075,10 @@ app.get("/home", (req, res) => {
         display: none;
         gap: 20px;
       }
+      .playerbox p{
+        width: 70px;
+        font-weight: bold;
+      }
       .date-mixbox{
         display: inline-flex;
         gap: 20px;
