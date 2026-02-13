@@ -1135,6 +1135,10 @@ app.get("/home", (req, res) => {
         display: none;
         gap: 10px;
         align-items: center;
+        padding-top: 7px;
+        background: #f6fefe;
+        border: 4px groove;
+        margin: 5px;
       }
       .playerbox p{
         font-weight: bold;
@@ -1143,15 +1147,9 @@ app.get("/home", (req, res) => {
       .textboxes{
         width: 70px;
       }
-      .playerbox {
-        padding-top: 7px;
-        background: #f6fefe;
-        border: 4px groove;
-        margin: 5px;
-      }
       .playerbox div{
         display: flex;
-        gap: 10px;
+        gap: 5px;
       }
       .playerbox input{
         height: 40px;
