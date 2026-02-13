@@ -1092,6 +1092,9 @@ app.get("/home", (req, res) => {
         margin-top: 5px;
         border: 4px outset;
       }
+      .playerbox select {
+        border: 4px inset;
+      }
       .scoop {
         height: 40px;
         margin-top: 5px;
