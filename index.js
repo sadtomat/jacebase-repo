@@ -1087,10 +1087,11 @@ app.get("/home", (req, res) => {
       }
       .playerbox select{
         height: 40px;
+        margin-top: 5px;
       }
       .solturbo {
         height: 40px;
-        margin-top: 20px;
+        margin-top: 18px;
       }
       .date-mixbox{
         display: inline;
