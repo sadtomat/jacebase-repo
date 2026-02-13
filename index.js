@@ -1085,7 +1085,7 @@ app.get("/home", (req, res) => {
         display: flex;
         gap: 10px;
       }
-      .playerbox select{
+      .scoop {
         height: 40px;
         margin-top: 5px;
       }
@@ -1159,7 +1159,7 @@ app.get("/home", (req, res) => {
         </div>
         <div>
             <p>Scoop:</p>
-            <select name="scoop box 1" id="p1scoop">
+            <select class="scoop" name="scoop box 1" id="p1scoop">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
