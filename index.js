@@ -1086,7 +1086,7 @@ app.get("/home", (req, res) => {
         gap: 10px;
       }
       .date-mixbox{
-        display: inline-flex;
+        display: inline;
         gap: 20px;
       }
     </style>
