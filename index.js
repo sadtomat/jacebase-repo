@@ -1074,10 +1074,12 @@ app.get("/home", (req, res) => {
       .playerbox{
         display: none;
         gap: 20px;
+        align-items: center;
       }
       .playerbox p{
         width: 70px;
         font-weight: bold;
+        align-items: center;
       }
       .date-mixbox{
         display: inline-flex;
@@ -1136,7 +1138,7 @@ app.get("/home", (req, res) => {
             </select>
         </div>
         <div style="display:flex; gap: 10px">
-            <p>Turbo'd/Out First:</p>
+            <p>Turbo'd / Out First:</p>
             <select name="turbo box 1" id="p1turbo">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
