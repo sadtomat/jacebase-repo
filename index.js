@@ -1100,7 +1100,7 @@ app.get("/home", (req, res) => {
         font-size: 100%;
         font-weight: bold;
         height: 40px;
-        margin-top: 30px;
+        margin-top: 25px;
       }
       .errortext{
         font-size: 150%;
