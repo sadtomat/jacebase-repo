@@ -94,7 +94,7 @@ function renderPage(title, content) {
         <h1>J a c e b a s e</h1>
       </div>
 
-      <div class="container">
+      <div class="container" src="">
         ${content}
       </div>
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -106,6 +106,9 @@ function renderPage(title, content) {
           const jacebaseLogoUrl = "https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/Jacebase-logo.jpg";
           const imageElement1 = document.getElementById("logo");
           imageElement1.src = jacebaseLogoUrl;
+          const jacebaseBackgroundUrl = "https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/background2.jpg";
+          const imageElement2 = document.getElementById("container");
+          imageElement2.src = jacebaseBackgroundUrl;
           document.getElementById("toLogin").addEventListener("click", function(){
             setTimeout(function(){window.location.href = "/"}, 1000);
           });
