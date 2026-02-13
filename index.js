@@ -1088,6 +1088,10 @@ app.get("/home", (req, res) => {
       .playerbox select{
         height: 40px;
       }
+      .solturbo {
+        height: 40px;
+        margin-top: 20px;
+      }
       .date-mixbox{
         display: inline;
         gap: 20px;
@@ -1138,7 +1142,7 @@ app.get("/home", (req, res) => {
         </div>
         <div>
             <p>Turn 1 Sol Ring:</p>
-            <select name="sol ring box 1" id="p1solring">
+            <select class="solturbo" name="sol ring box 1" id="p1solring">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
@@ -1146,7 +1150,7 @@ app.get("/home", (req, res) => {
         </div>
         <div>
             <p>Turbo'd / Out First:</p>
-            <select name="turbo box 1" id="p1turbo">
+            <select class="solturbo" name="turbo box 1" id="p1turbo">
                 <option value="null">Unknown</option>
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
