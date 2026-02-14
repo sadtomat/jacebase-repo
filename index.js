@@ -1803,26 +1803,84 @@ app.post("/home", (req, res) => {
 
 app.get("/misc-additions", (req, res) => {
     const content = /*html*/`
-    <h1>Misc Additions</h1>
-    <p id="para">Player/Deck Addition Page</p>
-    <button id="toHome">Add Games to Database</button>
-    <button id="toCharts">Go to Data Visualizer</button>
+    <style>
+      .miscpage {
+        font-weight: bold;
+        color: black;
+        font-size: 400%;
+        text-shadow: -2px -2px 0 #3399ff, -2px 2px 0 #3399ff, 2px -2px 0 #3399ff, 2px 2px 0 #3399ff;
+        outline: 10px white;
+        width: 1000px;
+        text-align;
+      }
+      .entertext {
+        margin-top: 25px;
+        font-size: 150%;
+        font-weight: bold;
+      }
+      .playertext {
+        font-weight: bold;
+        margin-top: 10px;
+      }
+      .playerbox {
+        height: 40px;
+        margin-top: 5px;
+        border: 4px outset;
+        width: 150px;
+        align-items: center;
+        margin-top: 7px;
+        margin-bottom: 7px;
+        background: #f6fefe;
+        border: 4px groove;
+        padding-left: 13px;
+      }
+      .outerplayerbox {
+        display: flex;
+        gap: 20px;
+      }
+      .outerdeckbox {
+        height: 40px;
+        margin-top: 5px;
+        border: 4px outset;
+        width: 150px;
+        align-items: center;
+        margin-top: 7px;
+        margin-bottom: 7px;
+        background: #f6fefe;
+        border: 4px groove;
+        padding-left: 13px;
+        display: grid;
+        gap: 20px;
+      }
+      .innerdeckbox {
+        display: flex;
+        gap: 20px;
+      }
+      
+    </style>
+    <h1 class="miscpage">Misc Additions</h1>
+    <p class="entertext" id="para">Add Players</p>
     <p id="errorMessage"></p>
-    <div style="gap: 20px; display:flex"  id="player1Input">
-      <p>Player Name:</p>
-      <input type="text" id="playerName"></input>
+    <div class="outerplayerbox" id="player1Input">
+      <p class="playertext">Player Name:</p>
+      <input type="text" id="playerName" class="playerbox"></input>
       <button id="playerSubmitButton">Submit</button>
     </div>
+    <p class="entertext" id="para">Add Decks</p>
     <div id="deckBox" style="display:flex; gap: 10px">
-      <p>Deck Name:</p>
-      <input type="text" id="deckName"></input>
-      <p>Deck Creator:</p>
-      <input type="text" id="deckCreator"></input>
-      <p>Primary Tag:</p>
-      <input type="text" id="tagBox"></input>
-      <p>Secondary Tags:</p>
-      <input type="text" id="secTagBox1"></input>
-      <input type="text" id="secTagBox2"></input>
+      <div class="innerdeckbox">
+        <p>Deck Name:</p>
+        <input type="text" id="deckName"></input>
+        <p>Deck Creator:</p>
+        <input type="text" id="deckCreator"></input>
+      </div>
+      <div class="innerdeckbox">
+        <p>Primary Tag:</p>
+        <input type="text" id="tagBox"></input>
+        <p>Secondary Tags:</p>
+        <input type="text" id="secTagBox1"></input>
+        <input type="text" id="secTagBox2"></input>
+      </div>
       <button id="deckSubmitButton">Submit</button>
     </div>
     <script>
