@@ -1861,21 +1861,22 @@ app.get("/misc-additions", (req, res) => {
         color: #f2f2f2;
         text-align: center;
         text-decoration: none;
-        background-color: #000099
+        background-color: #000099;
+        padding: 14px 16px;
       }
       
     </style>
     <h1 class="miscpage">Misc Additions</h1>
     <p class="entertext" id="para">Add Players</p>
     <p id="errorMessage"></p>
-    <div class="playerbox" id="player1Input">
-      <p class="playertext">Player Name:</p>
-      <input type="text" id="playerName" class="playerinput"></input>
-    </div>
-    <div style="display:flex">
-      <p class="entertext" id="para">Add Decks</p>
+    <div style="flex">
+      <div class="playerbox" id="player1Input">
+        <p class="playertext">Player Name:</p>
+        <input type="text" id="playerName" class="playerinput"></input>
+      </div>
       <button id="playerSubmitButton" class="playersubmit">Submit</button>
     </div>
+    <p class="entertext" id="para">Add Decks</p>
     <div id="deckBox" class="outerdeckbox">
       <div class="innerdeckbox">
         <p>Deck Name:</p>
