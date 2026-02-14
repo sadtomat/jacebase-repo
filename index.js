@@ -1823,10 +1823,8 @@ app.get("/misc-additions", (req, res) => {
         margin-top: 10px;
       }
       .playerbox {
-        height: 40px;
         margin-top: 5px;
         border: 4px outset;
-        width: 150px;
         align-items: center;
         margin-top: 7px;
         margin-bottom: 7px;
