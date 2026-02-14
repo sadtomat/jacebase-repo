@@ -1833,10 +1833,6 @@ app.get("/misc-additions", (req, res) => {
         border: 4px groove;
         padding-left: 13px;
       }
-      .outerplayerbox {
-        display: flex;
-        gap: 20px;
-      }
       .outerdeckbox {
         margin-top: 5px;
         border: 4px outset;
@@ -1852,6 +1848,12 @@ app.get("/misc-additions", (req, res) => {
       .innerdeckbox {
         display: flex;
         gap: 20px;
+      }
+      .playertext {
+        height: 40px;
+        margin-top: 5px;
+        border: 4px outset;
+        width: 150px;
       }
       
     </style>
