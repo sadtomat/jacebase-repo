@@ -1849,7 +1849,7 @@ app.get("/misc-additions", (req, res) => {
         display: flex;
         gap: 20px;
       }
-      .playertext {
+      .playerinput {
         height: 40px;
         margin-top: 5px;
         border: 4px outset;
@@ -1862,7 +1862,7 @@ app.get("/misc-additions", (req, res) => {
     <p id="errorMessage"></p>
     <div class="playerbox" id="player1Input">
       <p class="playertext">Player Name:</p>
-      <input type="text" id="playerName" class="playerbox"></input>
+      <input type="text" id="playerName" class="playerinput"></input>
       <button id="playerSubmitButton">Submit</button>
     </div>
     <p class="entertext" id="para">Add Decks</p>
