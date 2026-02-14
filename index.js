@@ -1854,6 +1854,14 @@ app.get("/misc-additions", (req, res) => {
         height: 40px;
         border: 4px outset;
         width: 150px;
+        margin-left: -15px
+      }
+      .playersubmit {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        text-decoration: none;
+        background-color: #000099
       }
       
     </style>
@@ -1863,9 +1871,11 @@ app.get("/misc-additions", (req, res) => {
     <div class="playerbox" id="player1Input">
       <p class="playertext">Player Name:</p>
       <input type="text" id="playerName" class="playerinput"></input>
-      <button id="playerSubmitButton">Submit</button>
     </div>
-    <p class="entertext" id="para">Add Decks</p>
+    <div style="display:flex">
+      <p class="entertext" id="para">Add Decks</p>
+      <button id="playerSubmitButton" class="playersubmit">Submit</button>
+    </div>
     <div id="deckBox" class="outerdeckbox">
       <div class="innerdeckbox">
         <p>Deck Name:</p>
