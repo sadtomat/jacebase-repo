@@ -1866,7 +1866,7 @@ app.get("/misc-additions", (req, res) => {
         padding: 14px 16px;
       }
       .outperplayerbox {
-        display: inline;
+        display: flex;
       }
       
     </style>
