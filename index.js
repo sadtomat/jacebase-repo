@@ -1832,6 +1832,7 @@ app.get("/misc-additions", (req, res) => {
         background: #f6fefe;
         border: 4px groove;
         padding-left: 13px;
+        gap:30px;
       }
       .outerdeckbox {
         margin-top: 5px;
@@ -1851,7 +1852,6 @@ app.get("/misc-additions", (req, res) => {
       }
       .playerinput {
         height: 40px;
-        margin-top: 5px;
         border: 4px outset;
         width: 150px;
       }
