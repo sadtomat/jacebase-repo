@@ -1823,6 +1823,7 @@ app.get("/misc-additions", (req, res) => {
         margin-top: 10px;
       }
       .playerbox {
+        display: flex;
         margin-top: 5px;
         border: 4px outset;
         align-items: center;
