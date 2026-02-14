@@ -1833,7 +1833,7 @@ app.get("/misc-additions", (req, res) => {
         border: 4px groove;
         padding-left: 13px;
         gap:30px;
-        width:500px;
+        width:350px;
       }
       .outerdeckbox {
         margin-top: 5px;
