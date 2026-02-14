@@ -1874,11 +1874,11 @@ app.get("/misc-additions", (req, res) => {
     <p class="entertext" id="para">Add Players</p>
     <p id="errorMessage"></p>
     <div class="outerplayerbox">
+      <button id="playerSubmitButton" class="playersubmit">Submit</button>
       <div class="playerbox" id="player1Input">
         <p class="playertext">Player Name:</p>
         <input type="text" id="playerName" class="playerinput"></input>
       </div>
-      <button id="playerSubmitButton" class="playersubmit">Submit</button>
     </div>
     <p class="entertext" id="para">Add Decks</p>
     <div id="deckBox" class="outerdeckbox">
