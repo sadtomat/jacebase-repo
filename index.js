@@ -1839,10 +1839,8 @@ app.get("/misc-additions", (req, res) => {
         gap: 20px;
       }
       .outerdeckbox {
-        height: 40px;
         margin-top: 5px;
         border: 4px outset;
-        width: 150px;
         align-items: center;
         margin-top: 7px;
         margin-bottom: 7px;
@@ -1861,7 +1859,7 @@ app.get("/misc-additions", (req, res) => {
     <h1 class="miscpage">Misc Additions</h1>
     <p class="entertext" id="para">Add Players</p>
     <p id="errorMessage"></p>
-    <div class="outerplayerbox" id="player1Input">
+    <div class="playerbox" id="player1Input">
       <p class="playertext">Player Name:</p>
       <input type="text" id="playerName" class="playerbox"></input>
       <button id="playerSubmitButton">Submit</button>
