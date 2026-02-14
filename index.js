@@ -1867,7 +1867,7 @@ app.get("/misc-additions", (req, res) => {
       <button id="playerSubmitButton">Submit</button>
     </div>
     <p class="entertext" id="para">Add Decks</p>
-    <div id="deckBox" style="display:flex; gap: 10px">
+    <div id="deckBox" class="outerdeckbox">
       <div class="innerdeckbox">
         <p>Deck Name:</p>
         <input type="text" id="deckName"></input>
