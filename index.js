@@ -1865,12 +1865,15 @@ app.get("/misc-additions", (req, res) => {
         background-color: #000099;
         padding: 14px 16px;
       }
+      .outperplayerbox {
+        display: inline;
+      }
       
     </style>
     <h1 class="miscpage">Misc Additions</h1>
     <p class="entertext" id="para">Add Players</p>
     <p id="errorMessage"></p>
-    <div style="inline">
+    <div class="outerplayerbox">
       <div class="playerbox" id="player1Input">
         <p class="playertext">Player Name:</p>
         <input type="text" id="playerName" class="playerinput"></input>
