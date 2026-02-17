@@ -1931,22 +1931,24 @@ app.get("/misc-additions", (req, res) => {
       <button id="playerSubmitButton" class="playersubmit">Submit</button>
     </div>
     <p class="entertext" id="para">Add Decks</p>
-    <div id="deckBox" class="outerdeckbox">
-      <div class="innerdeckbox">
-        <p>Deck Name:</p>
-        <input type="text" id="deckName"></input>
-        <p>Deck Creator:</p>
-        <input type="text" id="deckCreator"></input>
+    <div style="display: flex; gap: 20px;">
+      <div id="deckBox" class="outerdeckbox">
+        <div class="innerdeckbox">
+          <p>Deck Name:</p>
+          <input type="text" id="deckName" class="playerinput"></input>
+          <p>Deck Creator:</p>
+          <input type="text" id="deckCreator" class="playerinput"></input>
+        </div>
+        <div class="innerdeckbox">
+          <p>Primary Tag:</p>
+          <input type="text" id="tagBox"></input>
+          <p>Secondary Tags:</p>
+          <input type="text" id="secTagBox1"></input>
+          <input type="text" id="secTagBox2"></input>
+        </div>
       </div>
-      <div class="innerdeckbox">
-        <p>Primary Tag:</p>
-        <input type="text" id="tagBox"></input>
-        <p>Secondary Tags:</p>
-        <input type="text" id="secTagBox1"></input>
-        <input type="text" id="secTagBox2"></input>
-      </div>
+      <button id="deckSubmitButton" class="playersubmit">Submit</button>
     </div>
-    <button id="deckSubmitButton" class="playersubmit">Submit</button>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         let playerTable
