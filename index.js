@@ -286,7 +286,6 @@ app.get("/", (req, res) => {
       }
       .exitbutton:hover{
         background-color: #b3b3ff;
-        color:white;
       }
     </style>  
   </div>`;
@@ -446,10 +445,12 @@ app.get("/charts", (req, res) => {
         align-self: center;
         font-size: 150%;
         font-weight: bold;
+        margin-top: 10px;
       }
       .tableselect {
         align-self: center;
         font-size: 150%;
+        border: 4px inset;
       }
       .visualizerpage {
         font-weight: bold;
@@ -458,7 +459,13 @@ app.get("/charts", (req, res) => {
         text-shadow: -2px -2px 0 #3399ff, -2px 2px 0 #3399ff, 2px -2px 0 #3399ff, 2px 2px 0 #3399ff;
         outline: 10px white;
         width: 1000px;
-        text-align;
+      }
+      .dataloader {
+        background-color: #ccccff;
+        font-weight: bold;
+      }
+      .dataloader:hover {
+        background-color: #b3b3ff;
       }
     </style>
 
