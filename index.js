@@ -481,6 +481,7 @@ app.get("/charts", (req, res) => {
         {name: "Jumpscare", elo: 5.3},
         {name: "Titanic", elo: 6.1},
         {name: "Ghouls", elo: 4.9},
+        {name: "Attractions", elo: 4.3},
         {name: "Demons", elo: 7.4},       //zach
         {name: "Bats", elo: 6.4},
         {name: "Akuma", elo: 7.3},
