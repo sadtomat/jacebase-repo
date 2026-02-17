@@ -1160,6 +1160,11 @@ app.get("/home", (req, res) => {
         border: 4px outset;
         width: 150px;
       }
+      
+      .playerbox input:hover{
+        background: #f2f2f2;
+      }
+
       .playerbox select {
         border: 4px inset;
         margin-top: 25px;
@@ -1193,10 +1198,10 @@ app.get("/home", (req, res) => {
         border: 4px inset;
       }
       .submitbutton {
-        margin-left: 700px;
+        margin-left: 800px;
         background: #ccccff;
-        width: 50px;
-        width: 65px;
+        height: 50px;
+        width: 80px;
         font-weight: bold;
       }
       .submitbutton:hover {
