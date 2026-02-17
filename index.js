@@ -1898,8 +1898,8 @@ app.get("/misc-additions", (req, res) => {
       }
       .playersubmit {
         background: #ccccff;
-        height: 40px;
-        width: 60px;
+        height: 45px;
+        width: 70px;
         font-weight: bold;
         margin-left: 20px;
       }
