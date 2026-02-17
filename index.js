@@ -1155,19 +1155,13 @@ app.get("/home", (req, res) => {
       }
       .playerbox input{
         height: 40px;
-        margin-top: 20px;
+        margin-top: 25px;
         border: 4px outset;
         width: 150px;
       }
       .playerbox select {
         border: 4px inset;
         margin-top: 25px;
-        height: 40px;
-      }
-      .scoop {
-        height: 40px;
-      }
-      .solturbo {
         height: 40px;
       }
       .date-mixbox{
