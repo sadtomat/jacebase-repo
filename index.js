@@ -1148,6 +1148,7 @@ app.get("/home", (req, res) => {
       }
       .textboxes{
         width: 70px;
+        margin-top: 12px;
       }
       .playerbox div{
         display: flex;
@@ -1176,6 +1177,7 @@ app.get("/home", (req, res) => {
       }
       .deck {
         width: 65px;
+        margin-top: 12px;
       }
       .scooptext {
         width: 55px;
