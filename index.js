@@ -1891,9 +1891,8 @@ app.get("/misc-additions", (req, res) => {
         gap: 20px;
       }
       .innerdeckbox p {
-        margin-top: 25px;
-        font-size: 150%;
         font-weight: bold;
+        margin-top: 10px;
       }
       .innerdeckbox input {
         height: 40px;
