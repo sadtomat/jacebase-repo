@@ -1898,9 +1898,10 @@ app.get("/misc-additions", (req, res) => {
       }
       .playersubmit {
         background: #ccccff;
-        height: 50px;
-        width: 80px;
+        height: 40px;
+        width: 60px;
         font-weight: bold;
+        margin-left: 20px;
       }
       .outperplayerbox {
         display: flex;
