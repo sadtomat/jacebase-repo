@@ -430,7 +430,7 @@ app.get("/charts", (req, res) => {
             <option value="N/A">Select</option>
           </select>
         </div>
-        <button id="loadDataButton">Load Data</button>
+        <button id="loadDataButton" class="dataloader">Load Data</button>
       </div>
 
       <table id="testTable" class="display" width="100%"></table>
