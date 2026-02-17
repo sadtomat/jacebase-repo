@@ -1235,12 +1235,12 @@ app.get("/home", (req, res) => {
             <option value="no">No</option>
         </select>
         <div style="gap: 20px; display:none"  id="pentagramBox">
-            <p>Pentagram?:</p>
+            <p class="orderedtext">Pentagram?:</p>
             <select name="Pentagram" id="pentagramSelect" class="orderedbox">
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
-            <p>Are enemy positions known?:</p>
+            <p class="orderedtext">Are enemy positions known?:</p>
             <select name="knownp" id="knownPentagram" class="orderedbox">
               <option value="no">No</option>  
               <option value="yes">Yes</option>
