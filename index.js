@@ -1192,14 +1192,14 @@ app.get("/home", (req, res) => {
       .winnerselect {
         border: 4px inset;
       }
-      .winnerselect {
+      .submitbutton {
         margin-left: 1000px;
         background: #ccccff;
         width: 50px;
         width: 65px;
         font-weight: bold;
       }
-      .winnerselect:hover {
+      .submitbutton:hover {
         background: #b3b3ff;
       }
     </style>
