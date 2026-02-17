@@ -1155,20 +1155,20 @@ app.get("/home", (req, res) => {
       }
       .playerbox input{
         height: 40px;
-        margin-top: 10px;
+        margin-top: 30px;
         border: 4px outset;
         width: 150px;
       }
       .playerbox select {
         border: 4px inset;
+        margin-top: 30px;
+        height: 40px;
       }
       .scoop {
         height: 40px;
-        margin-top: 5px;
       }
       .solturbo {
         height: 40px;
-        margin-top: 17px;
       }
       .date-mixbox{
         display: inline;
@@ -1229,7 +1229,7 @@ app.get("/home", (req, res) => {
             <input type="text" id="deck1"></input>
         </div>
         <div>
-            <p class="textboxes">Player 1:</p>
+            <p class="deck">Player 1:</p>
             <input type="text" id="player1"></input>
         </div>
         <div>
