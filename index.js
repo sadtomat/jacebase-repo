@@ -1862,7 +1862,7 @@ app.get("/misc-additions", (req, res) => {
         margin-top: 10px;
       }
       .playerbox {
-        display: inline-flex;
+        display: flex;
         margin-top: 5px;
         border: 4px outset;
         align-items: center;
@@ -1897,7 +1897,6 @@ app.get("/misc-additions", (req, res) => {
         margin-left: -15px
       }
       .playersubmit {
-        float: left;
         color: #f2f2f2;
         text-align: center;
         text-decoration: none;
