@@ -1885,6 +1885,7 @@ app.get("/misc-additions", (req, res) => {
         padding-left: 13px;
         display: grid;
         gap: 20px;
+        width: 700px;
       }
       .innerdeckbox {
         display: flex;
