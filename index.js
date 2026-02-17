@@ -1193,7 +1193,7 @@ app.get("/home", (req, res) => {
         border: 4px inset;
       }
       .submitbutton {
-        margin-left: 1000px;
+        margin-left: 700px;
         background: #ccccff;
         width: 50px;
         width: 65px;
