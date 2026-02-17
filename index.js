@@ -1122,6 +1122,11 @@ app.get("/home", (req, res) => {
         font-weight: bold;
         margin-top: 12px;
       }
+      .postext {
+        width: 250px;
+        font-weight: bold;
+        margin-top: 12px;
+      }
       .datebox {
         height: 40px;
         margin-top: 5px;
@@ -1240,7 +1245,7 @@ app.get("/home", (req, res) => {
                 <option value="yes">Yes</option>
                 <option value="no">No</option>
             </select>
-            <p class="orderedtext">Are enemy positions known?:</p>
+            <p class="postext">Are enemy positions known?:</p>
             <select name="knownp" id="knownPentagram" class="orderedbox">
               <option value="no">No</option>  
               <option value="yes">Yes</option>
