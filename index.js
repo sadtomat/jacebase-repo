@@ -1563,10 +1563,10 @@ app.get("/home", (req, res) => {
                     document.getElementById("orderedBox").style.display = "flex";
                     document.getElementById("pentagramBox").style.display = "flex";
                     document.getElementById("player1Input").style.display = "grid";
-                    document.getElementById("player2Input").style.display = "flex";
-                    document.getElementById("player3Input").style.display = "flex";
-                    document.getElementById("player4Input").style.display = "flex";
-                    document.getElementById("player5Input").style.display = "flex";
+                    document.getElementById("player2Input").style.display = "grid";
+                    document.getElementById("player3Input").style.display = "grid";
+                    document.getElementById("player4Input").style.display = "grid";
+                    document.getElementById("player5Input").style.display = "grid";
                     winOptions = [{value:'player1',text:"Player 1"}, {value:'player2',text:"Player 2"}, {value:'player3',text:"Player 3"}, {value:'player4',text:"Player 4"}, {value:'player5',text:"Player 5"}];
                     populateWinBox(winOptions);
                 }
