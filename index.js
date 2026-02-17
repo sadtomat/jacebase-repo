@@ -1144,11 +1144,10 @@ app.get("/home", (req, res) => {
       }
       .playerbox p{
         font-weight: bold;
-        margin-top: 10px;
+        margin-top: 20px;
       }
       .textboxes{
         width: 70px;
-        margin-top: 12px;
       }
       .playerbox div{
         display: flex;
@@ -1156,7 +1155,7 @@ app.get("/home", (req, res) => {
       }
       .playerbox input{
         height: 40px;
-        margin-top: 5px;
+        margin-top: 10px;
         border: 4px outset;
         width: 150px;
       }
@@ -1177,7 +1176,6 @@ app.get("/home", (req, res) => {
       }
       .deck {
         width: 65px;
-        margin-top: 12px;
       }
       .scooptext {
         width: 55px;
