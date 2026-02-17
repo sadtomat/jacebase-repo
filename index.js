@@ -1898,7 +1898,8 @@ app.get("/misc-additions", (req, res) => {
         height: 40px;
         border: 4px outset;
         width: 150px;
-        margin-left: -15px
+        margin-top: 10px;
+
       }
       .playerinput {
         height: 40px;
