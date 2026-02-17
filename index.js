@@ -1128,6 +1128,9 @@ app.get("/home", (req, res) => {
         border: 4px outset;
         width: 200px;
       }
+      .datebox:hover {
+        background: #f6fefe;
+      }
       .orderedbox {
         border: 4px inset;
         height: 40px;
@@ -1198,7 +1201,7 @@ app.get("/home", (req, res) => {
         border: 4px inset;
       }
       .submitbutton {
-        margin-left: 800px;
+        margin-left: 798px;
         background: #ccccff;
         height: 50px;
         width: 80px;
