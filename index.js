@@ -1221,6 +1221,7 @@ app.get("/home", (req, res) => {
     </div>
 
     <div class="playerbox" id="player1Input">
+      <div style="display: flex; gap: 20px;">
         <div>
             <p class="deck">Deck 1:</p>
             <input type="text" id="deck1"></input>
@@ -1253,14 +1254,17 @@ app.get("/home", (req, res) => {
                 <option value="no">No</option>
             </select>
         </div>
-        <div class ="enemybox" id="player1Enemy1">
+      </div>
+      <div id="player1Enemies" style="display: none; gap: 20px;">
+        <div id="player1Enemy1">
             <p class="textboxes">Enemy 1:</p>
             <input type="text" id="deck1enemy1"></input>
         </div>
-        <div class ="enemybox" id="player1Enemy2">
+        <div id="player1Enemy2">
             <p class="textboxes">Enemy 2:</p>
             <input type="text" id="deck1enemy2"></input>
         </div>
+      </div>
     </div>
 
     <div class="playerbox" id="player2Input">
@@ -1490,8 +1494,7 @@ app.get("/home", (req, res) => {
             });
 
             function hidePentagramBoxes() {
-                document.getElementById("player1Enemy1").style.display = "none";
-                document.getElementById("player1Enemy2").style.display = "none";
+                document.getElementById("player1Enemies").style.display = "none";
                 document.getElementById("player2Enemy1").style.display = "none";
                 document.getElementById("player2Enemy2").style.display = "none";
                 document.getElementById("player3Enemy1").style.display = "none";
@@ -1503,8 +1506,7 @@ app.get("/home", (req, res) => {
             }
 
             function showPentagramBoxes() {
-                document.getElementById("player1Enemy1").style.display = "grid";
-                document.getElementById("player1Enemy2").style.display = "grid";
+                document.getElementById("player1Enemies").style.display = "flex";
                 document.getElementById("player2Enemy1").style.display = "grid";
                 document.getElementById("player2Enemy2").style.display = "grid";
                 document.getElementById("player3Enemy1").style.display = "grid";
@@ -1552,11 +1554,11 @@ app.get("/home", (req, res) => {
                 }else if (playernumber === "p5") {
                     document.getElementById("orderedBox").style.display = "flex";
                     document.getElementById("pentagramBox").style.display = "flex";
-                    document.getElementById("player1Input").style.display = "inline-grid";
-                    document.getElementById("player2Input").style.display = "inline-grid";
-                    document.getElementById("player3Input").style.display = "inline-grid";
-                    document.getElementById("player4Input").style.display = "inline-grid";
-                    document.getElementById("player5Input").style.display = "inline-grid";
+                    document.getElementById("player1Input").style.display = "flex";
+                    document.getElementById("player2Input").style.display = "flex";
+                    document.getElementById("player3Input").style.display = "flex";
+                    document.getElementById("player4Input").style.display = "flex";
+                    document.getElementById("player5Input").style.display = "flex";
                     winOptions = [{value:'player1',text:"Player 1"}, {value:'player2',text:"Player 2"}, {value:'player3',text:"Player 3"}, {value:'player4',text:"Player 4"}, {value:'player5',text:"Player 5"}];
                     populateWinBox(winOptions);
                 }
