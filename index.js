@@ -1897,11 +1897,11 @@ app.get("/misc-additions", (req, res) => {
         margin-left: -15px
       }
       .playersubmit {
-        color: #f2f2f2;
-        text-align: center;
-        text-decoration: none;
-        background-color: #000099;
-        padding: 14px 16px;
+        background: #ccccff;
+        height: 50px;
+        width: 80px;
+        font-weight: bold;
+        display: none;
       }
       .outperplayerbox {
         display: flex;
