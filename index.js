@@ -1177,7 +1177,7 @@ app.get("/home", (req, res) => {
         margin-top: 30px;
       }
       .enemybox {
-        display: none
+        margin-bottom: 30px;
       }
     </style>
     
@@ -1254,11 +1254,11 @@ app.get("/home", (req, res) => {
       <div id="player1Enemies" style="display: none; gap: 20px;">
         <div>
             <p class="textboxes">Enemy 1:</p>
-            <input type="text" id="deck1enemy1"></input>
+            <input type="text" id="deck1enemy1" class="enemybox"></input>
         </div>
         <div>
             <p class="textboxes">Enemy 2:</p>
-            <input type="text" id="deck1enemy2"></input>
+            <input type="text" id="deck1enemy2" class="enemybox"></input>
         </div>
       </div>
     </div>
