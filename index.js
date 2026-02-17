@@ -1955,7 +1955,7 @@ app.get("/misc-additions", (req, res) => {
           <input type="text" id="secTagBox2"></input>
         </div>
       </div>
-      <button id="deckSubmitButton" class="playersubmit">Submit</button>
+      <button id="deckSubmitButton" class="decksubmit">Submit</button>
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
