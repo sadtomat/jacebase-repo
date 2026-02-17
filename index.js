@@ -1118,12 +1118,12 @@ app.get("/home", (req, res) => {
         margin-top: 12px;
       }
       .orderedtext {
-        width: 100px;
+        width: 85px;
         font-weight: bold;
         margin-top: 12px;
       }
       .postext {
-        width: 210px;
+        width: 220px;
         font-weight: bold;
         margin-top: 12px;
       }
