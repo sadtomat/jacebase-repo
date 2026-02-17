@@ -1924,7 +1924,7 @@ app.get("/misc-additions", (req, res) => {
         width: 70px;
         font-weight: bold;
         margin-left: 15px;
-        margin-top: 35px;
+        margin-top: 40px;
       }
       
     </style>
