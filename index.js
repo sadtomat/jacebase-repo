@@ -1489,14 +1489,6 @@ app.get("/home", (req, res) => {
                 }
             });
 
-            document.getElementById("visualizerButton").addEventListener("click", function() {
-                window.location.href = "/charts";
-            });
-
-            document.getElementById("miscAddButton").addEventListener("click", function() {
-                window.location.href = "/misc-additions";
-            });
-
             function hidePentagramBoxes() {
                 document.getElementById("player1Enemy1").style.display = "none";
                 document.getElementById("player1Enemy2").style.display = "none";
