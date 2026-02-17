@@ -1102,6 +1102,7 @@ app.get("/home", (req, res) => {
         font-weight: bold;
         height: 40px;
         margin-top: 26px;
+        border: 4px inset;
       }
       .errortext{
         font-size: 150%;
@@ -1184,6 +1185,9 @@ app.get("/home", (req, res) => {
         margin-top: 30px;
         margin-right: 5px;
       }
+      .winnerselect {
+        border: 4px inset;
+      }
     </style>
     
     <h1 class="addtext">Add Games</h1>
@@ -1215,8 +1219,8 @@ app.get("/home", (req, res) => {
             </select>
             <p>Are enemy positions known?:</p>
             <select name="knownp" id="knownPentagram" class="orderedbox">
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
+              <option value="no">No</option>  
+              <option value="yes">Yes</option>
             </select>
         </div>
     </div>
@@ -1458,7 +1462,7 @@ app.get("/home", (req, res) => {
 
     <div style="gap: 20px; display:flex"  id="winnerBox">
         <p>Winner:</p>
-        <select name="Winner" id="winnerSelect">
+        <select name="Winner" id="winnerSelect" class="winnerselect">
             <option value="N/A">Select Player Count</option>
         </select>
         <button id="submitButton">Submit</button>
