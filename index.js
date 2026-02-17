@@ -1554,7 +1554,7 @@ app.get("/home", (req, res) => {
                 }else if (playernumber === "p5") {
                     document.getElementById("orderedBox").style.display = "flex";
                     document.getElementById("pentagramBox").style.display = "flex";
-                    document.getElementById("player1Input").style.display = "flex";
+                    document.getElementById("player1Input").style.display = "grid";
                     document.getElementById("player2Input").style.display = "flex";
                     document.getElementById("player3Input").style.display = "flex";
                     document.getElementById("player4Input").style.display = "flex";
