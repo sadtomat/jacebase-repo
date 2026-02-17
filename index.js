@@ -277,20 +277,18 @@ app.get("/", (req, res) => {
       }
       .exitbutton {
         float: left;
-        color: #f2f2f2;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
         font-size: 17px;
-        background-color: #000099;
+        background-color: #ccccff;
         margin-right: 30px;
       }
       .exitbutton:hover{
-        background-color: #0066ff;
+        background-color: #b3b3ff;
         color:white;
       }
-
-    </style>
+    </style>  
   </div>`;
   res.send(renderPage("Zachariah Friesen Test Website", content));
 });
@@ -1917,6 +1915,9 @@ app.get("/misc-additions", (req, res) => {
         font-weight: bold;
         margin-left: 20px;
       }
+      .playersubmit:hover {
+        background: #b3b3ff;
+      }
       .outperplayerbox {
         display: flex;
       }
@@ -1927,6 +1928,9 @@ app.get("/misc-additions", (req, res) => {
         font-weight: bold;
         margin-left: 15px;
         margin-top: 40px;
+      }
+      .decksubmit:hover {
+        background: #b3b3ff;
       }
       
     </style>
