@@ -1185,8 +1185,22 @@ app.get("/home", (req, res) => {
         margin-top: 30px;
         margin-right: 5px;
       }
+      .winnertext {
+        font-weight: bold;
+        margin-top: 10px;
+      }
       .winnerselect {
         border: 4px inset;
+      }
+      .winnerselect {
+        margin-left: 1000px;
+        background: #ccccff;
+        width: 50px;
+        width: 65px;
+        font-weight: bold;
+      }
+      .winnerselect:hover {
+        background: #b3b3ff;
       }
     </style>
     
@@ -1461,11 +1475,11 @@ app.get("/home", (req, res) => {
     </div>
 
     <div style="gap: 20px; display:flex"  id="winnerBox">
-        <p>Winner:</p>
+        <p class="winnertext">Winner:</p>
         <select name="Winner" id="winnerSelect" class="winnerselect">
             <option value="N/A">Select Player Count</option>
         </select>
-        <button id="submitButton">Submit</button>
+        <button id="submitButton" class="submitbutton">Submit</button>
     </div>
 
     <script>
