@@ -1275,7 +1275,7 @@ app.get("/home", (req, res) => {
             <input type="text" id="deck2"></input>
         </div>
         <div>
-            <p class="textboxes">Player 2:</p>
+            <p class="deck">Player 2:</p>
             <input type="text" id="player2"></input>
         </div>
         <div>
@@ -1305,12 +1305,12 @@ app.get("/home", (req, res) => {
       </div>
       <div id="player2Enemies" style="display: none; gap: 20px;">
           <div>
-            <p class="textboxes">Enemy 1:</p>
-            <input type="text" id="deck2enemy1"></input>
+            <p class="enemytextbox">Enemy 1:</p>
+            <input type="text" id="deck2enemy1" class="enemybox"></input>
           </div>
           <div>
-            <p class="textboxes">Enemy 2:</p>
-            <input type="text" id="deck2enemy2"></input>
+            <p class="enemytextbox">Enemy 2:</p>
+            <input type="text" id="deck2enemy2" class="enemybox"></input>
           </div>
       </div>
     </div>
@@ -1322,7 +1322,7 @@ app.get("/home", (req, res) => {
             <input type="text" id="deck3"></input>
         </div>
         <div>
-            <p class="textboxes">Player 3:</p>
+            <p class="deck">Player 3:</p>
             <input type="text" id="player3"></input>
         </div>
         <div>
@@ -1352,12 +1352,12 @@ app.get("/home", (req, res) => {
       </div>
       <div id="player3Enemies" style="display: none; gap: 20px;">
           <div>
-            <p class="textboxes">Enemy 1:</p>
-            <input type="text" id="deck3enemy1"></input>
+            <p class="enemytextbox">Enemy 1:</p>
+            <input type="text" id="deck3enemy1" class="enemybox"></input>
           </div>
           <div>
-            <p class="textboxes">Enemy 2:</p>
-            <input type="text" id="deck3enemy2"></input>
+            <p class="enemytextbox">Enemy 2:</p>
+            <input type="text" id="deck3enemy2" class="enemybox"></input>
           </div>
       </div>
     </div>
@@ -1369,7 +1369,7 @@ app.get("/home", (req, res) => {
             <input type="text" id="deck4"></input>
         </div>
         <div>
-            <p class="textboxes">Player 4:</p>
+            <p class="deck">Player 4:</p>
             <input type="text" id="player4"></input>
         </div>
         <div>
@@ -1399,12 +1399,12 @@ app.get("/home", (req, res) => {
       </div>
       <div id="player4Enemies" style="display: none; gap: 20px;">
           <div>
-            <p class="textboxes">Enemy 1:</p>
-            <input type="text" id="deck4enemy1"></input>
+            <p class="enemytextbox">Enemy 1:</p>
+            <input type="text" id="deck4enemy1" class="enemybox"></input>
           </div>
           <div>
-            <p class="textboxes">Enemy 2:</p>
-            <input type="text" id="deck4enemy2"></input>
+            <p class="enemytextbox">Enemy 2:</p>
+            <input type="text" id="deck4enemy2" class="enemybox"></input>
           </div>
       </div>
     </div>
@@ -1416,7 +1416,7 @@ app.get("/home", (req, res) => {
             <input type="text" id="deck5"></input>
         </div>
         <div>
-            <p class="textboxes">Player 5:</p>
+            <p class="deck">Player 5:</p>
             <input type="text" id="player5"></input>
         </div>
         <div>
@@ -1446,12 +1446,12 @@ app.get("/home", (req, res) => {
       </div>
       <div id="player5Enemies" style="display: none; gap: 20px;">
           <div>
-            <p class="textboxes">Enemy 1:</p>
-            <input type="text" id="deck5enemy1"></input>
+            <p class="enemytextbox">Enemy 1:</p>
+            <input type="text" id="deck5enemy1" class="enemybox"></input>
           </div>
           <div>
-            <p class="textboxes">Enemy 2:</p>
-            <input type="text" id="deck5enemy2"></input>
+            <p class="enemytextbox">Enemy 2:</p>
+            <input type="text" id="deck5enemy2" class="enemybox"></input>
           </div>
       </div>
     </div>
