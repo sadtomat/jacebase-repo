@@ -1946,7 +1946,7 @@ app.get("/misc-additions", (req, res) => {
         <input type="text" id="secTagBox2"></input>
       </div>
     </div>
-    <button id="playersubmit">Submit</button>
+    <button id="deckSubmitButton" class="playersubmit">Submit</button>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         let playerTable
