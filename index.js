@@ -1918,6 +1918,14 @@ app.get("/misc-additions", (req, res) => {
       .outperplayerbox {
         display: flex;
       }
+      .decksubmit {
+        background: #ccccff;
+        height: 45px;
+        width: 70px;
+        font-weight: bold;
+        margin-left: 15px;
+        margin-top: 35px;
+      }
       
     </style>
     <h1 class="miscpage">Misc Additions</h1>
