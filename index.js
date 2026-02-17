@@ -1129,7 +1129,7 @@ app.get("/home", (req, res) => {
         width: 200px;
       }
       .datebox:hover {
-        background: #f6fefe;
+        background: #f2f2f2;
       }
       .orderedbox {
         border: 4px inset;
@@ -1201,11 +1201,12 @@ app.get("/home", (req, res) => {
         border: 4px inset;
       }
       .submitbutton {
-        margin-left: 798px;
+        margin-left: 79px;
         background: #ccccff;
         height: 50px;
         width: 80px;
         font-weight: bold;
+        display: none;
       }
       .submitbutton:hover {
         background: #b3b3ff;
@@ -1572,6 +1573,7 @@ app.get("/home", (req, res) => {
                     document.getElementById("player3Input").style.display = "flex";
                     document.getElementById("player4Input").style.display = "none";
                     document.getElementById("player5Input").style.display = "none";
+                    document.getElementById("submitButton").style.display = "flex";
                     hidePentagramBoxes();
                     winOptions = [{value:'player1',text:"Player 1"}, {value:'player2',text:"Player 2"}, {value:'player3',text:"Player 3"}];
                     populateWinBox(winOptions);
@@ -1583,6 +1585,7 @@ app.get("/home", (req, res) => {
                     document.getElementById("player3Input").style.display = "flex";
                     document.getElementById("player4Input").style.display = "flex";
                     document.getElementById("player5Input").style.display = "none";
+                    document.getElementById("submitButton").style.display = "flex";
                     hidePentagramBoxes();
                     winOptions = [{value:'player1',text:"Player 1"}, {value:'player2',text:"Player 2"}, {value:'player3',text:"Player 3"}, {value:'player4',text:"Player 4"}];
                     populateWinBox(winOptions);
@@ -1594,6 +1597,7 @@ app.get("/home", (req, res) => {
                     document.getElementById("player3Input").style.display = "grid";
                     document.getElementById("player4Input").style.display = "grid";
                     document.getElementById("player5Input").style.display = "grid";
+                    document.getElementById("submitButton").style.display = "flex";
                     winOptions = [{value:'player1',text:"Player 1"}, {value:'player2',text:"Player 2"}, {value:'player3',text:"Player 3"}, {value:'player4',text:"Player 4"}, {value:'player5',text:"Player 5"}];
                     populateWinBox(winOptions);
                 }
