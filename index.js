@@ -1256,11 +1256,11 @@ app.get("/home", (req, res) => {
         </div>
       </div>
       <div id="player1Enemies" style="display: none; gap: 20px;">
-        <div id="player1Enemy1">
+        <div>
             <p class="textboxes">Enemy 1:</p>
             <input type="text" id="deck1enemy1"></input>
         </div>
-        <div id="player1Enemy2">
+        <div>
             <p class="textboxes">Enemy 2:</p>
             <input type="text" id="deck1enemy2"></input>
         </div>
@@ -1268,6 +1268,7 @@ app.get("/home", (req, res) => {
     </div>
 
     <div class="playerbox" id="player2Input">
+      <div style="display: flex; gap: 20px;">
         <div>
             <p class="deck">Deck 2:</p>
             <input type="text" id="deck2"></input>
@@ -1300,17 +1301,21 @@ app.get("/home", (req, res) => {
                 <option value="no">No</option>
             </select>
         </div>
-        <div class ="enemybox" id="player2Enemy1">
+      </div>
+      <div id="player2Enemies" style="display: none; gap: 20px;">
+          <div>
             <p class="textboxes">Enemy 1:</p>
             <input type="text" id="deck2enemy1"></input>
-        </div>
-        <div class ="enemybox" id="player2Enemy2">
+          </div>
+          <div>
             <p class="textboxes">Enemy 2:</p>
             <input type="text" id="deck2enemy2"></input>
-        </div>
+          </div>
+      </div>
     </div>
 
     <div class="playerbox" id="player3Input">
+      <div style="display: flex; gap: 20px;">
         <div>
             <p class="deck">Deck 3:</p>
             <input type="text" id="deck3"></input>
@@ -1343,17 +1348,21 @@ app.get("/home", (req, res) => {
                 <option value="no">No</option>
             </select>
         </div>
-        <div class ="enemybox" id="player3Enemy1">
+      </div>
+      <div id="player3Enemies" style="display: none; gap: 20px;">
+          <div>
             <p class="textboxes">Enemy 1:</p>
             <input type="text" id="deck3enemy1"></input>
-        </div>
-        <div class ="enemybox" id="player3Enemy2">
+          </div>
+          <div>
             <p class="textboxes">Enemy 2:</p>
             <input type="text" id="deck3enemy2"></input>
-        </div>
+          </div>
+      </div>
     </div>
 
     <div class="playerbox" id="player4Input">
+      <div style="display: flex; gap: 20px;">
         <div>
             <p class="deck">Deck 4:</p>
             <input type="text" id="deck4"></input>
@@ -1386,17 +1395,21 @@ app.get("/home", (req, res) => {
                 <option value="no">No</option>
             </select>
         </div>
-        <div class ="enemybox" id="player4Enemy1">
+      </div>
+      <div id="player4Enemies" style="display: none; gap: 20px;">
+          <div>
             <p class="textboxes">Enemy 1:</p>
             <input type="text" id="deck4enemy1"></input>
-        </div>
-        <div class ="enemybox" id="player4Enemy2">
+          </div>
+          <div>
             <p class="textboxes">Enemy 2:</p>
             <input type="text" id="deck4enemy2"></input>
-        </div>
+          </div>
+      </div>
     </div>
 
     <div class="playerbox" id="player5Input">
+      <div style="display: flex; gap: 20px;">
         <div>
             <p class="deck">Deck 5:</p>
             <input type="text" id="deck5"></input>
@@ -1429,14 +1442,17 @@ app.get("/home", (req, res) => {
                 <option value="no">No</option>
             </select>
         </div>
-        <div class ="enemybox" id="player5Enemy1">
+      </div>
+      <div id="player5Enemies" style="display: none; gap: 20px;">
+          <div>
             <p class="textboxes">Enemy 1:</p>
             <input type="text" id="deck5enemy1"></input>
-        </div>
-        <div class ="enemybox" id="player5Enemy2">
+          </div>
+          <div>
             <p class="textboxes">Enemy 2:</p>
             <input type="text" id="deck5enemy2"></input>
-        </div>
+          </div>
+      </div>
     </div>
 
     <div style="gap: 20px; display:flex"  id="winnerBox">
@@ -1495,26 +1511,18 @@ app.get("/home", (req, res) => {
 
             function hidePentagramBoxes() {
                 document.getElementById("player1Enemies").style.display = "none";
-                document.getElementById("player2Enemy1").style.display = "none";
-                document.getElementById("player2Enemy2").style.display = "none";
-                document.getElementById("player3Enemy1").style.display = "none";
-                document.getElementById("player3Enemy2").style.display = "none";
-                document.getElementById("player4Enemy1").style.display = "none";
-                document.getElementById("player4Enemy2").style.display = "none";
-                document.getElementById("player5Enemy1").style.display = "none";
-                document.getElementById("player5Enemy2").style.display = "none";
+                document.getElementById("player2Enemies").style.display = "none";
+                document.getElementById("player3Enemies").style.display = "none";
+                document.getElementById("player4Enemies").style.display = "none";
+                document.getElementById("player5Enemies").style.display = "none";
             }
 
             function showPentagramBoxes() {
                 document.getElementById("player1Enemies").style.display = "flex";
-                document.getElementById("player2Enemy1").style.display = "grid";
-                document.getElementById("player2Enemy2").style.display = "grid";
-                document.getElementById("player3Enemy1").style.display = "grid";
-                document.getElementById("player3Enemy2").style.display = "grid";
-                document.getElementById("player4Enemy1").style.display = "grid";
-                document.getElementById("player4Enemy2").style.display = "grid";
-                document.getElementById("player5Enemy1").style.display = "grid";
-                document.getElementById("player5Enemy2").style.display = "grid";
+                document.getElementById("player2Enemies").style.display = "flex";
+                document.getElementById("player3Enemies").style.display = "flex";
+                document.getElementById("player4Enemies").style.display = "flex";
+                document.getElementById("player5Enemies").style.display = "flex";
             }
 
             function populateWinBox(winOptions){
