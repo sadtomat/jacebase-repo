@@ -126,11 +126,13 @@ function renderPage(title, content) {
       </script>
       <style>
         body {
-          background-image: url('https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/background1.jpeg')
+          background-image: url('https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/background1.jpeg');
+          background-size: cover;
         }
         .container {
           padding: 40px;
-          background-image: url('https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/background2.jpg')
+          background-image: url('https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/background2.jpg');
+          background-size: cover;
         }
         .topnav {
           overflow: hidden;
