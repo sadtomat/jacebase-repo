@@ -1890,6 +1890,17 @@ app.get("/misc-additions", (req, res) => {
         display: flex;
         gap: 20px;
       }
+      .innerdeckbox p {
+        margin-top: 25px;
+        font-size: 150%;
+        font-weight: bold;
+      }
+      .innerdeckbox input {
+        height: 40px;
+        border: 4px outset;
+        width: 150px;
+        margin-left: -15px
+      }
       .playerinput {
         height: 40px;
         border: 4px outset;
@@ -1933,8 +1944,8 @@ app.get("/misc-additions", (req, res) => {
         <input type="text" id="secTagBox1"></input>
         <input type="text" id="secTagBox2"></input>
       </div>
-      <button id="deckSubmitButton">Submit</button>
     </div>
+    <button id="deckSubmitButton">Submit</button>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         let playerTable
