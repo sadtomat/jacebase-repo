@@ -1901,7 +1901,6 @@ app.get("/misc-additions", (req, res) => {
         height: 50px;
         width: 80px;
         font-weight: bold;
-        display: none;
       }
       .outperplayerbox {
         display: flex;
