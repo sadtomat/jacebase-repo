@@ -864,7 +864,6 @@ app.get("/charts", (req, res) => {
           {name: "Slug", deckNum: 0, playNum: 0, winNum: 0, turbodNum: 0},
       ];
       for (instance of instanceTable){
-        console.log(instance.DeckName);
         deckItem = deckTable.find(obj => obj.name === instance.DeckName);
         tagListing = tagList.find(obj => obj.name === deckItem.tag);
         tagListing.playNum++;
@@ -920,6 +919,9 @@ app.get("/charts", (req, res) => {
       ];
 
       for (instance of instanceTable){
+        if (instance.TurnOrderPoss === null){
+          continue;
+        }
         gameInstance = gameTable.find(obj => obj.gameID === instance.gameID_gameTables);
         key = String(instance.TurnOrderPos)+"/"+String(gameInstance.PlayerCount);
         posListing = posList.find(obj => obj.name === key);
