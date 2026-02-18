@@ -919,7 +919,7 @@ app.get("/charts", (req, res) => {
       ];
 
       for (instance of instanceTable){
-        if (instance.TurnOrderPoss === null){
+        if (instance.TurnOrderPos === null){
           continue;
         }
         gameInstance = gameTable.find(obj => obj.gameID === instance.gameID_gameTables);
