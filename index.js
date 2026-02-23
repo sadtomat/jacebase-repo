@@ -551,8 +551,14 @@ app.get("/charts", (req, res) => {
         {name: "Evil Valgavoth", elo: 6.4},
         {name: "Dungeons", elo: 8},
         {name: "Mothman", elo: 6.4},
-        {name: "Tyranids", elo: 4.9},          //precons
-        {name: "Knights", elo: 5},
+        {name: "Tyranids", elo: 4.9},         
+        {name: "Prowess", elo: 4.3},                             //default - mark
+        {name: "Myriad", elo: 4.3},                             //default
+        {name: "DimirFood", elo: 4.3},                              //default - barret
+        {name: "Goyfs", elo: 4.3},                             //default
+        {name: "BarretClues", elo: 4.3},                             //default
+        {name: "Planeswalkers", elo: 4.3},                             //default
+        {name: "Knights", elo: 5},        //precons
         {name: "Lorehold", elo: 5.2},
         {name: "Miracles", elo: 2},
         {name: "Worldshaper", elo: 5.2},
