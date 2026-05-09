@@ -489,8 +489,10 @@ app.get("/charts", (req, res) => {
         {name: "Titanic", elo: 6.1},
         {name: "Ghouls", elo: 4.9},
         {name: "Attractions", elo: 4.3},
+        {name: "Killian Lu", elo: 4.3},
         {name: "Demons", elo: 7.4},       //zach
         {name: "Bats", elo: 6.4},
+        {name: "Bugs", elo: 6.4},
         {name: "Akuma", elo: 7.3},
         {name: "Discard", elo: 2},
         {name: "Cats/Dogs", elo: 4.3},
@@ -501,6 +503,7 @@ app.get("/charts", (req, res) => {
         {name: "Dune", elo: 5.5},         //simon
         {name: "Coinflip", elo: 6.4},
         {name: "Ice Queen", elo: 5.6},
+        {name: "Quandrix", elo: 4.3},
         {name: "Clue", elo: 5.1},
         {name: "Eggman", elo: 4.8},
         {name: "Squirells", elo: 6.8},
@@ -515,6 +518,7 @@ app.get("/charts", (req, res) => {
         {name: "Vampires", elo: 6.4},
         {name: "Deathtouch", elo: 4.8},
         {name: "Wolves", elo: 5.6},
+        {name: "Legendaries", elo: 4.3},
         {name: "Cat Girl", elo: 5.7},       //jesse
         {name: "Energy", elo: 4.3},
         {name: "Three Dog", elo: 7.1},        //shayne
@@ -548,7 +552,7 @@ app.get("/charts", (req, res) => {
         {name: "Droids", elo: 6.8},
         {name: "Drawtodeath", elo: 6.2},
         {name: "Necrons", elo: 5.9},
-        {name: "Evil Valgavoth", elo: 6.4},
+        {name: "Valgavoth", elo: 6.4},
         {name: "Dungeons", elo: 8},
         {name: "Mothman", elo: 6.4},
         {name: "Tyranids", elo: 4.9},         
@@ -562,7 +566,6 @@ app.get("/charts", (req, res) => {
         {name: "Lorehold", elo: 5.2},
         {name: "Miracles", elo: 2},
         {name: "Worldshaper", elo: 5.2},
-        {name: "Valgavoth", elo: 5.1},
         {name: "CounterIntelligence", elo: 2.4},
         {name: "20 Ways", elo: 3.2},
         {name: "Caesar", elo: 5},
@@ -571,6 +574,8 @@ app.get("/charts", (req, res) => {
         {name: "Eternal Might", elo: 2.1},
         {name: "Riders of Rohan", elo: 4.1},
         {name: "Breeders", elo: 4.6},
+        {name: "Turtles", elo: 4.3},
+        {name: "Lorehold 2.0", elo: 4.3},
     ]
 
     let instanceTable;
