@@ -2,9 +2,9 @@
   "name": "zachariah-friesen-testwebsite",
   "version": "1.0.0",
   "description": "Mike's Macaroon Market",
-  "main": "index.js",
+  "main": "Pages/login.jsx",
   "scripts": {
-    "start": "node index.js"
+    "start": "node Pages/login.jsx"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.339.0",
