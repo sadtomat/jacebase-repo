@@ -1,10 +1,10 @@
 {
   "name": "zachariah-friesen-testwebsite",
   "version": "1.0.0",
-  "description": "I am the big dawg",
-  "main": "Pages/login.jsx",
+  "description": "Mike's Macaroon Market",
+  "main": "index.js",
   "scripts": {
-    "start": "node Pages/login.jsx"
+    "start": "node index.js"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.339.0",
