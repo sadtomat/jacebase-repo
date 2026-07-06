@@ -1,20 +1,39 @@
 {
-  "name": "zachariah-friesen-testwebsite",
-  "version": "1.0.0",
-  "description": "Mike's Macaroon Market",
-  "main": "Pages/index.jsx",
-  "type": "module",
-  "scripts": {
-    "start": "node Pages/index.jsx"
-  },
+  "name": "jacebase",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.339.0",
-    "@aws-sdk/lib-storage": "^3.339.0",
-    "datatables.net-dt": "^2.3.7",
-    "dotenv": "^16.0.0",
-    "express": "^4.18.2",
-    "pg": "^8.10.0",
-    "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.3.12"
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
