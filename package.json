@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Mike's Macaroon Market",
   "main": "Pages/index.jsx",
+  "type": "module",
   "scripts": {
     "start": "node Pages/index.jsx"
   },
