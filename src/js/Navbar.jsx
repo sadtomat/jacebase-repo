@@ -4,7 +4,7 @@ import '../css/Navbar.css'
 export function Navbar() {
     return (
         <div class="topnav">
-            <img src={`https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/Jacebase-logo.jpg`}/>
+            <img src={`https://${process.env.REACT_APP_S3_BUCKET}.s3.${process.env.REACT_APP_S3_REGION}.amazonaws.com/Jacebase-logo.jpg`}/>
             <Link to="/">
                 <button>Login</button>
             </Link>
