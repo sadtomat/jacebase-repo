@@ -3,7 +3,7 @@ import '../css/App.css';
 import {HashRouter as Router, Routes, Route} from 'react-router-dom'
 import { Login } from './login'
 import { GameEntry } from './game-entry'
-import { DeckENtry } from './deck-entry'
+import { DeckEntry } from './deck-entry'
 import { Statistics } from './statistics'
 
 function App() {
