@@ -12,6 +12,7 @@ const mainBackground = {
   backgroundSize: 'cover',
   backgroundImage: `url(${jpgimage})`,
   objectFit: 'cover',
+  boxSizing: 'border-box',
 };
 root.render(
   <div style={mainBackground}>
