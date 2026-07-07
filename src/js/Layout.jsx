@@ -16,9 +16,11 @@ import "../css/Layout.css"
 export function Layout() {
     // const client = new Client(dbConfig);
     // await client.connect;
+    let jpgimage = `https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/background1.jpeg`
+    console.log(jpgimage)
     const mainBackground = {
         backgroundSize: 'cover',
-        backgroundImage: 'url("https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/background1.jpeg")',
+        backgroundImage: `url(https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/background1.jpeg)`,
     };
     return (
         <>
