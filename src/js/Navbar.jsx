@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom"
+import logo from `https://${process.env.REACT_APP_S3_BUCKET}.s3.${process.env.REACT_APP_S3_REGION}.amazonaws.com/Jacebase-logo.jpg`
 import '../css/Navbar.css'
 
 export function Navbar() {
     return (
         <div class="topnav">
+            <img src={logo}/>
             <Link to="/">
                 <button>Login</button>
             </Link>
