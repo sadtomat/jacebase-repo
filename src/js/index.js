@@ -15,9 +15,9 @@ const mainBackground = {
   boxSizing: 'border-box',
 };
 root.render(
-  <div style={mainBackground}>
+  <body style={mainBackground}>
     <App />
-  </div>
+  </body>
 );
 
 // If you want to start measuring performance in your app, pass a function
