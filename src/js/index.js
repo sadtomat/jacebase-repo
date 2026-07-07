@@ -11,6 +11,7 @@ console.log(jpgimage)
 const mainBackground = {
   backgroundSize: 'cover',
   backgroundImage: `url(${jpgimage})`,
+  objectFit: 'cover',
 };
 root.render(
   <div style={mainBackground}>
