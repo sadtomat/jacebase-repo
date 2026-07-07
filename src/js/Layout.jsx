@@ -16,16 +16,10 @@ import "../css/Layout.css"
 export function Layout() {
     // const client = new Client(dbConfig);
     // await client.connect;
-    let jpgimage = `https://${process.env.REACT_APP_S3_BUCKET}.s3.${process.env.REACT_APP_S3_REGION}.amazonaws.com/background1.jpeg`
-    console.log(jpgimage)
-    const mainBackground = {
-        backgroundSize: 'cover',
-        backgroundImage: `url(${jpgimage})`,
-    };
     return (
         <>
             <Navbar/>
-            <main style={mainBackground}>
+            <main>
                 <Outlet/>
             </main>
         </>

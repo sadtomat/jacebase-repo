@@ -5,8 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+let jpgimage = `https://${process.env.REACT_APP_S3_BUCKET}.s3.${process.env.REACT_APP_S3_REGION}.amazonaws.com/background1.jpeg`
+console.log(jpgimage)
+const mainBackground = {
+  backgroundSize: 'cover',
+  backgroundImage: `url(${jpgimage})`,
+};
 root.render(
-  <div>
+  <div style={mainBackground}>
     <App />
   </div>
 );
