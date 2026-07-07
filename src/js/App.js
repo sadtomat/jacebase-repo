@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './css/App.css';
+import logo from '././logo.svg';
+import '././css/App.css';
 import {HashRouter as Router, Routes, Route} from 'react-router-dom'
 import { Login } from './login'
 import { GameEntry } from './game-entry'
