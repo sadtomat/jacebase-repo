@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 export function Navbar() {
     return (
-        <>
+        <div class="topnav">
             <Link to="/">
                 <button>Login</button>
             </Link>
@@ -15,6 +15,7 @@ export function Navbar() {
             <Link to="/statistics">
                 <button>Statistics</button>
             </Link>
-        </>
+            <h1>J a c e b a s e</h1>
+        </div>
     )
 }
