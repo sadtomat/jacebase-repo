@@ -34,7 +34,7 @@ export function Layout() {
         <>
             <div style={mainBackground}>
                 <Navbar/>
-                <main style={layeredBackground}>
+                <main>
                     <Outlet/>
                 </main>
             </div>
