@@ -32,8 +32,8 @@ export function Layout() {
     // await client.connect;
     return (
         <>
-            <Navbar/>
             <div style={mainBackground}>
+                <Navbar/>
                 <main style={layeredBackground}>
                     <Outlet/>
                 </main>
