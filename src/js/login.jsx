@@ -8,9 +8,11 @@ export function Login() {
                 <div className="smallbox">
                     <p className="entertext">Enter username and password</p>
                     <form className="upform">
-                        <label className="username">Username:</label>
+                        <label>Username:</label>
                         <input></input>
-                        <label className="password">Password:</label>
+                    </form>
+                    <form className="upform">
+                        <label>Password:</label>
                         <input></input>
                     </form>
                     <div>

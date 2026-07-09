@@ -17,14 +17,6 @@
     font-weight: bold;
     text-shadow: -1px -1px 0 #3399ff, -1px 1px 0 #3399ff, 1px -1px 0 #3399ff, 1px 1px 0 #3399ff;
 }
-.username {
-    font-size: 150%;
-    font-weight: bold;
-}
-.password {
-    font-size: 150%;
-    font-weight: bold;
-}
 .exitbutton {
     float: left;
     text-align: center;
@@ -40,4 +32,15 @@
 .imgbox {
     height: 40vw;
     width: 27vw;
+}
+.upform {
+    column-gap: normal;
+}
+.upform input {
+    font-size: 150%;
+    font-weight: bold;
+}
+.upform label {
+    font-size: 150%;
+    font-weight: bold;
 }
