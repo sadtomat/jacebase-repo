@@ -1,20 +1,16 @@
-.bigjace {
-    height: 700px;
-    width: 500px;
-}
 .bigbox {
     display: inline-flex;
 }
 .smallbox {
-    padding-left: 35px;
+    padding-left: 2vw;
 }
 .loginpage {
     font-weight: bold;
     color: black;
     font-size: 400%;
     text-shadow: -2px -2px 0 #3399ff, -2px 2px 0 #3399ff, 2px -2px 0 #3399ff, 2px 2px 0 #3399ff;
-    outline: 10px white;
-    width: 1000px;
+    outline: 0.5vw white;
+    width: 52vw;
 }
 .entertext {
     font-size: 200%;
@@ -32,16 +28,16 @@
 .exitbutton {
     float: left;
     text-align: center;
-    padding: 14px 16px;
+    padding: 0.75vw 0.9vw;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 1vw;
     background-color: #ccccff;
-    margin-right: 30px;
+    margin-right: 1.6vw;
 }
 .exitbutton:hover{
     background-color: #b3b3ff;
 }
 .imgbox {
-    height: 700px;
-    width: 500px;
+    height: 40vw;
+    width: 27vw;
 }
