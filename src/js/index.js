@@ -17,7 +17,7 @@ const mainBackground = {
 const layeredBackground = {
   padding: '40px',
   backgroundSize: 'cover',
-  backgroundImage:  `url('https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/background2.jpg')`,
+  backgroundImage:  `url('https://${process.env.REACT_APP_S3_BUCKET}.s3.${process.env.REACT_APP_S3_REGION}.amazonaws.com/background2.jpg')`,
 }
 
 root.render(
