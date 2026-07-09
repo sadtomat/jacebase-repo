@@ -14,9 +14,15 @@ const mainBackground = {
   objectFit: 'cover',
   boxSizing: 'border-box',
 };
+const layeredBackground = {
+  padding: '40px',
+  backgroundSize: 'cover',
+  backgroundImage:  `url('https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/background2.jpg')`,
+}
+
 root.render(
   <body style={mainBackground}>
-    <div className="container"> 
+    <div style={layeredBackground}> 
       <App />
     </div>
   </body>
