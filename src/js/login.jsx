@@ -1,5 +1,5 @@
 import '../css/Login.css'
-import './LoginForm'
+import {LoginForm} from './LoginForm'
 
 export function Login() {
     return (
