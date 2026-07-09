@@ -3,6 +3,7 @@
 }
 .smallbox {
     padding-left: 2vw;
+    display: block;
 }
 .loginpage {
     font-weight: bold;
