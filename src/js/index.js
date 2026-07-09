@@ -16,7 +16,9 @@ const mainBackground = {
 };
 root.render(
   <body style={mainBackground}>
-    <App />
+    <div className="container"> 
+      <App />
+    </div>
   </body>
 );
 
