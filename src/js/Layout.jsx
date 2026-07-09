@@ -14,12 +14,17 @@ import "../css/Layout.css"
 
 
 export function Layout() {
+    const layeredBackground = {
+        padding: '40px',
+        backgroundSize: 'cover',
+        backgroundImage:  `url('https://${process.env.REACT_APP_S3_BUCKET}.s3.${process.env.REACT_APP_S3_REGION}.amazonaws.com/background2.jpg')`,
+    }
     // const client = new Client(dbConfig);
     // await client.connect;
     return (
         <>
             <Navbar/>
-            <main className="container">
+            <main style={layeredBackground}>
                 <Outlet/>
             </main>
         </>
