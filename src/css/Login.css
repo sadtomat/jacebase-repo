@@ -34,7 +34,7 @@
     width: 27vw;
 }
 .upform {
-    column-gap: normal;
+    column-gap: 3vw;
 }
 .upform input {
     font-size: 150%;
