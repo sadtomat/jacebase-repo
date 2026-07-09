@@ -9,8 +9,12 @@ export function LoginForm() {
         e.preventDefault();
     }
 
+    function handleClick(e){
+        e.preventDefault();
+    }
+
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} onClick={handleClick}>
             <label>
                 Username:
                 <input type='text' name='username'/>
