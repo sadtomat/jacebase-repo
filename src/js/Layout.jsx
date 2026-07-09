@@ -33,11 +33,11 @@ export function Layout() {
     return (
         <>
             <Navbar/>
-            <div style={mainBackground}>
-                <main style={layeredBackground}>
+            <body style={mainBackground}>
+                <div style={layeredBackground}>
                     <Outlet/>
-                </main>
-            </div>
+                </div>
+            </body>
         </>
     )
 }
