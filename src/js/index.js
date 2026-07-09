@@ -13,6 +13,8 @@ const mainBackground = {
   backgroundImage: `url(${jpgimage})`,
   objectFit: 'cover',
   boxSizing: 'border-box',
+  marginLeft: '100px',
+  marginRight: '100px',
 };
 
 root.render(
