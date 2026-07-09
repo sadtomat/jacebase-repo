@@ -25,16 +25,16 @@ export function Layout() {
         backgroundImage: `url(${jpgimage})`,
         objectFit: 'cover',
         boxSizing: 'border-box',
-        marginLeft: '250px',
-        marginRight: '250px',
+        paddingLeft: '250px',
+        paddingRight: '250px',
     };
     // const client = new Client(dbConfig);
     // await client.connect;
     return (
         <>
+            <Navbar/>
             <div style={mainBackground}>
-                <Navbar/>
-                <main>
+                <main style={layeredBackground}>
                     <Outlet/>
                 </main>
             </div>
