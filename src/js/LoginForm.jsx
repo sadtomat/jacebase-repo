@@ -10,7 +10,7 @@ export function LoginForm() {
     }
 
     function handleClick(e){
-        alert('click');
+        console.log("click");
         e.preventDefault();
     }
 

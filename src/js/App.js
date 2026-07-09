@@ -7,6 +7,7 @@ import { Statistics } from './statistics'
 import { Layout } from "./Layout"
 
 function App() {
+  console.log("app");
   return (
     <Router>
       <Routes>
