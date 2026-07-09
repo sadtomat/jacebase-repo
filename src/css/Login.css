@@ -1,0 +1,43 @@
+.bigjace {
+    height: 700px;
+    width: 500px;
+}
+.bigbox {
+    display: inline-flex;
+}
+.smallbox {
+    padding-left: 35px;
+}
+.loginpage {
+    font-weight: bold;
+    color: black;
+    font-size: 400%;
+    text-shadow: -2px -2px 0 #3399ff, -2px 2px 0 #3399ff, 2px -2px 0 #3399ff, 2px 2px 0 #3399ff;
+    outline: 10px white;
+    width: 1000px;
+}
+.entertext {
+    font-size: 200%;
+    font-weight: bold;
+    text-shadow: -1px -1px 0 #3399ff, -1px 1px 0 #3399ff, 1px -1px 0 #3399ff, 1px 1px 0 #3399ff;
+}
+.username {
+    font-size: 150%;
+    font-weight: bold;
+}
+.password {
+    font-size: 150%;
+    font-weight: bold;
+}
+.exitbutton {
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    background-color: #ccccff;
+    margin-right: 30px;
+}
+.exitbutton:hover{
+    background-color: #b3b3ff;
+}

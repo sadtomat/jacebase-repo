@@ -1,18 +1,20 @@
+import '../css/Login.css'
+
 export function Login() {
     return (
         <>
-            <div>
-                <img src={`https://${process.env.S3_BUCKET}.s3.${process.env.S3_REGION}.amazonaws.com/Jacebase-login.jpg`}/>
-                <div>
-                    <p>Enter username and password</p>
-                    <form>
-                        <label>Username:</label>
+            <div className="bigbox">
+                <img src={`https://${process.env.REACT_APP_S3_BUCKET}.s3.${process.env.REACT_APP_S3_REGION}.amazonaws.com/Jacebase-login.jpg`}/>
+                <div className="smallbox">
+                    <p className="entertext">Enter username and password</p>
+                    <form className="upform">
+                        <label className="username">Username:</label>
                         <input></input>
-                        <label>Password:</label>
+                        <label className="password">Password:</label>
                         <input></input>
-                        <button>Submit</button>
+                        <button className="exitbutton">Submit</button>
                     </form>
-                    <button>Login as Guest</button>
+                    <button className="exitbutton">Login as Guest</button>
                 </div>
             </div>
         </>
