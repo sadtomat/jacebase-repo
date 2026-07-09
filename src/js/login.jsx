@@ -12,9 +12,11 @@ export function Login() {
                         <input></input>
                         <label className="password">Password:</label>
                         <input></input>
-                        <button className="exitbutton">Submit</button>
                     </form>
-                    <button className="exitbutton">Login as Guest</button>
+                    <div>
+                        <button className="exitbutton">Submit</button>
+                        <button className="exitbutton">Login as Guest</button>
+                    </div>
                 </div>
             </div>
         </>
