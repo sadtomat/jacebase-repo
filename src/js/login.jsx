@@ -4,7 +4,7 @@ export function Login() {
     return (
         <>
             <div className="bigbox">
-                <img src={`https://${process.env.REACT_APP_S3_BUCKET}.s3.${process.env.REACT_APP_S3_REGION}.amazonaws.com/Jacebase-login.jpg`}/>
+                <img className="imgbox" src={`https://${process.env.REACT_APP_S3_BUCKET}.s3.${process.env.REACT_APP_S3_REGION}.amazonaws.com/Jacebase-login.jpg`}/>
                 <div className="smallbox">
                     <p className="entertext">Enter username and password</p>
                     <form className="upform">

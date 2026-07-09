@@ -41,3 +41,7 @@
 .exitbutton:hover{
     background-color: #b3b3ff;
 }
+.imgbox {
+    height: 700px;
+    width: 500px;
+}
