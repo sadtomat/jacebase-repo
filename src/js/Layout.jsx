@@ -16,7 +16,7 @@ import "../css/Layout.css"
 export function Layout() {
     let jpgimage = `https://${process.env.REACT_APP_S3_BUCKET}.s3.${process.env.REACT_APP_S3_REGION}.amazonaws.com/background1.jpeg`
     const layeredBackground = {
-        padding: '40px',
+        padding: '2vw',
         backgroundSize: 'cover',
         backgroundImage:  `url('https://${process.env.REACT_APP_S3_BUCKET}.s3.${process.env.REACT_APP_S3_REGION}.amazonaws.com/background2.jpg')`,
     }
@@ -25,8 +25,8 @@ export function Layout() {
         backgroundImage: `url(${jpgimage})`,
         objectFit: 'cover',
         boxSizing: 'border-box',
-        paddingLeft: '250px',
-        paddingRight: '250px',
+        paddingLeft: '15vw',
+        paddingRight: '15vw',
     };
     // const client = new Client(dbConfig);
     // await client.connect;
