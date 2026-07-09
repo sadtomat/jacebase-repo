@@ -10,6 +10,7 @@ export function LoginForm() {
     }
 
     function handleClick(e){
+        alert('click');
         e.preventDefault();
     }
 
