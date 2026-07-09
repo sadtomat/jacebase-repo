@@ -34,9 +34,9 @@ export function Layout() {
         <>
             <Navbar/>
             <div style={mainBackground}>
-                <div style={layeredBackground}>
+                <main style={layeredBackground}>
                     <Outlet/>
-                </div>
+                </main>
             </div>
         </>
     )
