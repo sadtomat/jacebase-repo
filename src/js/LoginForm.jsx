@@ -1,8 +1,8 @@
 import React from 'react';
 
 export function LoginForm() {
-    function handleSubmit(event) {
-        const form = event.target;
+    function handleSubmit(e) {
+        const form = e.target;
         const formData = new FormData(form);
         const username = formData.get('username');
         alert('Username: ' + username);
@@ -10,7 +10,7 @@ export function LoginForm() {
     }
 
     return (
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <label>
                 Username:
                 <input type='text' name='username'/>
