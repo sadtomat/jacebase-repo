@@ -6,7 +6,7 @@ export function LoginForm() {
         const formData = new FormData(form);
         const username = formData.get('username');
         alert('Username: ' + username);
-        event.preventDefault();
+        e.preventDefault();
     }
 
     return (
