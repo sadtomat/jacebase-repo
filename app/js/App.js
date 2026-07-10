@@ -1,10 +1,11 @@
 import '../css/App.css';
 import {HashRouter as Router, Routes, Route} from 'react-router-dom'
 import { Login } from './login'
-import { GameEntry } from './game-entry'
-import { DeckEntry } from './deck-entry'
-import { Statistics } from './statistics'
-import { Layout } from "./Layout"
+import { GameEntry } from '../routes/game-entry'
+import { DeckEntry } from '../routes/deck-entry'
+import { Statistics } from '../routes/statistics'
+import { Layout } from "../routes/Layout"
+
 
 function App() {
   console.log("app");

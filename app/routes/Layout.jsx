@@ -1,5 +1,5 @@
-import { Navbar } from "./Navbar"
-import { Outlet } from "react-router-dom"
+import { Navbar } from "../js/Navbar"
+import { Outlet } from "react-router"
 import "../css/Layout.css"
 // const { Client } = require("pg");
 
