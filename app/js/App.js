@@ -4,7 +4,7 @@ import { Login } from '../routes/login'
 import { GameEntry } from '../routes/game-entry'
 import { DeckEntry } from '../routes/deck-entry'
 import { Statistics } from '../routes/statistics'
-import { Layout } from "../routes/Layout"
+import { Layout } from "../routes/layout"
 
 
 function App() {
