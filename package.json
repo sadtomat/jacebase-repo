@@ -64,7 +64,7 @@
   "scripts": {
     "dev": "react-router dev",
     "build": "react-router build",
-    "start": "react-router-serve ./scripts/start.js"
+    "start": "react-router-serve ./scripts/start"
   },
   "eslintConfig": {
     "extends": [
