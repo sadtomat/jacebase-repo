@@ -1,4 +1,4 @@
-import { destroySession, getSession } from "src/services/session.server";
+import { destroySession, getSession } from "../services/session.server";
 import { redirect } from "react-router";
  
 export async function action({ request }) {

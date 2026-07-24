@@ -1,6 +1,6 @@
-import { authenticator } from "src/services/auth.server";
+import { authenticator } from "../services/auth.server";
 import { redirect } from "react-router";
-import { commitSession, getSession } from "src/services/session.server";
+import { commitSession, getSession } from "../services/session.server";
 
 export async function loader(request) {
   const session = await getSession(request.headers.get("Cookie"));
