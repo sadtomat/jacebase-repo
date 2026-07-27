@@ -1,6 +1,7 @@
 import '../css/Login.css'
 import {LoginForm} from '../js/LoginForm'
 import { getSession } from "../services/session.server.js";
+import { authenticator } from "../services/auth.server";
 
 export async function loader({request}){
     const session = await getSession(request.headers.get("Cookie"));
@@ -13,6 +14,10 @@ export async function loader({request}){
     return user;
 }
 
+export async function action({request}){
+    return await authenticator.authenticate("cognito-auth", request);
+}
+
 export default function Login(loaderData) {
     console.log(loaderData);
     return (
@@ -23,7 +28,7 @@ export default function Login(loaderData) {
                     <p className="entertext">Enter username and password</p>
                     <LoginForm/>
                     <div>
-                        <button className="exitbutton">Submit</button>
+                        <button type="submit">Submit</button>
                         <button className="exitbutton">Login as Guest</button>
                     </div>
                 </div>
