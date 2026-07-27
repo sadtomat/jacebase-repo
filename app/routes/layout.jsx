@@ -2,7 +2,7 @@ import { Navbar } from "../js/Navbar"
 import { Outlet } from "react-router"
 import "../css/Layout.css"
 
-export function Layout() {
+export default function Layout() {
     console.log("layout");
     let jpgimage = `https://${process.env.REACT_APP_S3_BUCKET}.s3.${process.env.REACT_APP_S3_REGION}.amazonaws.com/background1.jpeg`
     const layeredBackground = {
