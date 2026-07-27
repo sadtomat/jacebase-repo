@@ -2,11 +2,11 @@ import {Client} from "pg";
 import fs from "fs";
 
 const dbConfig = {
-    host: process.env.DB_HOST || "localhost",
-    port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
-    ssl: (process.env.DB_HOST && process.env.DB_HOST != 'localhost') ? { ca: fs.readFileSync('global-bundle.pem').toString() } : false,
-    user: process.env.DB_USER || "postgres",
-    password: process.env.DB_PASS || "postgres",
+    host: process.env.REACT_APP_DB_HOST || "localhost",
+    port: process.env.REACT_APP_DB_PORT ? parseInt(process.env.REACT_APP_DB_PORT) : 5432,
+    ssl: (process.env.REACT_APP_DB_HOST && process.env.REACT_APP_DB_HOST != 'localhost') ? { ca: fs.readFileSync('global-bundle.pem').toString() } : false,
+    user: process.env.REACT_APP_DB_USER || "postgres",
+    password: process.env.REACT_APP_DB_PASS || "postgres",
     database: "jacebase-db" // Connect to the default database
 };
 
