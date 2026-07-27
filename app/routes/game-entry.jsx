@@ -1,10 +1,12 @@
 import { data, redirect } from "react-router";
 import { getSession } from "../services/session.server.js";
+import { fetchPlayerData } from "../js/db-fetch.jsx"; 
 
 export async function loader(request){
     //const session = await getSession(request.headers.get("Cookie"));
     console.log("poop butt");
-    return;
+    const playerData = await fetchPlayerData();
+    return data({ playerData });
     // const user = session.get("user");
     // if (!user) {
     //     console.log("no login");
@@ -15,7 +17,7 @@ export async function loader(request){
 }
 
 export function GameEntry() {
-    const {user} = loaderData;
+    const {playerData} = loaderData;
 
     return (
         <>
