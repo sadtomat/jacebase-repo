@@ -2,8 +2,8 @@ import '../css/Login.css'
 import {LoginForm} from '../js/LoginForm'
 import { getSession } from "../services/session.server.js";
 
-export async function loader(request){
-    const session = await getSession(request.headers["cookie"]);
+export async function loader({request}){
+    const session = await getSession(request.headers.get("Cookie"));
     console.log("session: ", session);
     // const user = session.get("user");
     // if (!user) {
