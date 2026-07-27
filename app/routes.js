@@ -8,6 +8,6 @@ export default [
     route("statistics", "./routes/statistics.jsx"),
   ]),
 
-  route("auth/callback", "./routes/callback.js"),
-  route("logout", "./routes/logout.js"),
+  route("auth/callback", "./auth/callback.js"),
+  route("logout", "./auth/logout.js"),
 ]
