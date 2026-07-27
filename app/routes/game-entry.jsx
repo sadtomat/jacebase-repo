@@ -4,7 +4,6 @@ import { fetchPlayerData } from "../js/db-fetch.jsx";
 
 export async function loader(request){
     //const session = await getSession(request.headers.get("Cookie"));
-    console.log("poop butt");
     const playerData = await fetchPlayerData();
     return data({ playerData });
     // const user = session.get("user");
