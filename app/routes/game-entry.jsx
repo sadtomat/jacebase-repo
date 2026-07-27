@@ -1,6 +1,6 @@
 import { data, redirect } from "react-router";
 import { getSession } from "../services/session.server.js";
-import { fetchPlayerData } from "../js/db-fetch.jsx"; 
+import { fetchPlayerData } from "../services/db-fetch.server.jsx"; 
 
 export async function loader(request){
     //const session = await getSession(request.headers.get("Cookie"));
@@ -15,7 +15,7 @@ export async function loader(request){
     // return data({user});
 }
 
-export function GameEntry() {
+export function GameEntry(loaderData) {
     const {playerData} = loaderData;
 
     return (
