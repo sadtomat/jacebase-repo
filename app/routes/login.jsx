@@ -10,10 +10,11 @@ export async function loader({request}){
     }else{
         console.log("yes login");
     }
-    return data({user});
+    return user;
 }
 
-export default function Login() {
+export default function Login(loaderData) {
+    console.log(loaderData);
     return (
         <>
             <div className="bigbox">
