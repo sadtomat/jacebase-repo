@@ -1,7 +1,19 @@
 import '../css/Login.css'
 import {LoginForm} from '../js/LoginForm'
+import { getSession } from "../services/session.server.js";
 
-export function Login() {
+export async function loader(request){
+    const session = await getSession(request.headers.get("Cookie"));
+    const user = session.get("user");
+    if (!user) {
+        console.log("no login");
+    }else{
+        console.log("yes login");
+    }
+    return data({user});
+}
+
+export default function Login() {
     return (
         <>
             <div className="bigbox">
