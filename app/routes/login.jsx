@@ -3,7 +3,7 @@ import {LoginForm} from '../js/LoginForm'
 import { getSession } from "../services/session.server.js";
 
 export async function loader(request){
-    const session = await getSession(request.headers("Cookie"));
+    const session = await getSession(request.headers["cookie"]);
     console.log("session: ", session);
     // const user = session.get("user");
     // if (!user) {
