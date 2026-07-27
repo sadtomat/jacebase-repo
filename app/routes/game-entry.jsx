@@ -1,5 +1,5 @@
 import { data, redirect } from "react-router";
-import { getSession } from "../services/session.server.js";
+//import { getSession } from "../services/session.server.js";
 import { fetchPlayerData } from "../services/db-fetch.server.jsx"; 
 
 export async function loader(request){
