@@ -13,8 +13,8 @@ const dbConfig = {
 export async function fetchPlayerData() {
     const client = new Client(dbConfig);
     console.log("enter fetch");
-    console.log("dbConfig:", dbConfig);
     try {
+        await client.connect();
         const query = `
         SELECT * FROM public."playerInstance"
         `;
