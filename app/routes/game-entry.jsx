@@ -15,7 +15,7 @@ export async function loader(request){
     // return data({user});
 }
 
-export function GameEntry(loaderData) {
+export default function GameEntry(loaderData) {
     const {playerData} = loaderData;
 
     return (

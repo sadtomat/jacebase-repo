@@ -1,4 +1,5 @@
-const { Client } = require("pg");
+import {Client} from "pg";
+import fs from "fs";
 
 const dbConfig = {
     host: process.env.DB_HOST || "localhost",
@@ -9,7 +10,7 @@ const dbConfig = {
     database: "jacebase-db" // Connect to the default database
 };
 
-async function fetchPlayerData() {
+export async function fetchPlayerData() {
     const client = new Client(dbConfig);
     try {
         const query = `
