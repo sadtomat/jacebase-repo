@@ -2,6 +2,7 @@ import '../css/Login.css'
 import {LoginForm} from '../js/LoginForm'
 import { getSession } from "../services/session.server.js";
 import { authenticator } from "../services/auth.server";
+import { data, Form, redirect } from "react-router";
 
 export async function loader({request}){
     const session = await getSession(request.headers.get("Cookie"));
@@ -27,8 +28,10 @@ export default function Login(loaderData) {
                 <div className="smallbox">
                     <p className="entertext">Enter username and password</p>
                     <LoginForm/>
-                    <div>
+                    <Form method="post">
                         <button type="submit">Submit</button>
+                    </Form>
+                    <div>
                         <button className="exitbutton">Login as Guest</button>
                     </div>
                 </div>
