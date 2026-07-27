@@ -12,11 +12,14 @@ const dbConfig = {
 
 export async function fetchPlayerData() {
     const client = new Client(dbConfig);
+    console.log("enter fetch");
     try {
         const query = `
         SELECT * FROM public."playerInstance"
         `;
+        console.log("pre query");
         const result = await client.query(query);
+        console.log("post query");
         return result.rows;
     } catch (err) {
         console.error(err);
