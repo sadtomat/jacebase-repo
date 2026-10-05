@@ -819,22 +819,23 @@ app.get("/charts", (req, res) => {
             winCount++;
             const gameOpponents = await pullGameOpponents(instance.instanceID);
             eloGain = 10;
-            for (opponents of gameOpponents) {
-              eloFetch = rawDeckElo.find(obj => obj.name === opponents.DeckName);
-              if (eloFetch){
-                let eloVal = eloFetch.elo;
-                eloGain = eloGain + eloVal;
-              }else{
-                console.log("Missing deck in ELO listing: "+opponents.DeckName);
-              }
-            }
-            deckElo = deckElo + eloGain
+            // for (opponents of gameOpponents) {
+            //   eloFetch = rawDeckElo.find(obj => obj.name === opponents.DeckName);
+            //   if (eloFetch){
+            //     let eloVal = eloFetch.elo;
+            //     eloGain = eloGain + eloVal;
+            //   }else{
+            //     console.log("Missing deck in ELO listing: "+opponents.DeckName);
+            //   }
+            //   eloGain = eloGain + 5;
+            // }
+            // deckElo = deckElo + eloGain
           }
         }
         deckElo = deckElo/playingInstances.length;
         creator = playerTable.find(obj => obj.id === deck.playerid);
         winRate = (winCount / playingInstances.length) * 100;
-        rawElo = rawDeckElo.find(obj => obj.name === deck.name);
+        rawElo = 5
         if (!rawElo){
           rawElo = {name: "", elo: 4.3};
           console.log("Missing deck in ELO listing: "+deck.name);
