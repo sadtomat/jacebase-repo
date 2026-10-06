@@ -1,5 +1,5 @@
 import '../css/App.css';
-import {HashRouter as Router, Routes, Route} from 'react-router-dom'
+import {HashRouter as Router, Routes, Route} from 'react-router'
 import { Login } from '../routes/login'
 import { GameEntry } from '../routes/game-entry'
 import { DeckEntry } from '../routes/deck-entry'
