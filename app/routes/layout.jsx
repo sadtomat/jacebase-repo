@@ -4,15 +4,18 @@ import "../css/Layout.css"
 
 export default function Layout() {
     console.log("layout");
-    let jpgimage = `https://${process.env.REACT_APP_S3_BUCKET}.s3.${process.env.REACT_APP_S3_REGION}.amazonaws.com/background1.jpeg`
+    let backgrndImage1 = `https://${import.meta.env.VITE_S3_BUCKET}.s3.${import.meta.env.VITE_S3_REGION}.amazonaws.com/background1.jpeg`
+    let backgrndImage2 = `https://${import.meta.env.VITE_S3_BUCKET}.s3.${import.meta.env.VITE_S3_REGION}.amazonaws.com/background2.jpg`
+    console.log(backgrndImage1);
+    console.log(backgrndImage2);    
     const layeredBackground = {
         padding: '2vw',
         backgroundSize: 'cover',
-        backgroundImage:  `url('https://${process.env.REACT_APP_S3_BUCKET}.s3.${process.env.REACT_APP_S3_REGION}.amazonaws.com/background2.jpg')`,
+        backgroundImage:  `url(${backgrndImage2})`,
     }
     const mainBackground = {
         backgroundSize: 'cover',
-        backgroundImage: `url(${jpgimage})`,
+        backgroundImage: `url(${backgrndImage1})`,
         objectFit: 'cover',
         boxSizing: 'border-box',
         paddingLeft: '15vw',
